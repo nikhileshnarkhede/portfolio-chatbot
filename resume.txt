@@ -1,0 +1,221 @@
+Nikhilesh Narkhede
+US work authorised  | P: +1 5085093697 | narkhede.nikhilesh@gmail.com | https://www.linkedin.com/in/nikhileshnarkhede | https://github.com/nikhileshnarkhede |https://nikhileshnarkhede.github.io/portfolio/
+RESEARCH IN DATA SCIENCE	
+
+Prediction of Mechanical and Fracture Properties of Lightweight Polyurethane Composites Using Machine Learning Methods.    https://doi.org/10.3390/jcs9060271 
+Physics-Aware Machine Learning: Developed physics-informed and data-driven ML frameworks for materials
+science applications under low-data constraints
+Interpretable Modeling: Applied symbolic regression to extract interpretable equations linking manufacturing
+parameters to material behavior
+Surrogate Modeling: Demonstrated ML-based surrogate models as scalable alternatives to empirical and
+physics-based formulations
+Research Focus Areas: Physics-Informed ML, Interpretable ML, Multi-objective Optimization, Scientific Machine
+Learning
+EDUCATION
+
+
+University of Massachusetts Dartmouth	
+Master of Science in Data Science                                                                                                 	                                          May 2026
+●	4.0 GPA .
+●	Coursework: Adv Math Statistics, Artificial Intelligence, Deep Learning, Data Visualization, ML, HPSC, Adv Machine Learning, DB.
+●	Big Data Club, Gen AI Club member.
+
+Savitribai Phule Pune University, Pune	
+Bachelor of Engineering in Mechanical Engineering                                                                                                               June 2023
+●	Ranked 9 in University, GPA of 3.64.
+●	Coursework: AI & ML, Data Analytics Lab, Numerical & Statistical Method, Programming & Problem solving.
+●	Intern at ARDE-DRDO: Mathematical modelling for optimising system performance.
+
+EXPERIENCE	
+
+University of Massachusetts Dartmouth — Research Assistant (Part-Time)
+Jun 2025 – Dec 2025 | Greater Boston, MA
+•	Developed a physics-aware machine learning and optimization framework to improve mechanical and fracture performance of FFF-processed ABS materials under multi-objective constraints.
+•	Generated and curated large synthetic datasets to augment scarce experimental data while preserving physical consistency and process–property relationships.
+•	Applied Symbolic Regression Analysis (SRA) to extract interpretable mathematical expressions linking manufacturing parameters to material responses.
+•	Engineered and normalized high-value features from symbolic terms, improving model convergence and predictive stability.
+•	Designed and trained deep neural network surrogate models to capture nonlinear interactions and multi-property trade-offs with high fidelity.
+•	Implemented NSGA-II based multi-objective optimization to identify Pareto-optimal process windows balancing strength, toughness, elongation, and energy absorption.
+•	Visualized and analyzed optimization outcomes using radial plots and parallel coordinate plots to benchmark predicted results against experimental maxima.
+•	Identified optimal processing parameters aligned with experimental performance envelopes, enabling data-driven recommendations for high-performance additive manufacturing.
+•	Skills: Python, Machine Learning, Deep Learning, Feature Engineering, Optimization Algorithms, NSGA-II, Data Normalization, Model Evaluation, Scientific Visualization
+
+Deep Learning Researcher (Math & Computational Consultant) — Contract
+Feb 2025 – May 2025
+•	Designed and executed an end-to-end machine learning pipeline to predict mechanical and fracture properties of lightweight polyurethane composites.
+•	Augmented limited experimental datasets using bootstrapping and statistical sampling techniques to improve model robustness in low-data regimes.
+•	Built, trained, and optimized shallow ANN and deep DNN architectures with extensive hyperparameter tuning (activation functions, learning rates, batch sizes, regularization).
+•	Applied feature scaling and preprocessing to stabilize gradients and accelerate convergence during training.
+•	Achieved exceptional predictive accuracy (R² > 0.99, low RMSE), outperforming traditional empirical modeling approaches.
+•	Successfully extrapolated material behavior beyond observed reinforcement ranges ( >40%), demonstrating strong generalization capability.
+•	Contributed to peer-reviewed publication in Journal of Composite Science (2025), validating ML as a viable alternative to physics-based empirical models.
+•	Skills: Python, Deep Learning, Neural Networks, Keras, TensorFlow, Data Augmentation, Hyperparameter Optimization, Statistical Modeling, Pandas, NumPy
+
+Tech-Neo Publications LLP — Machine Learning Intern
+Jul 2023 – May 2024
+•	Assisted in developing machine learning models for materials and engineering research applications.
+•	Processed and structured datasets for regression and prediction tasks involving mechanical and physical properties.
+•	Collaborated with senior researchers to validate ML results against experimental and literature benchmarks.
+•	Supported documentation and publication workflows, translating technical findings into research-ready formats.
+•	Skills: Python, Data Handling, Machine Learning Fundamentals, Research Methodology, Pandas, NumPy, Technical Documentation
+
+Armament Research & Development Establishment (DRDO) — Research Assistant Intern
+Sep 2022 – Mar 2023 | Pune, India
+•	Designed and analyzed propulsion system concepts for artillery rockets under real-world defense constraints.
+•	Performed CFD and thermal simulations to evaluate flow behavior, heat transfer, and system efficiency.
+•	Built mathematical and computational models to support performance prediction and design validation.
+•	Automated calculations and simulations using Python and MATLAB to reduce manual analysis time.
+•	Collaborated with multidisciplinary teams to translate theoretical designs into practical engineering solutions.
+•	Skills: Python, MATLAB, CFD, Ansys, Mathematical Modeling, Simulation, Mechanical Systems, Engineering Analysis
+
+Bajaj Auto Ltd — Project Trainee (Predictive Maintenance)
+Mar 2022 – Jun 2022 | Chakan, India
+•	Worked on predictive maintenance initiatives for automotive manufacturing systems to reduce unplanned downtime.
+•	Analyzed machine and process data to identify early indicators of equipment failure and performance degradation.
+•	Applied basic data analysis and statistical techniques to support maintenance forecasting and reliability improvement.
+•	Collaborated with operations and maintenance teams to translate data insights into actionable maintenance strategies.
+•	Gained exposure to condition monitoring, preventive maintenance, and data-driven decision-making in large-scale industrial environments.
+•	Skills: Predictive Maintenance, Data Analysis, Machine Learning Fundamentals, Python, Statistics, Industrial Analytics, Operations Engineering
+
+Artenal — Computer Aided Design Engineer Intern (Computer Vision Collaboration)
+Jan 2022 – Jun 2022 | Vancouver, Canada
+•	Collaborated with computer vision engineers on robotics-focused projects involving perception-driven automation.
+•	Designed mechanical end effectors aligned with vision-based robotic manipulation requirements.
+•	Supported kinematic modeling and motion analysis, ensuring compatibility between mechanical design and vision-guided control logic.
+•	Contributed to concept development of an autonomous apple-harvesting robot integrating robotics and vision systems.
+•	Interfaced with CV workflows by aligning CAD constraints with object detection, localization, and motion planning needs.
+•	Skills: Computer Vision (Applied Exposure), Robotics, Kinematics, CAD, SOLIDWORKS, Mechanical–AI Integration, Multidisciplinary Collaboration
+
+Code Karo Yaaro — Coding Tutor (ML / DL / Math for AI)
+Sep 2021 – Nov 2021
+•	Delivered beginner-friendly instruction on programming, mathematics, and foundational concepts required for machine learning and deep learning.
+•	Taught Python programming, logic building, and object-oriented programming with AI-oriented examples.
+•	Introduced core ML/DL concepts, including datasets, features, training vs. testing, loss functions, and model intuition.
+•	Created recorded learning content explaining mathematical foundations such as vectors, matrices, gradients, and basic optimization concepts.
+•	Skills: Python, Machine Learning Basics, Deep Learning Fundamentals, Mathematics for AI, OOP, Communication, Teaching
+
+Abhiyantrix Academy — Technical Member (AI)
+May 2020 – May 2021
+•	Collaborated on AI-focused problem statements, applying mathematical reasoning and algorithmic thinking to research-driven engineering challenges.
+•	Explored foundational machine learning concepts, including supervised learning, regression, and classification, through guided research and experimentation.
+•	Applied linear algebra, probability, and optimization basics to support early-stage AI model formulation and evaluation.
+•	Worked in cross-functional technical teams to analyze feasibility, validate assumptions, and document findings.
+•	Skills: Machine Learning Fundamentals, Mathematics for AI, Linear Algebra, Probability, Problem Solving, Research, Python (Basics)
+
+PROJECT 
+
+Job Application Assistant — LLM-Powered AI Application
+Repo Link: https://nikhileshnarkhede.github.io/portfolio/projects/job-application-assistant.html
+•	Designed and developed an end-to-end AI application that assists job seekers by automating resume customization, cover letter generation, and job-specific content creation using Large Language Models (LLMs).
+•	Implemented NLP-driven pipelines to process job descriptions and user inputs, enabling context-aware and role-specific application outputs.
+•	Applied prompt engineering techniques to ensure consistent, structured, and ATS-optimized responses across multiple job roles and industries.
+•	Built modular and reusable application components, allowing scalable extension to additional job types, prompts, and AI workflows.
+•	Focused on real-world AI application design, translating ambiguous user requirements into a functional, user-centric GenAI system.
+•	Demonstrated applied AI engineering skills by integrating LLM APIs into a production-style workflow rather than standalone model experimentation.
+•	Skills: Python, Generative AI, Large Language Models (LLMs), NLP, Prompt Engineering, AI Application Development, Automation, API Integration
+
+Chat with YouTube Videos — Retrieval-Augmented Conversational AI
+Repo Link: https://nikhileshnarkhede.github.io/portfolio/projects/chat-youtube-videos.html
+Designed and built an end-to-end conversational AI system enabling users to ask natural language questions about long-form YouTube videos.
+•	Extracted and processed video transcripts, performing text chunking and preprocessing to support efficient semantic retrieval.
+•	Generated dense vector embeddings using Sentence Transformers and HuggingFace models to capture contextual meaning.
+•	Implemented semantic search pipelines using FAISS and ChromaDB to retrieve the most relevant transcript segments in real time.
+•	Integrated Large Language Models (LLMs) via LangChain with OpenAI and Anthropic APIs to generate accurate, context-aware answers (RAG architecture).
+•	Developed an interactive Streamlit application to deliver low-latency, user-friendly conversational experiences.
+•	Demonstrated applied NLP and GenAI system design, combining retrieval, embeddings, and generation into a production-style workflow.
+•	Skills: Python, NLP, Conversational AI, Retrieval-Augmented Generation (RAG), LLMs, LangChain, HuggingFace, FAISS, ChromaDB, Vector Databases, Streamlit, API Integration
+
+Real-Time Market Momentum & Sentiment Prediction — NLP + LSTM System
+Repo Link: https://nikhileshnarkhede.github.io/portfolio/projects/market-sentiment-prediction.html
+•	Designed and implemented a real-time deep learning framework to predict S&P 500 market momentum by combining historical price data with financial news sentiment.
+•	Built NLP pipelines to preprocess and encode financial news text for sentiment extraction.
+•	Developed LSTM-based neural networks to model temporal dependencies in time-series market data.
+•	Integrated multimodal features (numerical price signals + textual sentiment features) to improve predictive capability over single-source models.
+•	Evaluated model performance under evolving data conditions, demonstrating adaptability to real-time market updates.
+•	Showcased applied AI system design, combining NLP, deep learning, and time-series modeling into a unified predictive workflow.
+•	Skills: Python, NLP, Deep Learning, LSTM, Time Series Analysis, Sentiment Analysis, Feature Engineering, Applied Machine Learning
+
+NLP Systems for Text Classification & Sentiment Analysis
+Multiple Repos : https://nikhileshnarkhede.github.io/portfolio/projects/nlp-text-classification.html
+•	Built NLP pipelines for spam detection, sentiment classification, and complaint resolution tasks.
+•	Utilized word embeddings (GloVe, FastText) to capture semantic meaning and reduce dimensionality.
+•	Trained LSTM-based sequence models followed by feedforward layers for binary classification.
+•	Performed text preprocessing including tokenization, padding, and sequence modeling.
+•	Skills: NLP, LSTM, Text Classification, Word Embeddings, GloVe, FastText, Deep Learning
+
+Applied Machine Learning for Credit Risk & Loan Default Prediction
+Repo Link: https://nikhileshnarkhede.github.io/portfolio/projects/credit-risk-prediction.html
+•	Developed supervised machine learning models to predict payday loan default risk using structured financial and behavioral data.
+•	Performed data preprocessing and feature engineering to improve signal quality and model generalization.
+•	Evaluated multiple classification algorithms, identifying LightGBM and CatBoost as top-performing models compared to baseline approaches.
+•	Built a feedforward neural network (FFN) to benchmark deep learning performance against traditional ML models.
+•	Assessed model performance using appropriate classification metrics to guide model selection and tuning.
+•	Demonstrated real-world risk modeling skills applicable to finance, lending, and decision-support systems.
+•	Skills: Python, Machine Learning, Classification, LightGBM, CatBoost, Neural Networks, Feature Engineering, Model Evaluation, Applied Data Science
+
+High-Performance Deep Learning for Music Genre Classification
+Repo Link: https://nikhileshnarkhede.github.io/portfolio/projects/music-genre-classification.html
+•	Designed and implemented a high-performance deep learning pipeline to classify music genres from raw audio data.
+•	Transformed audio signals into spectrogram representations, enabling convolutional and recurrent neural networks to learn spatial–temporal patterns.
+•	Built and evaluated CNN, RNN, and LSTM architectures, comparing accuracy, training time, and computational efficiency.
+•	Applied parallel computing strategies to accelerate model training and improve scalability over traditional sequential approaches.
+•	Analyzed performance trade-offs between model complexity and inference efficiency for real-time and streaming use cases.
+•	Demonstrated system-level ML thinking, optimizing both model accuracy and computational performance.	
+•	Skills: Python, Deep Learning, CNN, RNN, LSTM, Signal Processing, Spectrograms, TensorFlow, Keras, Parallel Computing, Model Optimization
+
+Applied Machine Learning for Business & Industrial Forecasting and Predictive Analytics 
+Multiple Repos : https://nikhileshnarkhede.github.io/portfolio/projects/ml-business-forecasting.html
+•	Designed and implemented multiple supervised machine learning pipelines to solve real-world classification and regression problems across business, finance, industrial, and healthcare domains.
+•	Built feedforward neural network (FFN) models to classify customer subscription likelihood using behavioral and demographic features.
+•	Developed regression models to predict vehicle emission levels (PPM), enabling data-driven environmental compliance and analysis.
+•	Implemented machine learning models to forecast interest rates based on historical financial and macroeconomic indicators.
+•	Modeled counterfeit medicine sales patterns to support demand forecasting and risk-aware decision-making in healthcare supply chains.
+•	Executed complete ML workflows, including data preprocessing, feature engineering, model training, evaluation, and cross-model comparison.
+•	Demonstrated versatility in applied machine learning, adapting algorithms and evaluation strategies across diverse problem statements.
+•	Skills: Python, Machine Learning, Supervised Learning, Classification, Regression, Neural Networks (FFN), Feature Engineering, Model Evaluation, Applied Data Science
+
+End-to-End Computer Vision Systems for Image Classification & Recognition
+Multiple Repos : https://nikhileshnarkhede.github.io/portfolio/projects/computer-vision.html
+•	Designed and implemented multiple CNN-based computer vision pipelines for image classification, object detection, and facial recognition tasks.
+•	Built face detection and recognition systems using MTCNN and VGGFace embeddings to identify and verify human faces.
+•	Applied transfer learning techniques by fine-tuning ImageNet-pretrained models to improve accuracy on limited datasets.
+•	Developed deep CNN models for handwritten digit classification (MNIST) and medical image diagnosis using chest X-ray images.
+•	Preprocessed and augmented image datasets to enhance model robustness and generalization.
+•	Evaluated model performance across multiple vision tasks, emphasizing accuracy, generalization, and inference reliability.
+•	Demonstrated applied computer vision expertise across general vision and healthcare-focused use cases.
+•	Skills: Python, Computer Vision, Deep Learning, CNNs, Transfer Learning, ImageNet, MTCNN, VGGFace, Medical Imaging, Model Evaluation
+
+Supply Chain Tracker — Data-Driven Analytics & Web Application
+Repo Link: https://nikhileshnarkhede.github.io/portfolio/projects/supply-chain-tracker.html
+Designed and developed a full-stack, data-driven supply chain management application to track products, vendors, and orders in real time.
+•	Built interactive dashboards and analytics views using Streamlit and Plotly to visualize operational metrics and trends.
+•	Implemented role-based access control to support multiple user types with secure login workflows.
+•	Enabled structured data ingestion and export through CSV upload/download pipelines for seamless data handling.
+•	Applied data preprocessing and transformation using Pandas and NumPy to support analytics and downstream modeling.
+•	Demonstrated end-to-end application thinking, integrating data engineering, analytics, and user-facing components in a single system.
+•	Skills: Python, Data Engineering, Applied Data Science, Streamlit, Plotly, Pandas, NumPy, Data Visualization, Application Development
+
+
+Data Engineering & Visualization Applications
+Multiple Repos : https://nikhileshnarkhede.github.io/portfolio/projects/data-engineering-visualization.html
+Developed interactive, data-driven applications for supply chain tracking, multi-view visualizations, and force simulations using Streamlit, Plotly, and D3.js.
+•	Built real-time dashboards and role-based access systems to provide operational insights and enhance decision-making.
+•	Performed comprehensive data preprocessing and transformation using Pandas and NumPy to support analytics and visualization.
+•	Implemented multi-modal and multi-view visualizations for complex datasets including CT scans, demonstrating advanced data visualization techniques.
+•	Skills: Python, Data Engineering, Data Visualization, Streamlit, Plotly, Pandas, NumPy
+
+SKILLS AND CERTIFICATIONS	
+
+Technical Skills
+•	Programming & Databases: Python, SQL, MATLAB, MySQL, PostgreSQL, SQL Server, MongoDB
+•	Data Analysis & Visualization: Data Handling, Data Modeling, Data Integration, Exploratory Data Analysis (EDA), Hypothesis Testing, Regression Analysis, Predictive Modeling, Time Series Analysis, Statistical Modeling, Pandas, NumPy, Plotly, Tableau, Power BI, Excel, Scientific Visualization, Tableau, Power BI, Excel 
+•	Machine Learning & AI: Scikit-learn, TensorFlow, PyTorch, Keras, XGBoost, LightGBM, CatBoost, Neural Networks (FFN, CNN, RNN, LSTM), Deep Learning, NLP, Computer Vision, Classification, Clustering, Regression, Anomaly Detection, Feature Engineering, Transfer Learning, ImageNet, Experimental Design, Pipelines, Hyperparameter Optimization, Model Evaluation, Sentiment Analysis, Signal Processing, Applied Machine Learning
+•	Generative AI & Conversational AI: LangChain, LangGraph, RAG (Retrieval-Augmented Generation), FactMCP, MCP, Agentic AI, Prompt Engineering, LLMs, Generative AI Applications, AI Application Development, Automation, API Integration
+•	Software Development & MLOps: FastAPI, Streamlit, Docker, Git, GitHub, Pipelines, GPU & Parallel Computing, Model Deployment, Business Intelligence, Optimization Algorithms, NSGA-II, Data Normalization, Mathematical Modeling, Simulation.
+•	Additional Skill : CFD, Ansys, Engineering Analysis, Robotics, Kinematics, CAD, SOLIDWORKS, Mechanical–AI Integration, Predictive Maintenance, Industrial Analytics, Operations Engineering
+
+Certifications & Training
+•	Advanced Certification in AI & Machine Learning – IIT Kanpur
+•	Machine Learning in Python: Python fundamentals, Pandas, NumPy, Statistics, GLMs, Decision Trees, Bagging & Boosting, SVM, kNN, Neural Networks, Text Mining, Ensemble Methods, Pipelines, Git, Feature Engineering
+•	Deep Learning in TensorFlow & Keras: Gradient Descent, CNNs, RNN/LSTM/GRU, Autoencoders, GANs, Computer Vision (Object Detection, Face Recognition), NLP, Chatbots with Rasa, Audio Processing, Image Captioning
+•	 Data Analysis in SQL: SQL fundamentals, Data Types, Aggregations, Functions, Sub-queries, DML/DDL, Joins, Views
