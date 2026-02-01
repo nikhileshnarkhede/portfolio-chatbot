@@ -4,7 +4,7 @@ An AI-powered chatbot that lets recruiters interact directly with my professiona
 
 ## 🚀 Live Demo
 
-👉 [Chat with Nikhilesh](https://portfolio-chatbot.streamlit.app)
+👉 [Chat with Nikhilesh](https://nikhileshportfoliochatbot.streamlit.app/)
 
 ---
 
