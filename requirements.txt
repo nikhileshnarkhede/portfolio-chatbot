@@ -3,6 +3,6 @@ langgraph
 langchain-groq
 langchain-community
 langchain-huggingface
-chromadb
+faiss-cpu
 sentence-transformers
 python-dotenv
