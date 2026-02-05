@@ -1,5 +1,48 @@
 Nikhilesh Narkhede
 US work authorised  | P: +1 5085093697 | narkhede.nikhilesh@gmail.com | https://www.linkedin.com/in/nikhileshnarkhede | https://github.com/nikhileshnarkhede |https://nikhileshnarkhede.github.io/portfolio/
+
+PROJECTS
+
+1. Job Application Assistant — LLM-Powered AI Application
+   Built an end-to-end AI app that automates resume customization, cover letter generation using LLMs and prompt engineering.
+   URL: https://nikhileshnarkhede.github.io/portfolio/projects/job-application-assistant.html
+
+2. Chat with YouTube Videos — Retrieval-Augmented Conversational AI
+   Built a full RAG system that lets users ask questions about YouTube videos and get accurate, context-aware answers using FAISS, LangChain, and LLMs.
+   URL: https://nikhileshnarkhede.github.io/portfolio/projects/chat-youtube-videos.html
+
+3. Real-Time Market Momentum & Sentiment Prediction — NLP + LSTM System
+   Built a deep learning framework combining financial news sentiment (NLP) with LSTM networks to predict S&P 500 market momentum in real time.
+   URL: https://nikhileshnarkhede.github.io/portfolio/projects/market-sentiment-prediction.html
+
+4. NLP Systems for Text Classification & Sentiment Analysis
+   Built NLP pipelines for spam detection, sentiment classification, and complaint resolution using word embeddings (GloVe, FastText) and LSTM models.
+   URL: https://nikhileshnarkhede.github.io/portfolio/projects/nlp-text-classification.html
+
+5. Applied Machine Learning for Credit Risk & Loan Default Prediction
+   Built supervised ML models to predict payday loan default risk. LightGBM and CatBoost were top performers, also benchmarked against a feedforward neural network.
+   URL: https://nikhileshnarkhede.github.io/portfolio/projects/credit-risk-prediction.html
+
+6. High-Performance Deep Learning for Music Genre Classification
+   Built a deep learning pipeline classifying music genres from raw audio using spectrograms, CNN, RNN, and LSTM with parallel computing for speed.
+   URL: https://nikhileshnarkhede.github.io/portfolio/projects/music-genre-classification.html
+
+7. Applied Machine Learning for Business & Industrial Forecasting
+   Built multiple ML pipelines across business, finance, industrial, and healthcare domains — including customer subscription prediction, vehicle emissions forecasting, and interest rate prediction.
+   URL: https://nikhileshnarkhede.github.io/portfolio/projects/ml-business-forecasting.html
+
+8. End-to-End Computer Vision Systems for Image Classification & Recognition
+   Built CNN-based pipelines for face detection (MTCNN + VGGFace), handwritten digit classification (MNIST), and medical image diagnosis using transfer learning.
+   URL: https://nikhileshnarkhede.github.io/portfolio/projects/computer-vision.html
+
+9. Supply Chain Tracker — Data-Driven Analytics & Web Application
+   Built a full-stack supply chain app with interactive dashboards (Streamlit + Plotly), role-based access control, and CSV data pipelines.
+   URL: https://nikhileshnarkhede.github.io/portfolio/projects/supply-chain-tracker.html
+
+10. Data Engineering & Visualization Applications
+    Built interactive data-driven apps including real-time dashboards, multi-view visualizations, and force simulations using Streamlit, Plotly, and D3.js.
+    URL: https://nikhileshnarkhede.github.io/portfolio/projects/data-engineering-visualization.html
+
 RESEARCH IN DATA SCIENCE	
 
 Prediction of Mechanical and Fracture Properties of Lightweight Polyurethane Composites Using Machine Learning Methods.    https://doi.org/10.3390/jcs9060271 

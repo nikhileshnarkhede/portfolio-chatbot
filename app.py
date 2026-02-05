@@ -9,24 +9,80 @@ from langchain_core.output_parsers import StrOutputParser
 # --- Config ---
 GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 
+# Force model recreation (no caching)
 llm = ChatGroq(
-    model="llama-3.3-70b-versatile",
+    model="llama-3.1-8b-instant",  # 500K tokens/day - 5x more than 70b!
     api_key=GROQ_API_KEY,
     temperature=0.3,
 )
 
+print(f"🤖 Using model: {llm.model_name}")  # Debug log
+
 embedder = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 db = FAISS.load_local("./faiss_db", embedder, allow_dangerous_deserialization=True)
 
-# --- MMR Retriever (same as your YouTube RAG) ---
+# --- MMR Retriever (enhanced) ---
 retriever = db.as_retriever(
     search_type="mmr",
-    search_kwargs={"k": 5, "lambda_mult": 0.5}
+    search_kwargs={"k": 8, "fetch_k": 20, "lambda_mult": 0.7}
 )
 
-# --- Format docs (same as your YouTube RAG) ---
+# --- Query Enhancement ---
+def enhance_query(query: str) -> str:
+    """Expand query with relevant keywords for better retrieval"""
+    query_lower = query.lower()
+    
+    # Add context keywords based on query intent
+    if any(word in query_lower for word in ["skill", "technolog", "tool", "language"]):
+        return f"{query} technical skills programming frameworks libraries"
+    elif any(word in query_lower for word in ["project", "built", "developed", "created"]):
+        return f"{query} projects applications systems built developed"
+    elif any(word in query_lower for word in ["experience", "work", "job", "role", "position"]):
+        return f"{query} experience work employment roles responsibilities"
+    elif any(word in query_lower for word in ["research", "publication", "paper", "study"]):
+        return f"{query} research publications papers studies machine learning"
+    elif any(word in query_lower for word in ["education", "degree", "university", "study"]):
+        return f"{query} education degree university certification"
+    else:
+        return query
+
+# --- Format docs with better structure ---
 def format_docs(retrieved_docs):
-    return "\n\n".join(doc.page_content for doc in retrieved_docs)
+    """Format retrieved documents with clear sections"""
+    if not retrieved_docs:
+        return "No relevant information found."
+    
+    formatted = []
+    for i, doc in enumerate(retrieved_docs, 1):
+        content = doc.page_content.strip()
+        formatted.append(f"[Section {i}]\n{content}")
+    
+    return "\n\n".join(formatted)
+
+# --- Format conversation history with summarization ---
+def format_chat_history(messages):
+    """Format chat history - uses summary + recent messages"""
+    if not messages or len(messages) == 0:
+        # Check if we have a summary from earlier
+        if st.session_state.conversation_summary:
+            return f"[Earlier conversation summary]\n{st.session_state.conversation_summary}\n\n[Current conversation]\nNo messages yet."
+        return "No previous conversation."
+    
+    # Build the history
+    history_parts = []
+    
+    # Add summary if it exists
+    if st.session_state.conversation_summary:
+        history_parts.append(f"[Earlier conversation summary]\n{st.session_state.conversation_summary}\n")
+    
+    # Add recent messages in full detail
+    if messages:
+        history_parts.append("[Recent conversation]")
+        for msg in messages:
+            role = "Recruiter" if msg["role"] == "user" else "Nikhilesh"
+            history_parts.append(f"{role}: {msg['content']}")
+    
+    return "\n".join(history_parts)
 
 # --- Prompt Template ---
 prompt = PromptTemplate(
@@ -42,6 +98,11 @@ prompt = PromptTemplate(
         - Soft tone: Your confidence doesn't come across as aggressive. It feels approachable, genuine, and easy to connect with.
         - Easy to understand: Keep it simple. Avoid unnecessary jargon. If you use a technical term, briefly explain what it means.
 
+        **IMPORTANT: Use the conversation history below to maintain context and answer follow-up questions naturally.**
+
+        Previous Conversation:
+        {chat_history}
+
         Tone examples:
         - Instead of: "I have experience in machine learning."
         - Say: "Machine learning has been a big part of my journey — I've built models that actually solved real problems, like predicting material properties with over 99% accuracy."
@@ -51,6 +112,7 @@ prompt = PromptTemplate(
 
         Rules:
         - Answer ONLY from the provided resume context. Never make up information.
+        - Use the conversation history to understand follow-up questions like "tell me more", "what about that project?", "and the others?"
         - If the context doesn't cover the question, say it warmly:
           "That's a great question! I don't have that detail here right now, but I'd love to chat about it directly — feel free to reach out!"
         - Keep answers focused but not too short. Give enough detail to impress, but don't overwhelm.
@@ -156,13 +218,20 @@ prompt = PromptTemplate(
 
         Question: {question}
     """,
-    input_variables=["context", "question"]
+    input_variables=["context", "question", "chat_history"]
 )
 
-# --- RAG Chain (RunnableParallel, same pattern as your YouTube RAG) ---
+# --- RAG Chain with Query Enhancement and Chat History ---
+def get_context(inputs):
+    """Get context by enhancing query and retrieving docs"""
+    enhanced = enhance_query(inputs["question"])
+    docs = retriever.invoke(enhanced)
+    return format_docs(docs)
+
 parallel_chain = RunnableParallel({
-    "context": retriever | RunnableLambda(format_docs),
-    "question": RunnablePassthrough()
+    "context": RunnableLambda(get_context),
+    "question": lambda x: x["question"],
+    "chat_history": lambda x: x["chat_history"]
 })
 
 parser = StrOutputParser()
@@ -216,6 +285,22 @@ st.markdown("""
 """, unsafe_allow_html=True)
 st.markdown('<p class="caption-text">Ask me about my skills, projects, research, and experience.</p>', unsafe_allow_html=True)
 
+# Show rate limit info
+with st.expander("💡 About this chatbot", expanded=False):
+    st.info("""
+    **Powered by Groq LLaMA 3.1 8B Instant** (500K tokens/day)
+    
+    Features:
+    - ✅ 5x higher limit than before
+    - ✅ Blazing fast responses
+    - ✅ Streaming responses
+    - ✅ Conversation memory
+    - ✅ Auto-summarization (prevents token overflow)
+    - ✅ Query expansion for better answers
+    
+    Questions? Email: narkhede.nikhilesh@gmail.com
+    """)
+
 # --- Quick Action Buttons ---
 button_questions = {
     "🛠️ Skills": "What are all your technical skills?",
@@ -229,6 +314,43 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 if "triggered_question" not in st.session_state:
     st.session_state.triggered_question = None
+if "conversation_summary" not in st.session_state:
+    st.session_state.conversation_summary = ""
+
+# --- Auto-summarize old messages when conversation gets long ---
+def auto_summarize_if_needed():
+    """Automatically summarize old conversation to save tokens"""
+    message_count = len(st.session_state.messages)
+    
+    # Trigger summarization when we have more than 12 messages (6 exchanges)
+    if message_count > 12:
+        # Get messages to summarize (all except last 6 - keep 3 recent exchanges)
+        messages_to_summarize = st.session_state.messages[:-6]
+        
+        # Build conversation text
+        conv_text = ""
+        for msg in messages_to_summarize:
+            role = "Recruiter" if msg["role"] == "user" else "Nikhilesh"
+            conv_text += f"{role}: {msg['content']}\n\n"
+        
+        # Create summary using Groq
+        summary_prompt = f"""Briefly summarize this conversation between a recruiter and Nikhilesh in 2-3 sentences.
+Focus on: topics discussed, projects mentioned, skills asked about.
+
+Conversation:
+{conv_text}
+
+Brief summary:"""
+        
+        try:
+            summary = llm.invoke(summary_prompt)
+            st.session_state.conversation_summary = summary.content if hasattr(summary, 'content') else str(summary)
+            # Remove the summarized messages, keep only recent ones
+            st.session_state.messages = st.session_state.messages[-6:]
+        except Exception as e:
+            # If summarization fails, just truncate old messages
+            st.session_state.conversation_summary = "Earlier conversation covered various topics about Nikhilesh's background."
+            st.session_state.messages = st.session_state.messages[-6:]
 
 # Only show buttons if chat is empty
 if len(st.session_state.messages) == 0:
@@ -291,11 +413,94 @@ if user_input:
     with st.chat_message("user"):
         st.markdown(user_input)
 
-    # --- Invoke RAG chain ---
+    # --- Invoke RAG chain with streaming ---
     with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
-            answer = rag_chain.invoke(user_input)
-        st.markdown(answer)
+        # Build input with chat history
+        chain_input = {
+            "question": user_input,
+            "chat_history": format_chat_history(st.session_state.messages)
+        }
+        
+        # Show enhanced query in debug mode
+        enhanced = enhance_query(user_input)
+        if enhanced != user_input:
+            with st.expander("🔍 Enhanced Query (Debug)", expanded=False):
+                st.caption(f"Original: {user_input}")
+                st.caption(f"Enhanced: {enhanced}")
+        
+        # Retrieve context
+        docs = retriever.invoke(enhanced)
+        context = format_docs(docs)
+        
+        # Show retrieved context in debug mode
+        with st.expander("📚 Retrieved Context (Debug)", expanded=False):
+            st.text(context[:1000] + "..." if len(context) > 1000 else context)
+        
+        # Show chat history in debug mode
+        if len(st.session_state.messages) > 0 or st.session_state.conversation_summary:
+            with st.expander("💬 Conversation Memory (Debug)", expanded=False):
+                st.text(chain_input["chat_history"])
+                if st.session_state.conversation_summary:
+                    st.info(f"🔄 Auto-summarization active! Keeping last 6 messages + summary to save tokens.")
+        
+        # Generate answer with streaming and error handling
+        answer_placeholder = st.empty()
+        full_answer = ""
+        
+        try:
+            for chunk in rag_chain.stream(chain_input):
+                full_answer += chunk
+                answer_placeholder.markdown(full_answer + "█")  # Cursor effect
+            
+            # Final answer without cursor
+            answer_placeholder.markdown(full_answer)
+            
+        except Exception as e:
+            error_msg = str(e)
+            
+            # Handle rate limit errors
+            if "rate_limit" in error_msg.lower() or "429" in error_msg:
+                st.error("⏱️ **Rate Limit Reached**")
+                st.warning("""
+                The chatbot has reached Groq's free tier limit (100k tokens/day).
+                
+                **Options:**
+                1. ⏰ **Wait 30 minutes** and try again
+                2. 💳 **Upgrade to Groq Dev Tier** at [console.groq.com/settings/billing](https://console.groq.com/settings/billing)
+                3. 📧 **Email me directly** at narkhede.nikhilesh@gmail.com
+                
+                This usually happens during high traffic. Sorry for the inconvenience!
+                """)
+                full_answer = "I've hit my daily token limit. Please try again in 30 minutes or contact me directly!"
+                
+            # Handle other API errors
+            elif "api" in error_msg.lower() or "connection" in error_msg.lower():
+                st.error("🔌 **API Connection Error**")
+                st.warning("""
+                There was a problem connecting to the AI service.
+                
+                **Options:**
+                1. 🔄 **Refresh the page** and try again
+                2. 📧 **Contact me directly** at narkhede.nikhilesh@gmail.com
+                """)
+                full_answer = "I'm having trouble connecting right now. Please try refreshing the page or contact me directly!"
+                
+            # Generic error
+            else:
+                st.error("❌ **Unexpected Error**")
+                st.warning(f"""
+                Something went wrong. Here's the error:
+                
+                ```
+                {error_msg[:200]}
+                ```
+                
+                Please contact me at narkhede.nikhilesh@gmail.com
+                """)
+                full_answer = "I encountered an error. Please contact me directly to discuss your questions!"
 
     # Save assistant response
-    st.session_state.messages.append({"role": "assistant", "content": answer})
+    st.session_state.messages.append({"role": "assistant", "content": full_answer})
+    
+    # Auto-summarize if conversation is getting long
+    auto_summarize_if_needed()

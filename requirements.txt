@@ -1,5 +1,4 @@
 streamlit
-langgraph
 langchain-groq
 langchain-community
 langchain-huggingface
