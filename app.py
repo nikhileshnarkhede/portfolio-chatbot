@@ -682,7 +682,11 @@ st.markdown("""
         position: relative;
         z-index: 1;
         max-width: 960px;
-        padding-top: 0.9rem;
+        /* Streamlit's own header bar is position:fixed and sits on top of
+           normal page flow — without enough top padding here, our nav
+           strip renders partially UNDERNEATH it (only the bottom sliver
+           visible). This clears it on both desktop and mobile header heights. */
+        padding-top: 4.75rem;
         padding-bottom: 1.2rem;
     }
 
@@ -741,7 +745,7 @@ st.markdown("""
         }
 
         .block-container {
-            padding-top: 0.6rem;
+            padding-top: 3.75rem;
             padding-left: 0.7rem;
             padding-right: 0.7rem;
             padding-bottom: 1rem;
@@ -819,6 +823,7 @@ st.markdown("""
         }
 
         .block-container {
+            padding-top: 3.5rem;
             padding-left: 0.55rem;
             padding-right: 0.55rem;
         }
