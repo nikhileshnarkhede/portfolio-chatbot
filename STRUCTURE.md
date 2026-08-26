@@ -146,14 +146,14 @@ that fails on every push is a gate everyone learns to ignore.
 
 `ingest.py` · `run_eval.py` · `sweep.py` · `serve.py` (preflight + launch)
 
-## tests/ — 379
+## tests/ — 380
 
 | Tier | Files |
 |---|---|
 | Unit | `test_state` (24) · `test_chunker` (22) · `test_prompts` (19) · `test_provider` (46) · `test_link_guard` (13) |
 | Node | `test_nodes` (38) · `test_graph` (19) |
 | Eval | `test_eval` (45) · `test_apply` (31) · `test_judge` (31) · `test_performance` (30) · `test_grounding` (29) · `test_gate` (26) |
-| UI | `test_ui` (6, marked `ui`) |
+| UI | `test_ui` (7, marked `ui`) |
 
 ---
 

@@ -18,6 +18,8 @@ run). Deselect them with `-m "not ui"` while iterating on the pipeline.
 from __future__ import annotations
 
 import os
+import shutil
+
 import pytest
 
 pytest.importorskip("streamlit")
@@ -149,3 +151,52 @@ for e in at.exception:
         env={**os.environ, "PYTHONPATH": "", "GROQ_API_KEY": "test-key"},
     )
     assert "EXCEPTIONS 0" in result.stdout, result.stdout + result.stderr
+
+
+def test_a_missing_index_is_built_rather_than_reported(cfg, monkeypatch, tmp_path):
+    """REGRESSION: a fresh Streamlit Cloud deploy has no index, and no way to
+    build one.
+
+    `data/index/` is gitignored - it is derived data - so the first deploy came
+    up with the resume present, the vectors absent, and a dead-end error saying
+    "run python scripts/ingest.py" on a host where nobody can run anything. The
+    app has to build it itself.
+
+    The build is faked here: the real one downloads MiniLM, and this suite runs
+    offline. What is under test is the WIRING - that a missing index reaches
+    the builder instead of an error and a `return`.
+    """
+    import streamlit as st
+
+    from portfolio_chatbot.ingestion import build_index
+
+    st.cache_resource.clear()
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+
+    built: list[str] = []
+
+    def fake_build(config, **kwargs):
+        built.append(config.index_fingerprint)
+        config.index_path.mkdir(parents=True, exist_ok=True)
+
+        class Report:
+            skipped = False
+            n_chunks = 61
+        return Report()
+
+    monkeypatch.setattr(build_index, "build", fake_build)
+
+    index_dir = cfg.index_path
+    existed = index_dir.exists()
+    if existed:
+        pytest.skip("an index already exists here; this covers the empty case")
+
+    try:
+        result = AppTest.from_file(APP, default_timeout=120).run()
+        assert built == [cfg.index_fingerprint], "the app never asked for a build"
+        assert not result.exception
+        # It got PAST the index guard: the chat input only renders below it.
+        assert result.chat_input, "the app stopped instead of continuing"
+    finally:
+        st.cache_resource.clear()
+        shutil.rmtree(index_dir, ignore_errors=True)

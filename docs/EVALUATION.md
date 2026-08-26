@@ -476,7 +476,7 @@ it — see §10.
 ## 12. The tests
 
 ```bash
-python -m pytest                # 379
+python -m pytest                # 380
 python -m pytest -m "not ui"    # 373, skips the Streamlit script runs
 ```
 

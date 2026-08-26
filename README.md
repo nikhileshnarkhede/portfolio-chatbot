@@ -252,7 +252,7 @@ every performance metric need no instrumentation of their own.
 ## Testing
 
 ```bash
-python -m pytest                # 379
+python -m pytest                # 380
 python -m pytest -m "not ui"    # 373, skips the slow Streamlit script runs
 ```
 
@@ -274,8 +274,19 @@ each documented in place with what broke and why it was invisible.
 
 ## Deployment
 
-**Streamlit Community Cloud** — `runtime.txt` pins Python 3.12; secrets go in
-the app's own settings rather than the repo.
+**Streamlit Community Cloud** — `runtime.txt` pins Python 3.12; the Groq key
+goes in the app's own Secrets settings rather than the repo, and **Main file
+path** must be `ui/app.py`.
+
+`data/index/` is gitignored, so a fresh deploy arrives with the resume and no
+vectors — and Streamlit Cloud has no build hook to run `scripts/ingest.py` in.
+The app builds the index itself on first use, cached on the fingerprint, taking
+about a minute on a cold container.
+
+Committing the index instead looks like the cheaper fix and mostly isn't: the
+app embeds the *question* on every turn, so MiniLM downloads either way.
+Shipping vectors would save embedding 61 chunks — seconds — while making
+derived data something that can silently drift from the resume it came from.
 
 To embed the app in an iframe (the chat button on the portfolio site), append
 `?embed=true` to the URL. The old `server.enableCorsAndFrameEmbedding` config

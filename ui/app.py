@@ -124,6 +124,42 @@ def _missing_key_notice() -> None:
         )
 
 
+@st.cache_resource(show_spinner=False)
+def _build_index(fingerprint: str, _cfg) -> bool:
+    """Build the index if this deployment has not got one. True if usable.
+
+    `data/index/` is gitignored - it is derived data, and one directory per
+    experiment fingerprint adds up fast - so a fresh Streamlit Cloud deploy
+    arrives with the resume but no vectors, and there is no build hook to run
+    `scripts/ingest.py` in. Building on first use is what closes that gap.
+
+    Committing the index instead would look like the cheaper fix and mostly is
+    not: the app has to embed the QUESTION on every turn, so MiniLM is
+    downloaded either way. Shipping vectors would save embedding 61 chunks -
+    seconds - while making derived data a thing that can drift from the resume
+    it was built from.
+
+    Cached on the FINGERPRINT, not on the config object: it is the identity of
+    the index, so a config change rebuilds and a rerun does not. `_cfg` is
+    underscore-prefixed so Streamlit does not try to hash a pydantic model.
+    """
+    from portfolio_chatbot.ingestion.build_index import build
+
+    with st.spinner("Building the search index — first run only, about a minute…"):
+        try:
+            report = build(_cfg)
+        except Exception as exc:
+            st.error(f"Could not build the index for `{fingerprint}`.")
+            st.code(str(exc), language="text")
+            st.caption("Locally, `python scripts/ingest.py` does the same thing "
+                       "with the full error.")
+            return False
+
+    if not report.skipped:
+        st.success(f"Indexed {report.n_chunks} sections from the resume.")
+    return True
+
+
 def main() -> None:
     base = load_config(_secret("EXPERIMENT"))
 
@@ -146,9 +182,7 @@ def main() -> None:
 
     has_key = _load_secrets()
 
-    if not cfg.index_path.exists():
-        st.error(f"No vector index for this config (`{cfg.index_fingerprint}`).")
-        st.code("python scripts/ingest.py", language="bash")
+    if not cfg.index_path.exists() and not _build_index(cfg.index_fingerprint, cfg):
         header.footer(cfg)
         return
 
