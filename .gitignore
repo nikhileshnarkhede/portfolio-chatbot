@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-.env
-.streamlit/secrets.toml
-__pycache__/
-venv/
-=======
 # ---- secrets --------------------------------------------------------
 .env
 .streamlit/secrets.toml
@@ -57,4 +51,3 @@ eval/reports/*
 Thumbs.db
 .vscode/
 .idea/
->>>>>>> origin/main

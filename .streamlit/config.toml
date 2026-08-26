@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-[server]
-enableCorsAndFrameEmbedding = true
-=======
 # Streamlit configuration.
 #
 # NOTE ON IFRAME EMBEDDING
@@ -26,4 +22,3 @@ backgroundColor = "#000000"
 secondaryBackgroundColor = "#1d1d1f"
 textColor = "#ffffff"
 primaryColor = "#0071e3"
->>>>>>> origin/main

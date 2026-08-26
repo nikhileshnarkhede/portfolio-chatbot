@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-streamlit
-langchain-groq
-langchain-community
-langchain-huggingface
-faiss-cpu
-sentence-transformers
-python-dotenv
-=======
 # =====================================================================
 # portfolio_Chatbot - runtime dependencies
 #
@@ -56,7 +47,7 @@ langchain-text-splitters==1.1.2
 # unless you install a CUDA build deliberately.
 faiss-cpu==1.15.0
 sentence-transformers==6.0.0
-torchvision
+
 # ---- config ---------------------------------------------------------
 # pydantic backs config.py's validation, freezing and extra="forbid".
 # Already a transitive langchain-core dependency; pinned explicitly
@@ -70,4 +61,3 @@ streamlit==1.62.0
 # Loads GROQ_API_KEY from .env for CLI entrypoints (scripts/ingest.py,
 # scripts/run_eval.py). Streamlit reads .streamlit/secrets.toml instead.
 python-dotenv==1.2.3
->>>>>>> origin/main
