@@ -112,7 +112,7 @@ def main(argv: list[str] | None = None) -> int:
     if not cfg.index_path.exists():
         print(f"No index for {cfg.index_fingerprint}. Build it first:", file=sys.stderr)
         name = cfg.run.experiment_name
-        print(f"    python scripts/ingest.py"
+        print("    python scripts/ingest.py"
               + (f" --experiment {name}" if name != "default" else ""), file=sys.stderr)
         return 1
 
