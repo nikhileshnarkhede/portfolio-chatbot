@@ -1,0 +1,44 @@
+# Lint configuration.
+#
+# Without this file ruff applies its full default selection, which raises 160+
+# findings on this codebase - and a gate that fails on every push is a gate
+# everyone learns to ignore. So the ruleset here is deliberately narrow: rules
+# that catch things which are WRONG, not things which are unfashionable.
+#
+#   E4/E7/E9  real pycodestyle errors - syntax, broken imports
+#   F         pyflakes - undefined names, unused imports, f-string mistakes
+#
+# That is enough to catch the class of bug this project has actually shipped:
+# a bulk edit that produced `from langchain_core.runnables import
+# RunnableConfig, Callable`, which pyflakes catches instantly and a human
+# review did not.
+#
+# Widening this is a good idea, one family at a time, each with the fixes in
+# the same commit:
+#
+#   I    import sorting          (11 findings, all auto-fixable)
+#   UP   pyupgrade               (16 findings, all auto-fixable)
+#   B    bugbear                 (7 findings, some need judgement)
+#
+# Two rules must stay OFF whatever else is selected, because the code means
+# what it says:
+#
+#   PLR0124  comparison-with-itself. `value == value` is the NaN test used
+#            throughout eval/ - a judge failure returns NaN and must never be
+#            confused with a score of 0.0.
+#   BLE001   blind-except. `except Exception` around st.secrets and around a
+#            per-turn eval case is the point: one broken case must not abort a
+#            run that has already spent the API quota.
+
+line-length = 100
+target-version = "py312"
+
+[lint]
+select = ["E4", "E7", "E9", "F"]
+
+[lint.per-file-ignores]
+# Both bootstrap sys.path before importing first-party modules, which is the
+# only way `streamlit run ui/app.py` can find the project root.
+"ui/app.py" = ["E402"]
+"ui/dashboard.py" = ["E402"]
+"scripts/*.py" = ["E402"]

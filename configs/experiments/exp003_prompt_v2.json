@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "description": "System-prompt A/B. Retrieval and chunking are held identical to baseline so any metric movement is attributable to the prompt alone.",
+    "hypothesis": "A tighter, restructured persona prompt holds groundedness and persona adherence while reducing URL hallucination attempts that sanitize.py currently has to strip.",
+    "watch_metrics": ["faithfulness", "answer_relevancy", "persona_adherence", "url_hallucination_rate", "refusal_rate"],
+    "changes": ["prompts.system system.v1_persona -> system.v2_persona"],
+    "note": "Index fingerprint is unchanged from baseline, so no re-ingest is needed. Write prompts/system/v2_persona.md before running."
+  },
+
+  "prompts": {
+    "system": "system.v2_persona"
+  },
+
+  "run": {
+    "experiment_name": "exp003_prompt_v2",
+    "notes": "Prompt-only change. Same index as baseline."
+  }
+}

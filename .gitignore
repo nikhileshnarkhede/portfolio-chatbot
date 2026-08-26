@@ -1,4 +1,60 @@
+<<<<<<< HEAD
 .env
 .streamlit/secrets.toml
 __pycache__/
 venv/
+=======
+# ---- secrets --------------------------------------------------------
+.env
+.streamlit/secrets.toml
+
+# Key files pointed at by GROQ_API_KEY_FILE. Everything in the directory is
+# ignored, so a second key file added later cannot slip past a filename-specific
+# rule - and *.example is re-included, because the template has to be in the
+# repo for anyone to find it.
+secrets/*
+!secrets/*.example
+
+# ---- python ---------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---- virtualenv -----------------------------------------------------
+.venv/
+venv/
+env/
+
+# ---- generated artifacts --------------------------------------------
+# Vector indexes are rebuilt by scripts/ingest.py from data/raw/resume.txt
+# and configs/*.json. They are derived data, not source - and one index
+# per experiment fingerprint adds up fast.
+data/index/*
+!data/index/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# ---- experiment output ----------------------------------------------
+# runs/ holds per-invocation JSON logs. Keep these OUT of git by default;
+# if you want to version a specific result set, commit the summary report
+# from eval/reports/ instead of the raw run logs.
+runs/*
+!runs/.gitkeep
+eval/reports/*
+!eval/reports/.gitkeep
+
+# ---- model caches ---------------------------------------------------
+.cache/
+*.pt
+*.bin
+
+# ---- os / editor ----------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+>>>>>>> origin/main

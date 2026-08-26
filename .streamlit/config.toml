@@ -1,2 +1,29 @@
+<<<<<<< HEAD
 [server]
 enableCorsAndFrameEmbedding = true
+=======
+# Streamlit configuration.
+#
+# NOTE ON IFRAME EMBEDDING
+# The original app set `server.enableCorsAndFrameEmbedding = true`. That option
+# no longer exists in Streamlit 1.62 - it is silently ignored, and starting the
+# app prints:
+#     "server.enableCorsAndFrameEmbedding" is not a valid config option.
+#
+# Embedding is now done from the EMBEDDING side, not with a server flag: append
+# `?embed=true` to the app URL in the iframe on the portfolio site, e.g.
+#     <iframe src="https://nikhileshportfoliochatbot.streamlit.app/?embed=true">
+# That also hides the Streamlit chrome (menu, footer, toolbar), which is what
+# you want inside the chat FAB. `?embed=true&embed_options=dark_theme` keeps the
+# dark palette if the viewer's system theme is light.
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "dark"
+backgroundColor = "#000000"
+secondaryBackgroundColor = "#1d1d1f"
+textColor = "#ffffff"
+primaryColor = "#0071e3"
+>>>>>>> origin/main

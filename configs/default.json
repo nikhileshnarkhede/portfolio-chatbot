@@ -1,0 +1,336 @@
+{
+  "_meta": {
+    "config_version": "1.0.0",
+    "description": "Base configuration for the portfolio chatbot. SINGLE SOURCE OF TRUTH: no pipeline parameter may be hardcoded in Python. Files under configs/experiments/ are DELTAS deep-merged over this file.",
+    "rules": [
+      "Never put secrets here. API keys come from .env / .streamlit/secrets.toml.",
+      "Never edit a value in place after it has been evaluated - create an experiment delta instead.",
+      "Unknown keys are rejected by config.py (extra='forbid'), so a typo fails loudly."
+    ]
+  },
+
+  "paths": {
+    "raw_resume": "data/raw/resume.txt",
+    "processed_dir": "data/processed",
+    "index_root": "data/index",
+    "prompts_dir": "prompts",
+    "prompt_registry": "configs/prompt_registry.json",
+    "runs_dir": "runs",
+    "eval_reports_dir": "eval/reports"
+  },
+
+  "ingestion": {
+    "strategy": "structural",
+
+    "structural": {
+      "section_tags": [
+        "profile_summary", "career_objective", "about", "education",
+        "experience", "projects", "research", "skills", "certifications",
+        "newsletter", "conference_presentations", "leadership_volunteering",
+        "recommendations"
+      ],
+      "item_tags": [
+        "entry", "project", "institution",
+        "research_project", "publication_item", "publication",
+        "skill_category", "certification_group",
+        "presentation", "role", "recommendation"
+      ],
+      "type_map": {
+        "entry": "experience",
+        "project": "project",
+        "institution": "education",
+        "research_project": "research_project",
+        "publication_item": "newsletter",
+        "publication": "publication",
+        "skill_category": "skills",
+        "certification_group": "certification_group",
+        "presentation": "presentation",
+        "role": "leadership_role",
+        "recommendation": "recommendation"
+      },
+      "emit_section_intro": true,
+      "strip_html_comments": true,
+      "collapse_blank_lines": true,
+      "carry_tag_attributes_to_metadata": true
+    },
+
+    "split": {
+      "enabled": true,
+      "max_chunk_chars": 1300,
+      "chunk_overlap": 120,
+      "min_inner_chunk_chars": 300,
+      "reattach_header": true,
+      "separators": ["\n\n", "\n", ". ", " ", ""]
+    },
+
+    "dump_chunks": true
+  },
+
+  "embedding": {
+    "provider": "huggingface",
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "device": "cpu",
+    "normalize_embeddings": true,
+    "batch_size": 32
+  },
+
+  "vectorstore": {
+    "backend": "faiss",
+    "distance_strategy": "COSINE",
+    "allow_dangerous_deserialization": true
+  },
+
+  "retrieval": {
+    "routing": {
+      "enabled": true,
+      "route_on": "raw_question",
+      "routes": [
+        {
+          "name": "current_role",
+          "keywords": ["current job", "current role", "current company", "currently working",
+                       "where do you work", "where are you working", "choir", "sentrix", "uptimepowr"],
+          "types": ["experience"]
+        },
+        {
+          "name": "skills",
+          "keywords": ["skill", "technolog", "tool", "stack", "framework", "librar", "language", "proficien"],
+          "types": ["skills"]
+        },
+        {
+          "name": "research",
+          "keywords": ["research", "publication", "paper", "pinn", "physics", "symbolic", "journal",
+                       "igbt", "rul", "remaining useful life", "mlflow"],
+          "types": ["research_project", "publication", "experience"]
+        },
+        {
+          "name": "education",
+          "keywords": ["education", "degree", "university", "gpa", "coursework", "school",
+                       "master", "bachelor", "stud", "colleg", "academic"],
+          "types": ["education"]
+        },
+        {
+          "name": "projects",
+          "keywords": ["project", "built", "build", "application", "portfolio", "demo"],
+          "types": ["project"]
+        },
+        {
+          "name": "experience",
+          "keywords": ["experience", "work", "job", "role", "position", "intern", "employ", "compan"],
+          "types": ["experience"]
+        },
+        {
+          "name": "certifications",
+          "keywords": ["certif", "credential", "course", "training", "license"],
+          "types": ["certification_group"]
+        },
+        {
+          "name": "newsletter",
+          "keywords": ["newsletter", "writing", "weights & real", "blog"],
+          "types": ["newsletter"]
+        },
+        {
+          "name": "presentations",
+          "keywords": ["presentation", "conference", "symposium", "3mt", "thesis"],
+          "types": ["presentation"]
+        },
+        {
+          "name": "leadership",
+          "keywords": ["volunteer", "leadership", "mentor", "advisor"],
+          "types": ["leadership_role"]
+        },
+        {
+          "name": "recommendations",
+          "keywords": ["recommend", "reference", "endorse"],
+          "types": ["recommendation"]
+        }
+      ]
+    },
+
+    "query_expansion": {
+      "enabled": true,
+      "mode": "keyword_rules",
+      "rules": [
+        {
+          "keywords": ["skill", "technolog", "tool", "language"],
+          "append": "technical skills programming frameworks libraries"
+        },
+        {
+          "keywords": ["project", "built", "developed", "created"],
+          "append": "projects applications systems built developed"
+        },
+        {
+          "keywords": ["experience", "work", "job", "role", "position"],
+          "append": "experience work employment roles responsibilities"
+        },
+        {
+          "keywords": ["research", "publication", "paper", "study"],
+          "append": "research publications papers studies machine learning"
+        },
+        {
+          "keywords": ["education", "degree", "university", "study"],
+          "append": "education degree university certification"
+        }
+      ]
+    },
+
+    "filtered": {
+      "k": 14,
+      "fetch_k": 120
+    },
+
+    "mmr": {
+      "k": 10,
+      "fetch_k": 30,
+      "lambda_mult": 0.6
+    },
+
+    "context": {
+      "max_context_chars": 8000,
+      "section_template": "[Section {i}]\n{content}",
+      "joiner": "\n\n",
+      "empty_message": "No relevant information found."
+    }
+  },
+
+  "llm": {
+    "provider": "groq",
+    "model_chain": [
+      "openai/gpt-oss-20b",
+      "openai/gpt-oss-120b",
+      "qwen/qwen3.6-27b",
+      "groq/compound-mini"
+    ],
+    "temperature": 0.3,
+    "max_tokens": null,
+    "top_p": 1.0,
+    "streaming": true,
+    "request_timeout": 60,
+    "max_retries": 0,
+    "fallback_on_rate_limit": true,
+    "remember_working_model": true,
+
+    "_pricing_note": "USD per 1,000,000 tokens, per model. Empty means unpriced, which reports cost as 0.00 - correct for Groq's free tier. Add entries from your plan's rate card to get real cost figures; a 'default' key applies to any model not listed. Token COUNTS are always tracked regardless.",
+    "pricing": {}
+  },
+
+  "prompts": {
+    "system": "system.v1_persona",
+    "query_expansion": "query_expansion.v1",
+    "summarizer": "summarizer.v1"
+  },
+
+  "memory": {
+    "enabled": true,
+    "checkpointer": "memory",
+    "summarize_after_n_messages": 12,
+    "keep_last_n": 6,
+    "summary_max_sentences": 3,
+    "user_label": "Recruiter",
+    "assistant_label": "Nikhilesh"
+  },
+
+  "safety": {
+    "url_allowlist": {
+      "enabled": true,
+      "strip_bare_urls": true,
+      "keep_markdown_label": true,
+      "ignore_trailing_slash": true,
+      "urls": [
+        "https://www.linkedin.com/in/nikhileshnarkhede",
+        "https://github.com/nikhileshnarkhede",
+        "https://nikhileshnarkhede.github.io/portfolio/",
+        "https://doi.org/10.3390/jcs9060271",
+        "https://doi.org/10.1007/s12008-026-02637-y",
+        "https://nikhileshnarkhede.github.io/portfolio/projects/job-application-assistant.html",
+        "https://nikhileshnarkhede.github.io/portfolio/projects/chat-youtube-videos.html",
+        "https://nikhileshnarkhede.github.io/portfolio/projects/market-sentiment-prediction.html",
+        "https://nikhileshnarkhede.github.io/portfolio/projects/nlp-text-classification.html",
+        "https://nikhileshnarkhede.github.io/portfolio/projects/credit-risk-prediction.html",
+        "https://nikhileshnarkhede.github.io/portfolio/projects/music-genre-classification.html",
+        "https://nikhileshnarkhede.github.io/portfolio/projects/ml-business-forecasting.html",
+        "https://nikhileshnarkhede.github.io/portfolio/projects/computer-vision.html",
+        "https://nikhileshnarkhede.github.io/portfolio/projects/supply-chain-tracker.html",
+        "https://nikhileshnarkhede.github.io/portfolio/projects/data-engineering-visualization.html",
+        "https://nikhileshportfoliochatbot.streamlit.app/",
+        "https://verify.eicta.digitalcredentials.in/65e424b5-68ff-44eb-b974-fc73e27add6c",
+        "https://verify.skilljar.com/c/549584kt98m9",
+        "https://verify.skilljar.com/c/pcis3ygdauaw",
+        "https://verify.skilljar.com/c/fvon5s9cdv7b",
+        "https://verify.skilljar.com/c/ste8f6xptntw",
+        "https://www.linkedin.com/learning/certificates/0a8d3abcc8338a4f3f9a21e604bebb32520811dda39a7ee696f921067ba8df11/",
+        "https://verify.skilljar.com/c/exdsh88k8m5q",
+        "https://verify.skilljar.com/c/qvr5g76rd8kq",
+        "https://verify.skilljar.com/c/yiy2bcayhcgk",
+        "https://verify.skilljar.com/c/f5u5x52ubngk",
+        "https://verify.skilljar.com/c/hdsginsdk2kh",
+        "https://www.linkedin.com/newsletters/weights-real-life-7447323018998988800/",
+        "https://github.com/nikhileshnarkhede/Chat_with_YouTube_Video",
+        "https://github.com/nikhileshnarkhede/High-Perform-Scientific-Compute",
+        "https://github.com/nikhileshnarkhede/SymbOptAI"
+      ]
+    },
+    "refusal_message": "That's a great question! I don't have that detail here right now, but I'd love to chat about it directly - feel free to reach out!"
+  },
+
+  "observability": {
+    "log_runs": true,
+    "log_context": true,
+    "log_retrieved_chunk_ids": true,
+    "log_latency": true,
+    "log_token_usage": true,
+    "langsmith": {
+      "enabled": false,
+      "project": "portfolio-chatbot"
+    }
+  },
+
+  "ui": {
+    "page_title": "Chat with Nikhilesh",
+    "page_icon": "N",
+    "heading": "Chat with Nikhilesh",
+    "tagline": "Data Science Researcher & ML/DL Engineer",
+    "caption": "Ask me about my skills, projects, research, and experience.",
+    "assistant_avatar": "https://nikhileshnarkhede.github.io/portfolio/Image/chatbot-icon.jpeg",
+    "portfolio_url": "https://nikhileshnarkhede.github.io/portfolio/",
+    "_stream_delay_note": "Seconds slept per streamed chunk, to pace the typewriter effect. Groq streams token-by-token, so this is a PER-TOKEN cost: multiply by the answer length to get the delay you are adding. A typical answer here is 200-350 tokens, so 0.012 spends about 2.5-4s typing it out, 0.025 spends 5-9s, and 0.0 dumps the whole answer as fast as it arrives. Tune it against the length you actually get, not against how it feels on a one-line reply.",
+    "stream_delay": 0.012,
+    "show_debug": false,
+    "show_experiment_switcher": false,
+    "contact": {
+      "name": "Nikhilesh Narkhede",
+      "meta": ["US Work Authorized | +1 508-509-3697", "narkhede.nikhilesh@gmail.com"],
+      "links": [
+        {"label": "LinkedIn", "url": "https://www.linkedin.com/in/nikhileshnarkhede"},
+        {"label": "GitHub", "url": "https://github.com/nikhileshnarkhede"},
+        {"label": "Portfolio", "url": "https://nikhileshnarkhede.github.io/portfolio/"}
+      ]
+    },
+    "quick_actions": [
+      {"label": "Skills", "question": "What are all your technical skills?"},
+      {"label": "Projects", "question": "Tell me about all the projects you have built."},
+      {"label": "Research", "question": "Tell me about your research work."},
+      {"label": "Experience", "question": "Walk me through your work experience."}
+    ]
+  },
+
+  "eval": {
+    "judge": {
+      "_note": "The judge scores faithfulness and relevancy. model=null selects the largest model in llm.model_chain, which is the intended default - a weak judge produces numbers that look like measurements and are not. Set explicitly to pin a specific model. temperature is 0 because a judge that samples disagrees with itself between runs.",
+      "enabled": false,
+      "model": null,
+      "temperature": 0.0,
+      "max_context_chars": 6000
+    },
+    "calibration": {
+      "_note": "Cohen's kappa between judge and human on eval/datasets/judge_calibration.json. At or above min_kappa_trust the judged column may block a release; between the two it is direction-only; below min_kappa_direction it is suppressed entirely.",
+      "min_kappa_trust": 0.75,
+      "min_kappa_direction": 0.60
+    }
+  },
+
+  "run": {
+    "experiment_name": "default",
+    "seed": 42,
+    "notes": ""
+  }
+}

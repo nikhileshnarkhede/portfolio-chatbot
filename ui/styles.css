@@ -1,0 +1,531 @@
+:root {
+        --black: #000000;
+        --light-bg: #f5f5f7;
+        --near-black: #1d1d1f;
+        --white: #ffffff;
+        --apple-blue: #0071e3;
+        --link-light: #0066cc;
+        --link-dark: #2997ff;
+        --transition: all 0.3s ease;
+        --text-on-dark: #ffffff;
+        --text-secondary-dark: rgba(255, 255, 255, 0.72);
+        --ds-1: #272729;
+        --ds-4: #2a2a2d;
+        --shadow-card: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+        --font-display: -apple-system, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --font-body: -apple-system, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    /* Streamlit ships its OWN theming variables (--text-color, etc.)
+       that many built-in components read internally (alerts, markdown
+       lists, captions) — separate from our custom vars above. Without
+       overriding these too, those components keep Streamlit's default
+       dark-on-light text color, which is invisible on our black page. */
+    .stApp, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
+        --text-color: #ffffff;
+        color: #ffffff;
+    }
+
+    /* ============================================================
+       PORTFOLIO-MATCHED UI — aurora glow, border-beam avatar,
+       glass nav strip, button lift+bloom. Pure CSS only (Streamlit
+       sandboxes <script>, so no Three.js/GSAP here) — these effects
+       mirror the main portfolio site's language using CSS animation
+       + backdrop-filter instead of a JS engine.
+       ============================================================ */
+    @property --beam {
+        syntax: '<angle>';
+        initial-value: 0deg;
+        inherits: false;
+    }
+
+    /* soft aurora glow baked into the page background itself (not a
+       separate positioned layer) — backgrounds always paint behind an
+       element's own content, so this can never end up on top of text */
+    .stApp {
+        background:
+            radial-gradient(circle at 6% -4%, rgba(0, 113, 227, 0.16), transparent 30%),
+            radial-gradient(circle at 96% 104%, rgba(41, 151, 255, 0.13), transparent 30%),
+            var(--black);
+    }
+
+    /* slim glass nav strip, echoes the portfolio's navbar */
+    .chat-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 860px;
+        margin: 0 auto 1.1rem auto;
+        padding: 0.6rem 0.2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .chat-nav-word {
+        font-family: var(--font-display);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--white);
+        text-decoration: none;
+        letter-spacing: -0.16px;
+    }
+    .chat-nav-back {
+        font-family: var(--font-body);
+        font-size: 0.8125rem;
+        color: var(--link-dark);
+        text-decoration: none;
+        letter-spacing: -0.1px;
+        padding: 6px 14px;
+        border: 1px solid rgba(41, 151, 255, 0.35);
+        border-radius: 980px;
+        transition: var(--transition);
+    }
+    .chat-nav-back:hover {
+        background: rgba(41, 151, 255, 0.12);
+        border-color: var(--link-dark);
+        color: #ffffff;
+    }
+
+    /* avatar with a rotating conic border-beam, matching the FAB ring
+       on the main portfolio site */
+    .chat-hero-avatar-wrap {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.6rem;
+    }
+    .chat-hero-avatar {
+        position: relative;
+        width: 64px; height: 64px;
+    }
+    .chat-hero-avatar img {
+        width: 100%; height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(255,255,255,0.14);
+        display: block;
+    }
+    .chat-hero-avatar::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        padding: 2px;
+        pointer-events: none;
+        background: conic-gradient(from var(--beam),
+            rgba(41, 151, 255, 0) 0deg,
+            rgba(41, 151, 255, 0.9) 120deg,
+            rgba(142, 200, 255, 1) 160deg,
+            rgba(41, 151, 255, 0.9) 200deg,
+            rgba(41, 151, 255, 0) 330deg);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+        .chat-hero-avatar::before { animation: chatBeam 3.6s linear infinite; }
+    }
+    @keyframes chatBeam { to { --beam: 360deg; } }
+
+    /* footer, matches the portfolio's dark footer bar */
+    .chat-footer {
+        position: relative;
+        z-index: 1;
+        max-width: 860px;
+        margin: 1.6rem auto 0.4rem auto;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.10);
+        text-align: center;
+        font-family: var(--font-body);
+        font-size: 0.78rem;
+        color: rgba(255,255,255,0.42);
+    }
+    .chat-footer a {
+        color: rgba(255,255,255,0.6);
+        text-decoration: none;
+    }
+    .chat-footer a:hover { color: var(--link-dark); }
+
+    .stApp {
+        color: var(--text-on-dark);
+        font-family: var(--font-body);
+        overflow-x: clip;
+    }
+
+    header[data-testid="stHeader"] {
+        background: rgba(0, 0, 0, 0.8) !important;
+        backdrop-filter: saturate(180%) blur(20px);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    header[data-testid="stHeader"] * { color: var(--white) !important; }
+
+    .main {
+        background: transparent;
+        color: var(--text-on-dark);
+    }
+
+    h1 {
+        color: var(--white);
+        text-align: center;
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 600;
+        line-height: 1.07;
+        letter-spacing: -0.28px;
+        margin-bottom: 0.75rem;
+    }
+
+    .hero-tagline {
+        text-align: center;
+        font-family: var(--font-display);
+        font-size: clamp(1rem, 2.5vw, 1.3125rem);
+        font-weight: 400;
+        line-height: 1.19;
+        letter-spacing: 0.231px;
+        color: rgba(255,255,255,0.85);
+        margin: 0 0 0.5rem 0;
+    }
+
+    .caption-text {
+        text-align: center;
+        font-family: var(--font-body);
+        color: rgba(255,255,255,0.65);
+        font-size: 1.0625rem;
+        line-height: 1.47;
+        letter-spacing: -0.374px;
+        margin-bottom: 1rem;
+    }
+
+    .contact-card {
+        max-width: 860px;
+        margin: 0 auto 0.9rem auto;
+        background: var(--ds-1);
+        border-radius: 12px;
+        box-shadow: var(--shadow-card);
+        padding: 1rem 1.2rem;
+        text-align: center;
+    }
+
+    .contact-card h2 {
+        color: var(--white);
+        margin: 0 0 0.2rem 0;
+        font-size: 1.25rem;
+        font-family: var(--font-display);
+        font-weight: 600;
+        letter-spacing: -0.224px;
+    }
+
+    .contact-meta {
+        color: var(--text-secondary-dark);
+        font-size: 0.85rem;
+        margin: 0.15rem 0;
+        letter-spacing: -0.12px;
+    }
+
+    .contact-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 0.6rem;
+    }
+
+    .contact-links a {
+        color: #2997ff;
+        text-decoration: none;
+        font-size: 0.9rem;
+        letter-spacing: -0.12px;
+        transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .contact-links a:hover { text-decoration: underline; opacity: 0.85; }
+
+    [data-testid="stChatMessage"] {
+        border-radius: 12px;
+        margin-bottom: 0.6rem;
+    }
+
+    [data-testid="stChatMessage"][data-st-chat-message-role="assistant"] {
+        background: #272729;
+    }
+
+    [data-testid="stChatMessage"][data-st-chat-message-role="user"] {
+        background: #1d1d1f;
+    }
+
+    [data-testid="stChatInput"] input {
+        background: #1d1d1f !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(255,255,255,0.16) !important;
+        border-radius: 8px !important;
+    }
+
+    [data-testid="stChatInput"] input:focus {
+        border-color: #0071e3 !important;
+        outline: 2px solid var(--apple-blue) !important;
+        outline-offset: 1px;
+        box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.35) !important;
+    }
+
+    .stButton button:focus-visible,
+    .contact-links a:focus-visible {
+        outline: 2px solid var(--apple-blue);
+        outline-offset: 2px;
+        border-radius: 980px;
+    }
+
+    .stButton button {
+        background: transparent;
+        color: var(--link-dark);
+        border: 1px solid var(--link-dark);
+        border-radius: 980px;
+        font-family: var(--font-body);
+        font-size: 1.0625rem;
+        font-weight: 400;
+        line-height: 1;
+        padding: 8px 18px;
+        letter-spacing: -0.374px;
+        transition: var(--transition), transform 0.22s cubic-bezier(.34,1.56,.64,1), box-shadow 0.22s ease;
+    }
+
+    .stButton button:hover {
+        color: var(--white);
+        border-color: rgba(255,255,255,0.70);
+        background: rgba(255,255,255,0.06);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.28), 0 0 16px rgba(41,151,255,0.18);
+    }
+
+    [data-testid="stExpander"] {
+        background: #272729;
+        border-radius: 12px;
+        box-shadow: var(--shadow-card);
+    }
+
+    [data-testid="stExpander"] * {
+        color: var(--text-on-dark);
+    }
+
+    /* Explicit, high-priority overrides for every native Streamlit text
+       container (markdown, alerts, captions, lists) — !important because
+       Streamlit's own injected stylesheet otherwise wins these on
+       specificity/order in some versions. */
+    [data-testid="stMarkdownContainer"],
+    [data-testid="stMarkdownContainer"] p,
+    [data-testid="stMarkdownContainer"] li,
+    [data-testid="stMarkdownContainer"] span,
+    [data-testid="stMarkdownContainer"] strong,
+    [data-testid="stMarkdownContainer"] em,
+    [data-testid="stCaptionContainer"],
+    [data-testid="stCaptionContainer"] p,
+    [data-testid="stText"],
+    [data-testid="stAlertContentInfo"],
+    [data-testid="stAlertContentInfo"] p,
+    [data-testid="stAlertContentWarning"],
+    [data-testid="stAlertContentWarning"] p,
+    [data-testid="stAlertContentError"],
+    [data-testid="stAlertContentError"] p,
+    [data-testid="stAlert"] p,
+    [data-testid="stAlert"] li {
+        color: #ffffff !important;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid rgba(255,255,255,0.12);
+        margin: 0.9rem 0 1rem 0;
+    }
+
+    .block-container {
+        position: relative;
+        z-index: 1;
+        max-width: 960px;
+        /* Streamlit's own header bar is position:fixed and sits on top of
+           normal page flow — without enough top padding here, our nav
+           strip renders partially UNDERNEATH it (only the bottom sliver
+           visible). This clears it on both desktop and mobile header heights. */
+        padding-top: 4.75rem;
+        padding-bottom: 1.2rem;
+    }
+
+    [data-testid="stChatMessageContent"] p {
+        font-size: 1.0625rem;
+        line-height: 1.47;
+        letter-spacing: -0.374px;
+    }
+
+    [data-testid="stHorizontalBlock"] {
+        gap: 0.5rem;
+    }
+
+    .stButton > button {
+        min-height: 40px;
+    }
+
+    [data-testid="stChatInput"] {
+        padding-top: 0.45rem;
+        background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+    }
+
+    [data-testid="stChatInput"] input {
+        font-size: 16px !important;
+        min-height: 44px;
+    }
+
+    @media (max-width: 768px) {
+        .chat-nav {
+            padding: 0.5rem 0.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .chat-nav-word {
+            font-size: 0.8125rem;
+        }
+
+        .chat-nav-back {
+            font-size: 0.72rem;
+            padding: 5px 11px;
+            white-space: nowrap;
+        }
+
+        .chat-hero-avatar {
+            width: 48px;
+            height: 48px;
+        }
+
+        .chat-hero-avatar-wrap {
+            margin-bottom: 0.4rem;
+        }
+
+        .chat-footer {
+            font-size: 0.7rem;
+            margin-top: 1.2rem;
+        }
+
+        .block-container {
+            padding-top: 3.75rem;
+            padding-left: 0.7rem;
+            padding-right: 0.7rem;
+            padding-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 1.45rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .caption-text {
+            font-size: 0.88rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .contact-card {
+            padding: 0.8rem 0.8rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .contact-card h2 {
+            font-size: 1.05rem;
+        }
+
+        .contact-meta {
+            font-size: 0.8rem;
+        }
+
+        .contact-links {
+            gap: 0.6rem;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        [data-testid="stChatMessage"] {
+            margin-bottom: 0.45rem;
+            border-radius: 7px;
+        }
+
+        [data-testid="stChatMessageContent"] p {
+            font-size: 0.94rem;
+            line-height: 1.5;
+        }
+
+        .stButton > button {
+            width: 100%;
+            font-size: 0.85rem;
+            min-height: 42px;
+            padding: 0.4rem 0.7rem;
+        }
+
+        [data-testid="stExpander"] {
+            border-radius: 7px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .chat-nav-word {
+            font-size: 0.75rem;
+        }
+
+        .chat-nav-back {
+            font-size: 0.68rem;
+            padding: 4px 9px;
+        }
+
+        .chat-hero-avatar {
+            width: 42px;
+            height: 42px;
+        }
+
+        .chat-footer {
+            font-size: 0.66rem;
+            line-height: 1.6;
+        }
+
+        .block-container {
+            padding-top: 3.5rem;
+            padding-left: 0.55rem;
+            padding-right: 0.55rem;
+        }
+
+        h1 {
+            font-size: 1.28rem;
+            letter-spacing: -0.2px;
+        }
+
+        .contact-card h2 {
+            font-size: 1rem;
+        }
+
+        .contact-links a {
+            font-size: 0.84rem;
+        }
+
+        [data-testid="stChatMessageContent"] p {
+            font-size: 0.91rem;
+        }
+
+        [data-testid="stChatInput"] input {
+            min-height: 46px;
+        }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        @keyframes chatFadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        h1            { animation: chatFadeUp 0.6s cubic-bezier(0.22,0.61,0.36,1) both; }
+        .caption-text { animation: chatFadeUp 0.6s cubic-bezier(0.22,0.61,0.36,1) 0.06s both; }
+        .contact-card { animation: chatFadeUp 0.6s cubic-bezier(0.22,0.61,0.36,1) 0.12s both; }
+
+        [data-testid="stChatMessage"] {
+            animation: chatFadeUp 0.42s cubic-bezier(0.22,0.61,0.36,1) both;
+        }
+
+        [data-testid="stHorizontalBlock"] [data-testid="column"] .stButton {
+            animation: chatFadeUp 0.5s cubic-bezier(0.22,0.61,0.36,1) both;
+        }
+        [data-testid="stHorizontalBlock"] [data-testid="column"]:nth-child(1) .stButton { animation-delay: 0.10s; }
+        [data-testid="stHorizontalBlock"] [data-testid="column"]:nth-child(2) .stButton { animation-delay: 0.18s; }
+        [data-testid="stHorizontalBlock"] [data-testid="column"]:nth-child(3) .stButton { animation-delay: 0.26s; }
+        [data-testid="stHorizontalBlock"] [data-testid="column"]:nth-child(4) .stButton { animation-delay: 0.34s; }
+    }

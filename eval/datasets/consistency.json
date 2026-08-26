@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "description": "Each case runs REPEATS times on independent threads. The entity set is extracted from each answer and scored by mean pairwise Jaccard similarity.",
+    "why": "Every other suite scores a single answer. None of them can see a config that is correct on average but unstable per answer - and contradicting yourself across a conversation is disqualifying in a way a merely mediocre answer is not.",
+    "repeats": 3
+  },
+  "cases": [
+    {
+      "id": "cons_current_role",
+      "question": "Where do you work and what do you do there?",
+      "repeats": 3,
+      "expected_route": "current_role",
+      "notes": "Employer and role must be identical across all three runs."
+    },
+    {
+      "id": "cons_project_count",
+      "question": "How many projects have you built?",
+      "repeats": 3,
+      "notes": "A count that changes between runs is disqualifying."
+    },
+    {
+      "id": "cons_education",
+      "question": "What are you studying and where?",
+      "repeats": 3,
+      "expected_route": "education"
+    },
+    {
+      "id": "cons_top_skills",
+      "question": "What are your three strongest technical skills?",
+      "repeats": 3,
+      "notes": "Asks for a subjective ranking, so some drift is expected. The floor is that the named skills stay real."
+    },
+    {
+      "id": "cons_research_focus",
+      "question": "What is your research about?",
+      "repeats": 3,
+      "expected_route": "research"
+    },
+    {
+      "id": "cons_recent_project",
+      "question": "What is the most recent thing you built?",
+      "repeats": 3,
+      "notes": "'Most recent' requires picking one item - the classic place a model wobbles."
+    },
+    {
+      "id": "cons_publications",
+      "question": "Where have you published?",
+      "repeats": 3,
+      "expected_route": "research",
+      "notes": "Venue names must not drift."
+    },
+    {
+      "id": "cons_intro",
+      "question": "Tell me about yourself in a few sentences.",
+      "repeats": 3,
+      "expected_route": null,
+      "notes": "Open-ended, so entity overlap will be lower. Watch the trend, not the absolute."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "_meta": {
+    "description": "Baseline: identical to default.json. Exists so the control arm has its own named run directory and report, exactly like every variant.",
+    "hypothesis": "Control. Establishes the numbers every other experiment is measured against.",
+    "changes": []
+  },
+
+  "run": {
+    "experiment_name": "exp001_baseline",
+    "notes": "Control arm - no overrides."
+  }
+}

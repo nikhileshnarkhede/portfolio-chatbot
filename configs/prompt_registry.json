@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "description": "Maps a prompt id (used in configs/*.json under `prompts`) to a file under prompts/. Change which prompt the app uses by changing an id in a config - never by editing code. Once a version has been evaluated, do not edit it in place; add the next version here.",
+    "id_format": "<family>.<version_slug>",
+    "validation": "prompts/loader.py checks the declared input_variables against the placeholders actually present in the file, in both directions, and refuses to load a mismatch."
+  },
+
+  "prompts": {
+    "system.v1_persona": {
+      "path": "prompts/system/v1_persona.md",
+      "family": "system",
+      "version": 1,
+      "input_variables": ["context", "question", "chat_history"],
+      "status": "baseline",
+      "description": "Extracted byte-for-byte from the original app.py PromptTemplate, including its original indentation, so baseline runs reproduce the deployed bot's behaviour exactly. First-person recruiter-facing persona with an inline 'About Me' paragraph and a long STRICT URL RULES block. 4905 chars.",
+      "evaluated": false
+    },
+    "system.v2_persona": {
+      "path": "prompts/system/v2_persona.md",
+      "family": "system",
+      "version": 2,
+      "input_variables": ["context", "question", "chat_history"],
+      "status": "candidate",
+      "description": "Restructured variant, 1889 chars (-62% vs v1). Three deliberate changes: (1) drops the static 'About Me' paragraph, which duplicated the profile_summary chunk already arriving via retrieval and could conflict with it; (2) compresses the URL rules from eight bullets to three sentences; (3) replaces the two worked tone examples with a short voice description. Hypothesis: groundedness and persona adherence hold while prompt tokens and URL-hallucination attempts both fall.",
+      "evaluated": false,
+      "compare_against": "system.v1_persona"
+    },
+    "query_expansion.v1": {
+      "path": "prompts/query_expansion/v1.md",
+      "family": "query_expansion",
+      "version": 1,
+      "input_variables": ["question"],
+      "status": "draft",
+      "description": "LLM-based query rewriting. NOT used by default: retrieval.query_expansion.mode is 'keyword_rules', which needs no prompt. Set mode to 'llm' to activate. Written to resolve follow-up pronouns into standalone queries, which the keyword rules cannot do.",
+      "evaluated": false
+    },
+    "summarizer.v1": {
+      "path": "prompts/summarizer/v1.md",
+      "family": "summarizer",
+      "version": 1,
+      "input_variables": ["conversation", "max_sentences"],
+      "status": "baseline",
+      "description": "Condenses older turns so history stays inside the token budget. Ported from app.py's inline summary_prompt, with one deliberate change: the hardcoded '2-3 sentences' became {max_sentences}, wired to memory.summary_max_sentences so it is tunable like every other parameter.",
+      "evaluated": false
+    }
+  }
+}

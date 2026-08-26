@@ -1,0 +1,494 @@
+{
+  "_note": "Snapshot of structural chunking, verified byte-identical to the original ingest.py (61 chunks, 0 diffs). Regenerate deliberately only when chunking is meant to change.",
+  "n_chunks": 61,
+  "chunks": [
+    {
+      "chunk_id": "8307d97a4b84",
+      "chunk_type": "profile_summary",
+      "section": "profile_summary",
+      "part": 0,
+      "chars": 1024,
+      "sha1": "52d2f23cde05"
+    },
+    {
+      "chunk_id": "caa2724ad6f5",
+      "chunk_type": "profile_summary",
+      "section": "profile_summary",
+      "part": 1,
+      "chars": 497,
+      "sha1": "342b6daa1f25"
+    },
+    {
+      "chunk_id": "c82ec1e22259",
+      "chunk_type": "career_objective",
+      "section": "career_objective",
+      "part": 0,
+      "chars": 601,
+      "sha1": "ba0c1758ca63"
+    },
+    {
+      "chunk_id": "08ed2afd3680",
+      "chunk_type": "about",
+      "section": "about",
+      "part": 0,
+      "chars": 1221,
+      "sha1": "57170f690e3c"
+    },
+    {
+      "chunk_id": "e9c2e8800a73",
+      "chunk_type": "education",
+      "section": "education",
+      "part": 0,
+      "chars": 623,
+      "sha1": "d18cd90809ce"
+    },
+    {
+      "chunk_id": "60076470fbad",
+      "chunk_type": "education",
+      "section": "education",
+      "part": 0,
+      "chars": 436,
+      "sha1": "cf808a1c7e6a"
+    },
+    {
+      "chunk_id": "6f9af742da35",
+      "chunk_type": "education",
+      "section": "education",
+      "part": 0,
+      "chars": 324,
+      "sha1": "3827e3744d7d"
+    },
+    {
+      "chunk_id": "60e17d0f38e3",
+      "chunk_type": "experience",
+      "section": "experience",
+      "part": 0,
+      "chars": 1097,
+      "sha1": "adab22fcf0dc"
+    },
+    {
+      "chunk_id": "ce33c66a21b0",
+      "chunk_type": "experience",
+      "section": "experience",
+      "part": 1,
+      "chars": 632,
+      "sha1": "a98cae3b2084"
+    },
+    {
+      "chunk_id": "27cbb955eb0f",
+      "chunk_type": "experience",
+      "section": "experience",
+      "part": 0,
+      "chars": 1237,
+      "sha1": "6b184990adc3"
+    },
+    {
+      "chunk_id": "ac50ce426bbe",
+      "chunk_type": "experience",
+      "section": "experience",
+      "part": 1,
+      "chars": 516,
+      "sha1": "83f85e8dae0f"
+    },
+    {
+      "chunk_id": "5a6152f44262",
+      "chunk_type": "experience",
+      "section": "experience",
+      "part": 0,
+      "chars": 1261,
+      "sha1": "8ecf0006b469"
+    },
+    {
+      "chunk_id": "6954068467bc",
+      "chunk_type": "experience",
+      "section": "experience",
+      "part": 0,
+      "chars": 664,
+      "sha1": "e8823f841c90"
+    },
+    {
+      "chunk_id": "29d2a1b90f5f",
+      "chunk_type": "experience",
+      "section": "experience",
+      "part": 0,
+      "chars": 778,
+      "sha1": "efb0d7ddffba"
+    },
+    {
+      "chunk_id": "3e4ea549efe0",
+      "chunk_type": "experience",
+      "section": "experience",
+      "part": 0,
+      "chars": 812,
+      "sha1": "aee65df40cf2"
+    },
+    {
+      "chunk_id": "f0e276dfa7d6",
+      "chunk_type": "experience",
+      "section": "experience",
+      "part": 0,
+      "chars": 838,
+      "sha1": "484a57bf4f55"
+    },
+    {
+      "chunk_id": "1fb7de7675da",
+      "chunk_type": "experience",
+      "section": "experience",
+      "part": 0,
+      "chars": 735,
+      "sha1": "1c67288e23bd"
+    },
+    {
+      "chunk_id": "5003f9389596",
+      "chunk_type": "experience",
+      "section": "experience",
+      "part": 0,
+      "chars": 755,
+      "sha1": "7c3aef916356"
+    },
+    {
+      "chunk_id": "45906892d178",
+      "chunk_type": "project",
+      "section": "projects",
+      "part": 0,
+      "chars": 1166,
+      "sha1": "32a498921fca"
+    },
+    {
+      "chunk_id": "51545a422a43",
+      "chunk_type": "project",
+      "section": "projects",
+      "part": 0,
+      "chars": 1258,
+      "sha1": "12c59390d0bb"
+    },
+    {
+      "chunk_id": "185154810519",
+      "chunk_type": "project",
+      "section": "projects",
+      "part": 0,
+      "chars": 1028,
+      "sha1": "1178b6192734"
+    },
+    {
+      "chunk_id": "a6dd2f667577",
+      "chunk_type": "project",
+      "section": "projects",
+      "part": 0,
+      "chars": 644,
+      "sha1": "b6512897c4dd"
+    },
+    {
+      "chunk_id": "d17a40ba7181",
+      "chunk_type": "project",
+      "section": "projects",
+      "part": 0,
+      "chars": 1039,
+      "sha1": "19efe76bae49"
+    },
+    {
+      "chunk_id": "1f574038641a",
+      "chunk_type": "project",
+      "section": "projects",
+      "part": 0,
+      "chars": 1075,
+      "sha1": "03e730ead184"
+    },
+    {
+      "chunk_id": "778a09c9fdeb",
+      "chunk_type": "project",
+      "section": "projects",
+      "part": 0,
+      "chars": 1096,
+      "sha1": "ecc9c6ba1dda"
+    },
+    {
+      "chunk_id": "5240a9d22ea4",
+      "chunk_type": "project",
+      "section": "projects",
+      "part": 0,
+      "chars": 1028,
+      "sha1": "947616a3e295"
+    },
+    {
+      "chunk_id": "e41df2e09a60",
+      "chunk_type": "project",
+      "section": "projects",
+      "part": 0,
+      "chars": 973,
+      "sha1": "3fa83d10077a"
+    },
+    {
+      "chunk_id": "8e0f0d153335",
+      "chunk_type": "project",
+      "section": "projects",
+      "part": 0,
+      "chars": 818,
+      "sha1": "1979fcc4b660"
+    },
+    {
+      "chunk_id": "6646f1c50201",
+      "chunk_type": "project",
+      "section": "projects",
+      "part": 0,
+      "chars": 1265,
+      "sha1": "eae34522ca06"
+    },
+    {
+      "chunk_id": "6dbbc32a5ecc",
+      "chunk_type": "project",
+      "section": "projects",
+      "part": 1,
+      "chars": 334,
+      "sha1": "6e2aa5e40d8a"
+    },
+    {
+      "chunk_id": "4a3a32964a7f",
+      "chunk_type": "publication",
+      "section": "research",
+      "part": 0,
+      "chars": 889,
+      "sha1": "a4c060b04da2"
+    },
+    {
+      "chunk_id": "5cc0f0a4930d",
+      "chunk_type": "publication",
+      "section": "research",
+      "part": 0,
+      "chars": 700,
+      "sha1": "68aa6ed7dfb7"
+    },
+    {
+      "chunk_id": "14aac6e45a7d",
+      "chunk_type": "research_project",
+      "section": "research",
+      "part": 0,
+      "chars": 1132,
+      "sha1": "966c8bfa6f8b"
+    },
+    {
+      "chunk_id": "7a22f9772025",
+      "chunk_type": "research_project",
+      "section": "research",
+      "part": 1,
+      "chars": 769,
+      "sha1": "11427ceba613"
+    },
+    {
+      "chunk_id": "1e9ff6492422",
+      "chunk_type": "research_project",
+      "section": "research",
+      "part": 0,
+      "chars": 823,
+      "sha1": "d84c87a02156"
+    },
+    {
+      "chunk_id": "e8e76c62f681",
+      "chunk_type": "research_project",
+      "section": "research",
+      "part": 0,
+      "chars": 1292,
+      "sha1": "40e6f785846e"
+    },
+    {
+      "chunk_id": "c89a015109c0",
+      "chunk_type": "research_project",
+      "section": "research",
+      "part": 1,
+      "chars": 306,
+      "sha1": "970d18e33585"
+    },
+    {
+      "chunk_id": "dd04e516a629",
+      "chunk_type": "skills",
+      "section": "skills",
+      "part": 0,
+      "chars": 290,
+      "sha1": "753229736a6f"
+    },
+    {
+      "chunk_id": "47860ecea17f",
+      "chunk_type": "skills",
+      "section": "skills",
+      "part": 0,
+      "chars": 180,
+      "sha1": "fd392c4eb2c1"
+    },
+    {
+      "chunk_id": "d12c226f5cc4",
+      "chunk_type": "skills",
+      "section": "skills",
+      "part": 0,
+      "chars": 322,
+      "sha1": "0d04edf12062"
+    },
+    {
+      "chunk_id": "96d32fc08dfb",
+      "chunk_type": "skills",
+      "section": "skills",
+      "part": 0,
+      "chars": 140,
+      "sha1": "7ff91955fc8a"
+    },
+    {
+      "chunk_id": "e17364b93d42",
+      "chunk_type": "skills",
+      "section": "skills",
+      "part": 0,
+      "chars": 154,
+      "sha1": "996f8fa8398e"
+    },
+    {
+      "chunk_id": "7005c15f6f3e",
+      "chunk_type": "skills",
+      "section": "skills",
+      "part": 0,
+      "chars": 311,
+      "sha1": "d4b18afb797f"
+    },
+    {
+      "chunk_id": "7b14c17886f7",
+      "chunk_type": "skills",
+      "section": "skills",
+      "part": 0,
+      "chars": 114,
+      "sha1": "78824cae884f"
+    },
+    {
+      "chunk_id": "ebaf71ccdeba",
+      "chunk_type": "skills",
+      "section": "skills",
+      "part": 0,
+      "chars": 222,
+      "sha1": "ea6131f79b26"
+    },
+    {
+      "chunk_id": "06fdbbc67e11",
+      "chunk_type": "skills",
+      "section": "skills",
+      "part": 0,
+      "chars": 170,
+      "sha1": "92e5c510e352"
+    },
+    {
+      "chunk_id": "1f9e9ef88c61",
+      "chunk_type": "skills",
+      "section": "skills",
+      "part": 0,
+      "chars": 390,
+      "sha1": "1573e7953c74"
+    },
+    {
+      "chunk_id": "eb9e82754d2a",
+      "chunk_type": "skills",
+      "section": "skills",
+      "part": 0,
+      "chars": 214,
+      "sha1": "22002c852873"
+    },
+    {
+      "chunk_id": "692565c4865e",
+      "chunk_type": "skills",
+      "section": "skills",
+      "part": 0,
+      "chars": 98,
+      "sha1": "afe209154ac3"
+    },
+    {
+      "chunk_id": "094379fe4872",
+      "chunk_type": "certifications_intro",
+      "section": "certifications",
+      "part": 0,
+      "chars": 148,
+      "sha1": "365e5402b600"
+    },
+    {
+      "chunk_id": "2f8b02a93f45",
+      "chunk_type": "certification_group",
+      "section": "certifications",
+      "part": 0,
+      "chars": 224,
+      "sha1": "2f86e9370c7c"
+    },
+    {
+      "chunk_id": "7384271bacf9",
+      "chunk_type": "certification_group",
+      "section": "certifications",
+      "part": 0,
+      "chars": 755,
+      "sha1": "7707884e01fe"
+    },
+    {
+      "chunk_id": "bf05490c9de0",
+      "chunk_type": "certification_group",
+      "section": "certifications",
+      "part": 0,
+      "chars": 1172,
+      "sha1": "74a8e191099b"
+    },
+    {
+      "chunk_id": "337af2f5077d",
+      "chunk_type": "certification_group",
+      "section": "certifications",
+      "part": 1,
+      "chars": 1121,
+      "sha1": "91bf1d95540d"
+    },
+    {
+      "chunk_id": "03588118919e",
+      "chunk_type": "newsletter",
+      "section": "newsletter",
+      "part": 0,
+      "chars": 979,
+      "sha1": "e074ebf9a0fa"
+    },
+    {
+      "chunk_id": "6044c0140e39",
+      "chunk_type": "presentation",
+      "section": "conference_presentations",
+      "part": 0,
+      "chars": 476,
+      "sha1": "215e6c9f024c"
+    },
+    {
+      "chunk_id": "707c51693352",
+      "chunk_type": "presentation",
+      "section": "conference_presentations",
+      "part": 0,
+      "chars": 355,
+      "sha1": "a7dbf158cfcb"
+    },
+    {
+      "chunk_id": "67a95a3847cb",
+      "chunk_type": "leadership_role",
+      "section": "leadership_volunteering",
+      "part": 0,
+      "chars": 323,
+      "sha1": "73cc3b1a913c"
+    },
+    {
+      "chunk_id": "950278842f1a",
+      "chunk_type": "leadership_role",
+      "section": "leadership_volunteering",
+      "part": 0,
+      "chars": 298,
+      "sha1": "388ba97ec6cd"
+    },
+    {
+      "chunk_id": "8ed3102171d1",
+      "chunk_type": "recommendation",
+      "section": "recommendations",
+      "part": 0,
+      "chars": 299,
+      "sha1": "e0d9179e982d"
+    },
+    {
+      "chunk_id": "625bed686f71",
+      "chunk_type": "recommendation",
+      "section": "recommendations",
+      "part": 0,
+      "chars": 288,
+      "sha1": "d97be7181b12"
+    }
+  ]
+}

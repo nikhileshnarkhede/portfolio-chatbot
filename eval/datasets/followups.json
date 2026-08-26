@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "description": "Multi-turn cases. Each is a SEQUENCE of turns on one thread, testing that context carries across turns - pronoun resolution, 'tell me more', and topic switches.",
+    "why": "Every other dataset here is single-turn, and single-turn evaluation cannot see the failure modes that memory introduces. A summarization change, a history-format change, or a query-expansion change can leave single-turn scores untouched while breaking every follow-up.",
+    "scoring": "Assertions are per-turn and use the same fields as golden_qa.json. Turns with no assertions are setup only.",
+    "note": "Keyword-based query expansion cannot resolve pronouns - 'tell me more about that one' expands to itself. These cases are therefore expected to lean on chat_history rather than retrieval, and are the strongest argument for testing retrieval.query_expansion.mode = 'llm'."
+  },
+
+  "conversations": [
+    {
+      "id": "followup_project_detail",
+      "turns": [
+        {
+          "question": "What projects have you built?",
+          "expected_route": "projects",
+          "expected_chunk_types": ["project"],
+          "expect_refusal": false
+        },
+        {
+          "question": "Tell me more about the first one.",
+          "expect_refusal": false,
+          "must_not_contain": ["I don't have that detail"],
+          "notes": "Pure pronoun resolution. Retrieval cannot help; this must come from chat_history."
+        }
+      ]
+    },
+    {
+      "id": "followup_topic_switch",
+      "turns": [
+        {
+          "question": "Tell me about your research.",
+          "expected_route": "research",
+          "expect_refusal": false
+        },
+        {
+          "question": "And what about your education?",
+          "expected_route": "education",
+          "expected_chunk_types": ["education"],
+          "expect_refusal": false,
+          "notes": "A clean switch. The risk is the previous topic bleeding into the new answer."
+        }
+      ]
+    },
+    {
+      "id": "followup_and_the_others",
+      "turns": [
+        {
+          "question": "What was your most recent role?",
+          "expected_route": "current_role",
+          "expect_refusal": false
+        },
+        {
+          "question": "And the others?",
+          "expect_refusal": false,
+          "notes": "Two words, no nouns. Nothing but history can disambiguate this."
+        }
+      ]
+    },
+    {
+      "id": "followup_long_conversation",
+      "turns": [
+        {"question": "What are your skills?", "expect_refusal": false},
+        {"question": "Tell me about your projects.", "expect_refusal": false},
+        {"question": "What about your research?", "expect_refusal": false},
+        {"question": "Where did you study?", "expect_refusal": false},
+        {"question": "What certifications do you have?", "expect_refusal": false},
+        {"question": "Any publications?", "expect_refusal": false},
+        {
+          "question": "Going back to the very first thing I asked - what were those skills again?",
+          "expect_refusal": false,
+          "notes": "By this turn summarization has fired and the first exchange has been condensed. This is the case that catches a summarizer that drops content, and the reason the roll-forward fix in nodes/summarize.py matters."
+        }
+      ]
+    }
+  ]
+}
