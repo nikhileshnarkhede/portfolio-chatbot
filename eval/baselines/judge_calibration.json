@@ -1,0 +1,11 @@
+{
+  "kappa": NaN,
+  "agreement": NaN,
+  "n": 0,
+  "n_unlabelled": 0,
+  "n_judge_failed": 30,
+  "verdict": "unmeasured",
+  "label_source": "expected",
+  "disagreements": [],
+  "judge_model": "openai/gpt-oss-120b"
+}

@@ -1,0 +1,37 @@
+# Build context. Everything not listed here ends up in a layer, so the rule is
+# to exclude anything large, secret, or rebuilt inside the image.
+
+# Never ship secrets. They arrive at run time via --env-file or a mount.
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+secrets/
+
+# The index is REBUILT inside the image from data/raw/resume.txt. A host index
+# could have been built from a different config, or a different resume, than
+# the one being shipped - and it would look identical from the outside.
+data/index/
+data/processed/
+runs/
+eval/reports/
+eval/ratings/
+eval/baselines/
+
+# Development only.
+tests/
+docs/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.git/
+.github/
+.gitignore
+.idea/
+.vscode/
+
+*.md
+!README.md

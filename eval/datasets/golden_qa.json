@@ -1,0 +1,582 @@
+{
+  "_meta": {
+    "description": "Ground truth for the portfolio chatbot. Every field is optional; a case only asserts what it cares about, so adding a case is cheap and a case never fails for a reason it did not intend to test.",
+    "fields": {
+      "id": "stable identifier - referenced in reports, so do not renumber",
+      "question": "exactly what a recruiter would type",
+      "expected_route": "routing rule name that should fire, or null to assert NO rule matches (the question should reach MMR)",
+      "expected_chunk_types": "chunk_types the retrieved context should consist of; drives type_precision",
+      "expected_identities": "chunks that must be retrieved, named by identity substring, NOT chunk_id hash - readable, and survives a re-chunk",
+      "must_contain": "case-insensitive substrings the answer must include; drives fact_coverage",
+      "must_not_contain": "substrings that would indicate a wrong or fabricated answer",
+      "expect_refusal": "true if the resume genuinely cannot answer this; false to assert the bot must NOT refuse a question it can answer",
+      "primary_identities": "chunks that are THE answer, not merely relevant context. Grade 2 for nDCG; everything in expected_identities is grade 1. Optional - a case without it scores nDCG on binary relevance."
+    },
+    "note": "Identities were taken from the parsed resume, not invented. Keep them accurate: a golden set that drifts from the source is worse than none, because it produces confident wrong numbers.",
+    "version": 2
+  },
+  "cases": [
+    {
+      "id": "skills_all",
+      "question": "What are all your technical skills?",
+      "expected_route": "skills",
+      "expected_chunk_types": [
+        "skills"
+      ],
+      "expected_identities": [
+        "Machine Learning",
+        "Deep Learning",
+        "NLP",
+        "Computer Vision",
+        "Programming & Databases"
+      ],
+      "must_contain": [],
+      "expect_refusal": false,
+      "notes": "Category question: recall matters far more than precision. If recall_at_k drops after a chunking change, the answer has silently become partial."
+    },
+    {
+      "id": "skills_mlops",
+      "question": "What MLOps and deployment tools do you use?",
+      "expected_route": "skills",
+      "expected_chunk_types": [
+        "skills"
+      ],
+      "expected_identities": [
+        "MLOps, Deployment & AI Tooling"
+      ],
+      "expect_refusal": false,
+      "primary_identities": [
+        "MLOps, Deployment & AI Tooling"
+      ]
+    },
+    {
+      "id": "projects_all",
+      "question": "Tell me about all the projects you have built.",
+      "expected_route": "projects",
+      "expected_chunk_types": [
+        "project"
+      ],
+      "expected_identities": [
+        "Job Application Assistant",
+        "Chat with YouTube Videos",
+        "Supply Chain Tracker",
+        "Portfolio AI Chatbot",
+        "Data Engineering & Visualization Applications"
+      ],
+      "expect_refusal": false,
+      "notes": "There are 11 projects. This is the case most likely to expose a max_context_chars ceiling."
+    },
+    {
+      "id": "project_youtube",
+      "question": "Tell me about the Chat with YouTube Videos project.",
+      "expected_route": "projects",
+      "expected_chunk_types": [
+        "project"
+      ],
+      "expected_identities": [
+        "Chat with YouTube Videos"
+      ],
+      "must_contain": [
+        "YouTube"
+      ],
+      "expect_refusal": false,
+      "primary_identities": [
+        "Chat with YouTube Videos"
+      ]
+    },
+    {
+      "id": "project_supply_chain",
+      "question": "What is the Supply Chain Tracker?",
+      "expected_route": "projects",
+      "expected_chunk_types": [
+        "project"
+      ],
+      "expected_identities": [
+        "Supply Chain Tracker"
+      ],
+      "expect_refusal": false,
+      "primary_identities": [
+        "Supply Chain Tracker"
+      ]
+    },
+    {
+      "id": "experience_current",
+      "question": "Where are you working currently?",
+      "expected_route": "current_role",
+      "expected_chunk_types": [
+        "experience"
+      ],
+      "expected_identities": [
+        "Choir Corp"
+      ],
+      "must_contain": [
+        "Choir"
+      ],
+      "expect_refusal": false,
+      "notes": "'current job' must beat the generic 'job' rule. If expected_route regresses to 'experience', the routing table order was changed.",
+      "primary_identities": [
+        "Choir Corp"
+      ]
+    },
+    {
+      "id": "experience_all",
+      "question": "Walk me through your work experience.",
+      "expected_route": "experience",
+      "expected_chunk_types": [
+        "experience"
+      ],
+      "expected_identities": [
+        "Choir Corp",
+        "University of Massachusetts Dartmouth",
+        "Bajaj Auto Ltd"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "experience_bajaj",
+      "question": "What did you do at Bajaj Auto?",
+      "expected_route": "experience",
+      "expected_chunk_types": [
+        "experience"
+      ],
+      "expected_identities": [
+        "Bajaj Auto Ltd"
+      ],
+      "must_contain": [
+        "Bajaj"
+      ],
+      "expect_refusal": false,
+      "primary_identities": [
+        "Bajaj Auto Ltd"
+      ]
+    },
+    {
+      "id": "education_masters",
+      "question": "What degree are you studying for and where?",
+      "expected_route": "education",
+      "expected_chunk_types": [
+        "education"
+      ],
+      "expected_identities": [
+        "University of Massachusetts Dartmouth"
+      ],
+      "must_contain": [
+        "Data Science"
+      ],
+      "expect_refusal": false,
+      "primary_identities": [
+        "University of Massachusetts Dartmouth"
+      ]
+    },
+    {
+      "id": "education_undergrad",
+      "question": "What was your bachelor's degree in?",
+      "expected_route": "education",
+      "expected_chunk_types": [
+        "education"
+      ],
+      "expected_identities": [
+        "Savitribai Phule Pune University"
+      ],
+      "must_contain": [
+        "Mechanical"
+      ],
+      "expect_refusal": false,
+      "primary_identities": [
+        "Savitribai Phule Pune University"
+      ]
+    },
+    {
+      "id": "research_pinn",
+      "question": "Tell me about your PINN research.",
+      "expected_route": "research",
+      "expected_chunk_types": [
+        "research_project",
+        "publication",
+        "experience"
+      ],
+      "expected_identities": [
+        "PINN for Mixed-Mode Fracture",
+        "PINN for IGBT Remaining Useful Life"
+      ],
+      "must_contain": [
+        "Physics"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "research_symboptai",
+      "question": "What is SymbOptAI?",
+      "expected_route": "research",
+      "expected_chunk_types": [
+        "research_project",
+        "publication",
+        "experience"
+      ],
+      "expected_identities": [
+        "SymbOptAI"
+      ],
+      "expect_refusal": false,
+      "primary_identities": [
+        "SymbOptAI"
+      ]
+    },
+    {
+      "id": "publications",
+      "question": "Have you published any papers?",
+      "expected_route": "research",
+      "expected_chunk_types": [
+        "research_project",
+        "publication",
+        "experience"
+      ],
+      "expected_identities": [
+        "Journal of Composite Science"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "certifications",
+      "question": "What certifications do you hold?",
+      "expected_route": "certifications",
+      "expected_chunk_types": [
+        "certification_group"
+      ],
+      "expected_identities": [
+        "IIT Kanpur"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "newsletter",
+      "question": "Do you write a newsletter?",
+      "expected_route": "newsletter",
+      "expected_chunk_types": [
+        "newsletter"
+      ],
+      "expected_identities": [
+        "Weights & Real Life"
+      ],
+      "expect_refusal": false,
+      "primary_identities": [
+        "Weights & Real Life"
+      ]
+    },
+    {
+      "id": "presentations",
+      "question": "Have you presented at any conferences?",
+      "expected_route": "presentations",
+      "expected_chunk_types": [
+        "presentation"
+      ],
+      "expected_identities": [
+        "Three Minute Thesis"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "leadership",
+      "question": "Any volunteering or leadership roles?",
+      "expected_route": "leadership",
+      "expected_chunk_types": [
+        "leadership_role"
+      ],
+      "expected_identities": [
+        "New Bedford Ocean Cluster"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "open_ended_intro",
+      "question": "Tell me about yourself.",
+      "expected_route": null,
+      "expected_chunk_types": [],
+      "must_not_contain": [
+        "I don't have that detail"
+      ],
+      "expect_refusal": false,
+      "notes": "No routing rule should match, so this exercises the MMR path. If a routing edit makes this match a rule, the introduction becomes a narrow answer from one category."
+    },
+    {
+      "id": "out_of_scope_salary",
+      "question": "What is your current salary?",
+      "expected_route": null,
+      "expect_refusal": true,
+      "must_not_contain": [
+        "$"
+      ],
+      "notes": "The resume has no salary. The bot must decline warmly rather than invent a figure."
+    },
+    {
+      "id": "out_of_scope_personal",
+      "question": "Are you married and do you have children?",
+      "expected_route": null,
+      "expect_refusal": true,
+      "notes": "Out of scope AND none of a recruiter's business. Must refuse."
+    },
+    {
+      "id": "out_of_scope_unrelated",
+      "question": "What do you think about the weather in Boston today?",
+      "expected_route": null,
+      "expect_refusal": true,
+      "notes": "Tests that grounding holds against a question the model could easily answer from general knowledge."
+    },
+    {
+      "id": "not_a_refusal_check",
+      "question": "What programming languages do you know?",
+      "expected_route": "skills",
+      "expected_chunk_types": [
+        "skills"
+      ],
+      "expected_identities": [
+        "Programming & Databases"
+      ],
+      "expect_refusal": false,
+      "notes": "Over-refusal guard. A prompt tightened too far starts declining questions the context answers plainly, and nothing else in the suite would catch it."
+    },
+    {
+      "id": "project_job_assistant",
+      "question": "Tell me about your Job Application Assistant project.",
+      "expected_route": "projects",
+      "expected_chunk_types": [
+        "project"
+      ],
+      "expected_identities": [
+        "Job Application Assistant"
+      ],
+      "primary_identities": [
+        "Job Application Assistant"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "project_portfolio_bot",
+      "question": "Did you build the chatbot on your portfolio site?",
+      "expected_route": "projects",
+      "expected_chunk_types": [
+        "project"
+      ],
+      "expected_identities": [
+        "Portfolio AI Chatbot"
+      ],
+      "primary_identities": [
+        "Portfolio AI Chatbot"
+      ],
+      "expect_refusal": false,
+      "notes": "Self-referential. The bot describing itself."
+    },
+    {
+      "id": "project_computer_vision",
+      "question": "Have you done any computer vision work?",
+      "expected_route": "projects",
+      "expected_chunk_types": [
+        "project"
+      ],
+      "expected_identities": [
+        "End-to-End Computer Vision"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "project_nlp",
+      "question": "What NLP projects have you worked on?",
+      "expected_route": "projects",
+      "expected_chunk_types": [
+        "project"
+      ],
+      "expected_identities": [
+        "NLP Systems for Text Classification"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "project_forecasting",
+      "question": "Any experience with business forecasting?",
+      "expected_route": "projects",
+      "expected_chunk_types": [
+        "project"
+      ],
+      "expected_identities": [
+        "Business & Industrial F"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "experience_umass",
+      "question": "What did you do as a Research Assistant at UMass?",
+      "expected_route": "experience",
+      "expected_chunk_types": [
+        "experience"
+      ],
+      "expected_identities": [
+        "University of Massachusetts Dartmouth"
+      ],
+      "primary_identities": [
+        "University of Massachusetts Dartmouth"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "experience_teaching",
+      "question": "Have you ever taught or mentored anyone?",
+      "expected_route": "experience",
+      "expected_chunk_types": [
+        "experience"
+      ],
+      "expected_identities": [
+        "Code Karo Yaaro"
+      ],
+      "expect_refusal": false,
+      "notes": "The relevant role is a tutoring one; tests whether an indirect phrasing reaches it."
+    },
+    {
+      "id": "experience_earliest",
+      "question": "What was your first role in AI?",
+      "expected_route": "experience",
+      "expected_chunk_types": [
+        "experience"
+      ],
+      "expected_identities": [
+        "Abhiyantrix Academy"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "experience_defence",
+      "question": "Tell me about your work at ARDE.",
+      "expected_route": "experience",
+      "expected_chunk_types": [
+        "experience"
+      ],
+      "expected_identities": [
+        "Armament Research"
+      ],
+      "primary_identities": [
+        "Armament Research"
+      ],
+      "expect_refusal": false,
+      "notes": "Acronym in the question, full name in the resume."
+    },
+    {
+      "id": "skills_deep_learning",
+      "question": "What deep learning architectures have you used?",
+      "expected_route": "skills",
+      "expected_chunk_types": [
+        "skills"
+      ],
+      "expected_identities": [
+        "Deep Learning"
+      ],
+      "primary_identities": [
+        "Deep Learning"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "skills_genai",
+      "question": "What's your experience with generative AI?",
+      "expected_route": "skills",
+      "expected_chunk_types": [
+        "skills"
+      ],
+      "expected_identities": [
+        "Generative AI"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "skills_databases",
+      "question": "Which databases have you worked with?",
+      "expected_route": "skills",
+      "expected_chunk_types": [
+        "skills"
+      ],
+      "expected_identities": [
+        "Programming & Databases"
+      ],
+      "primary_identities": [
+        "Programming & Databases"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "skills_physics_ml",
+      "question": "Do you have experience combining physics with machine learning?",
+      "expected_route": "skills",
+      "expected_chunk_types": [
+        "skills"
+      ],
+      "expected_identities": [
+        "Physics-Informed"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "research_fracture",
+      "question": "What is your mixed-mode fracture research about?",
+      "expected_route": "research",
+      "expected_chunk_types": [
+        "research_project",
+        "publication",
+        "experience"
+      ],
+      "expected_identities": [
+        "PINN for Mixed-Mode Fracture"
+      ],
+      "primary_identities": [
+        "PINN for Mixed-Mode Fracture"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "research_igbt",
+      "question": "Tell me about the IGBT remaining useful life work.",
+      "expected_route": "research",
+      "expected_chunk_types": [
+        "research_project",
+        "publication",
+        "experience"
+      ],
+      "expected_identities": [
+        "PINN for IGBT"
+      ],
+      "primary_identities": [
+        "PINN for IGBT"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "publication_composites",
+      "question": "What was your composites paper about?",
+      "expected_route": "research",
+      "expected_chunk_types": [
+        "research_project",
+        "publication",
+        "experience"
+      ],
+      "expected_identities": [
+        "Journal of Composite Science"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "certifications_anthropic",
+      "question": "Have you done any training on AI agents?",
+      "expected_route": "certifications",
+      "expected_chunk_types": [
+        "certification_group"
+      ],
+      "expected_identities": [
+        "Anthropic"
+      ],
+      "expect_refusal": false
+    },
+    {
+      "id": "mechanical_background",
+      "question": "How does your mechanical engineering background help you in ML?",
+      "expected_route": null,
+      "expect_refusal": false,
+      "notes": "Cross-cutting synthesis question. No single rule should fire; MMR must assemble it."
+    }
+  ]
+}

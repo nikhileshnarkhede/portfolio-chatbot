@@ -1,0 +1,55 @@
+# Run the chatbot on your own resume, with your own Groq key.
+#
+#   cp .env.example .env                 # put your GROQ_API_KEY in it
+#   cp your_resume.txt data/raw/resume.txt
+#   docker compose up --build            # http://localhost:8501
+#
+# Nothing here is baked into a shared image: the key arrives from .env at run
+# time and the resume is a mount, so the same image serves anybody's data.
+
+services:
+  chatbot:
+    image: nnarkhede/portfolio-chatbot:latest
+    container_name: portfolio-chatbot
+    build:
+      context: .
+      args:
+        RUN_FINGERPRINT: ${RUN_FINGERPRINT:-unknown}
+        BUILT_AT: ${BUILT_AT:-unknown}
+
+    # Build it, never try to fetch it. `nnarkhede/portfolio-chatbot` looks
+    # exactly like a Docker Hub repo, so without this compose asks Hub for it
+    # first, gets "pull access denied" for an image that was never pushed, and
+    # stops - leaving NO container at all, while `docker build` would have
+    # worked perfectly.
+    pull_policy: build
+
+    # Your secrets. required:false so a missing .env is a warning rather than a
+    # hard stop before any container exists - the app has its own "no API key"
+    # page, and a running container that explains itself beats an abort.
+    env_file:
+      - path: .env
+        required: false
+
+    ports:
+      - "8501:8501"
+
+    volumes:
+      # YOUR RESUME. Point the left side anywhere; read-only, because the
+      # container has no business writing to your file.
+      - ./data/raw/resume.txt:/app/data/raw/resume.txt:ro
+
+      # The index, in a named volume so it is built once and reused on every
+      # later start. A NAMED volume (not a bind mount) on purpose: Docker seeds
+      # it from the image, so it inherits the app user's ownership. A bind
+      # mount would arrive root-owned and the ingest would fail on write.
+      - chatbot-index:/app/data/index
+
+      # Turn logs, so a session's history survives `docker compose down`.
+      - chatbot-runs:/app/runs
+
+    restart: unless-stopped
+
+volumes:
+  chatbot-index:
+  chatbot-runs:

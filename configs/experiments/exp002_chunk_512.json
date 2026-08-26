@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "description": "Chunking sweep: force smaller, more numerous chunks by lowering the split threshold well below the structural item sizes.",
+    "hypothesis": "Smaller chunks raise context precision (less irrelevant text per retrieved chunk) but may lower recall for multi-fact items like a full <entry>, because one experience entry now spans several chunks and only some are retrieved.",
+    "watch_metrics": ["context_precision", "context_recall", "hit_at_k", "faithfulness"],
+    "changes": ["ingestion.split.max_chunk_chars 1300 -> 512", "ingestion.split.chunk_overlap 120 -> 64", "retrieval.filtered.k 14 -> 20"],
+    "note": "This changes the index fingerprint, so scripts/ingest.py must be re-run for this config before scripts/run_eval.py."
+  },
+
+  "ingestion": {
+    "split": {
+      "max_chunk_chars": 512,
+      "chunk_overlap": 64,
+      "min_inner_chunk_chars": 200
+    }
+  },
+
+  "retrieval": {
+    "filtered": {
+      "k": 20
+    }
+  },
+
+  "run": {
+    "experiment_name": "exp002_chunk_512",
+    "notes": "Smaller chunks, wider k to compensate for fragmentation."
+  }
+}

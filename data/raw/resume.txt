@@ -1,0 +1,477 @@
+<!--
+  RAG-OPTIMIZED PROFILE — Nikhilesh Narkhede
+  Chunking guide:
+    - Each retrievable unit is wrapped in a semantic XML tag (e.g. <experience>, <project>, <skill_category>).
+    - The first line inside every tag is a Markdown header (## for sections, ### for individual entries).
+    - Chunking: ingest.py splits on the XML item tags — one chunk per tag.
+    - Tag attributes (company, role, period, name, provider, year, doi, url) double as chunk metadata.
+    - Every chunk leads with a self-contained sentence naming "Nikhilesh" so retrieved chunks stand alone.
+-->
+
+<profile_summary type="overview" name="Nikhilesh Narkhede" role="Machine Learning Researcher">
+## Profile Summary
+
+### Nikhilesh Narkhede — Overview
+Nikhilesh Narkhede is a Machine Learning Researcher at Choir Corp (SENTRIX / UptimePowr platform, remote), currently completing an M.S. in Data Science at the University of Massachusetts Dartmouth (expected May 2026, GPA 4.0/4.0). He holds a Bachelor of Engineering in Mechanical Engineering and an Advanced Certification in AI & Machine Learning from IIT Kanpur. His expertise spans physics-informed neural networks (PINNs), machine learning, deep learning, NLP, computer vision, generative/conversational AI, and physics-informed scientific ML, with hands-on Python engineering across the full data-science lifecycle. He is US work authorized and based in the Greater Boston, MA area.
+
+**Professional headline:** Machine Learning Researcher @ Choir Corp | Master's Student in Data Science | Physics-Informed Neural Networks, Machine Learning, Deep Learning, and Python | Ex-Intern @ ARDE-DRDO
+
+<contact>
+**Contact** — Phone: +1 508-509-3697 · Email: narkhede.nikhilesh@gmail.com
+</contact>
+
+<links>
+**Links**
+- Portfolio website: https://nikhileshnarkhede.github.io/portfolio/
+- LinkedIn: https://www.linkedin.com/in/nikhileshnarkhede
+- GitHub: https://github.com/nikhileshnarkhede
+- Portfolio AI Chatbot: https://nikhileshportfoliochatbot.streamlit.app/
+- Newsletter — Weights & Real Life: https://www.linkedin.com/newsletters/weights-real-life-7447323018998988800/
+</links>
+</profile_summary>
+
+<career_objective type="availability">
+## Career Objective & Availability
+
+### What Nikhilesh Is Looking For
+Nikhilesh is currently working as a Machine Learning Researcher at Choir Corp (remote), focused on physics-informed deep learning for power-electronics reliability. He is also open to select opportunities such as AI Application Engineer and Machine Learning Engineer roles in the Boston, MA area (plus additional locations), with on-site, hybrid, or remote arrangements. He is particularly interested in applied ML/AI, physics-informed ML, NLP, and conversational AI, and in roles where clear communication and teamwork are valued.
+</career_objective>
+
+<about type="personal_statement">
+## About
+
+### About Nikhilesh (Personal Statement)
+I am a Master's student in Data Science. I hold a Bachelor's degree in Mechanical Engineering and an Advanced Certification in Artificial Intelligence and Machine Learning from IIT Kanpur. I bring a strong academic foundation and a deep enthusiasm for statistical modeling, mathematics, and using data to solve real-world problems. My approach spans the entire data science lifecycle — from data ingestion and preprocessing to model deployment and performance optimization — and is grounded in both theory and practical application. I excel at translating complex, ambiguous domain problems into clear, impactful machine learning tasks, and I specialize in building interpretable, scalable, and production-ready models that deliver measurable results. I am equally adept at communicating data-driven insights to both technical and non-technical audiences. I have a strong interest in research and enjoy working at the intersection of data, experimentation, and domain expertise to develop innovative, AI-driven solutions. For me, data science is more than just a discipline — it is a powerful tool for transforming ideas into actionable strategies and real-world impact.
+</about>
+
+<education>
+## Education
+
+<institution name="University of Massachusetts Dartmouth" degree="M.S. Data Science" period="Sep 2024 – May 2026" gpa="4.0/4.0">
+### M.S. in Data Science — University of Massachusetts Dartmouth (Sep 2024 – May 2026)
+Nikhilesh is completing a Master of Science in Data Science at UMass Dartmouth with a 4.0/4.0 GPA (expected May 2026).
+- Coursework with grades: Artificial Intelligence — CIS 561 (A+); Mathematics of Deep Learning — MTH 601 (A); Advanced Machine Learning — CIS 550 (A+); Database Design — CIS 552 (A+); Math & Computational Consulting — MTH 540 (A); Advanced Mathematical Statistics — MTH 522 (A+); High Performance Scientific Computing — DSC 520 (A); Data Visualization — DSC 530 (A).
+- Member of the Big Data Club and the Gen AI Club.
+</institution>
+
+<institution name="Savitribai Phule Pune University" degree="B.E. Mechanical Engineering" period="Graduated June 2023" gpa="3.64">
+### B.E. in Mechanical Engineering — Savitribai Phule Pune University, Pune (June 2023)
+Nikhilesh earned a Bachelor of Engineering in Mechanical Engineering from Savitribai Phule Pune University, ranked 9th in the university with a GPA of 3.64.
+- Coursework: AI & ML, Data Analytics Lab, Numerical & Statistical Methods, Programming & Problem Solving.
+- Internship at ARDE-DRDO: mathematical modelling for optimising system performance.
+</institution>
+
+<institution name="E&ICT Academy, IIT Kanpur" degree="Advanced Certification in AI & Machine Learning" period="Oct 2023 – Jul 2024">
+### Advanced Certification in AI & Machine Learning — E&ICT Academy, IIT Kanpur (Oct 2023 – Jul 2024)
+Nikhilesh completed a full-stack AI certification (Government of India endorsed) spanning machine learning, deep learning, computer vision, and NLP. The credential verification link is listed in the Certifications section.
+</institution>
+</education>
+
+<experience>
+## Work Experience
+
+<entry role="Machine Learning Researcher" company="Choir Corp" period="2026 – Present" location="Remote">
+### Machine Learning Researcher — Choir Corp (2026 – Present)
+Nikhilesh is currently a Machine Learning Researcher at Choir Corp, working on the SENTRIX / UptimePowr platform (remote), focused on physics-informed deep learning for power-electronics reliability prediction.
+- Reproduced a published PINN-LSTM benchmark (Kong et al., APEC 2025) for IGBT power-module remaining-useful-life (RUL) prediction, translating the published method into a working, evaluated prototype using a leave-one-device-out four-fold cross-validation framework.
+- Conducted systematic root-cause failure analysis when the reproduced model underperformed a baseline rather than accepting the metric at face value: diagnosed a physics/failure-mode mismatch between the benchmark's assumptions and the target degradation behavior, and reported the honest negative result to engineering leadership rather than overstating performance.
+- Built MLflow-tracked, reproducible experiment pipelines integrated into the team's development workflow, enabling systematic comparison across model variants and cross-validation folds.
+- Independently designed and built a companion physics-informed neural network reproducing Lu et al. (2023) for the same RUL problem, including a 7-command CLI, an MLflow run registry, and physics-informed loss gating; reached a test R² of 0.784 (see the PINN for IGBT Remaining Useful Life entry under Research & Physics-Informed ML Projects).
+**Tools & skills:** Physics-Informed Neural Networks (PINN), LSTM, RNN, PyTorch, MLflow, Remaining-Useful-Life (RUL) Prediction, Cross-Validation, Root-Cause Analysis, Reproducible ML Pipelines, Power Electronics Reliability.
+</entry>
+
+<entry role="Research Assistant (Part-Time)" company="University of Massachusetts Dartmouth" period="Jun 2025 – Dec 2025" location="Greater Boston, MA">
+### Research Assistant — University of Massachusetts Dartmouth (Jun 2025 – Dec 2025)
+As a part-time Research Assistant at UMass Dartmouth, Nikhilesh developed a physics-aware machine learning and optimization framework to improve mechanical and fracture performance of FFF-processed ABS materials under multi-objective constraints.
+- Generated and curated large synthetic datasets to augment scarce experimental data while preserving physical consistency and process–property relationships.
+- Applied Symbolic Regression Analysis (SRA) to extract interpretable mathematical expressions linking manufacturing parameters to material responses, then engineered and normalized high-value features from symbolic terms, improving model convergence and predictive stability.
+- Designed and trained deep neural network surrogate models to capture nonlinear interactions and multi-property trade-offs with high fidelity.
+- Implemented NSGA-II based multi-objective optimization to identify Pareto-optimal process windows balancing strength, toughness, elongation, and energy absorption, then visualized and analyzed optimization outcomes using radial plots and parallel coordinate plots to benchmark predicted results against experimental maxima.
+- Identified optimal processing parameters aligned with experimental performance envelopes, enabling data-driven recommendations for high-performance additive manufacturing. This research resulted in a peer-reviewed publication (see Research section).
+**Tools & skills:** Python, Machine Learning, Deep Learning, Feature Engineering, Optimization Algorithms, NSGA-II, Data Normalization, Model Evaluation, Scientific Visualization.
+</entry>
+
+<entry role="Deep Learning Researcher (Math & Computational Consultant), Contract" company="Independent / Contract" period="Feb 2025 – May 2025">
+### Deep Learning Researcher — Math & Computational Consultant (Contract) (Feb 2025 – May 2025)
+Nikhilesh designed and executed an end-to-end machine learning pipeline to predict mechanical and fracture properties of lightweight polyurethane composites.
+- Augmented limited experimental datasets using bootstrapping and statistical sampling techniques to improve model robustness in low-data regimes.
+- Built, trained, and optimized shallow ANN and deep DNN architectures with extensive hyperparameter tuning (activation functions, learning rates, batch sizes, regularization), applying feature scaling and preprocessing to stabilize gradients and accelerate convergence.
+- Achieved exceptional predictive accuracy (R² > 0.99, low RMSE), outperforming traditional empirical modeling approaches, and successfully extrapolated material behavior beyond observed reinforcement ranges (>40%), demonstrating strong generalization capability.
+- Contributed to a peer-reviewed publication in the Journal of Composite Science (2025), validating ML as a viable alternative to physics-based empirical models.
+**Tools & skills:** Python, Deep Learning, Neural Networks, Keras, TensorFlow, Data Augmentation, Hyperparameter Optimization, Statistical Modeling, Pandas, NumPy.
+</entry>
+
+<entry role="Machine Learning Intern" company="Tech-Neo Publications LLP" period="Jul 2023 – May 2024">
+### Machine Learning Intern — Tech-Neo Publications LLP (Jul 2023 – May 2024)
+Nikhilesh assisted in developing machine learning models for materials and engineering research applications.
+- Processed and structured datasets for regression and prediction tasks involving mechanical and physical properties.
+- Collaborated with senior researchers to validate ML results against experimental and literature benchmarks.
+- Supported documentation and publication workflows, translating technical findings into research-ready formats.
+**Tools & skills:** Python, Data Handling, Machine Learning Fundamentals, Research Methodology, Pandas, NumPy, Technical Documentation.
+</entry>
+
+<entry role="Research Assistant Intern" company="Armament Research & Development Establishment (DRDO)" period="Sep 2022 – Mar 2023" location="Pune, India">
+### Research Assistant Intern — Armament Research & Development Establishment, DRDO (Sep 2022 – Mar 2023)
+At ARDE-DRDO, Nikhilesh designed and analyzed propulsion system concepts for artillery rockets under real-world defense constraints.
+- Performed CFD and thermal simulations to evaluate flow behavior, heat transfer, and system efficiency.
+- Built mathematical and computational models to support performance prediction and design validation.
+- Automated calculations and simulations using Python and MATLAB to reduce manual analysis time, working across multidisciplinary teams to translate theoretical designs into practical engineering solutions.
+**Tools & skills:** Python, MATLAB, CFD, Ansys, Mathematical Modeling, Simulation, Mechanical Systems, Engineering Analysis.
+</entry>
+
+<entry role="Project Trainee (Predictive Maintenance)" company="Bajaj Auto Ltd" period="Mar 2022 – Jun 2022" location="Chakan, India">
+### Project Trainee, Predictive Maintenance — Bajaj Auto Ltd (Mar 2022 – Jun 2022)
+Nikhilesh worked on predictive-maintenance initiatives for automotive manufacturing systems to reduce unplanned downtime.
+- Analyzed machine and process data to identify early indicators of equipment failure and performance degradation.
+- Applied data analysis and statistical techniques to support maintenance forecasting and reliability improvement.
+- Collaborated with operations and maintenance teams to turn data insights into actionable strategies, gaining exposure to condition monitoring, preventive maintenance, and data-driven decision-making at industrial scale.
+**Tools & skills:** Predictive Maintenance, Data Analysis, Machine Learning Fundamentals, Python, Statistics, Industrial Analytics, Operations Engineering.
+</entry>
+
+<entry role="Computer Aided Design Engineer Intern (Computer Vision Collaboration)" company="Artenal" period="Jan 2022 – Jun 2022" location="Vancouver, Canada">
+### CAD Engineer Intern (Computer Vision Collaboration) — Artenal (Jan 2022 – Jun 2022)
+Nikhilesh collaborated with computer vision engineers on robotics-focused projects involving perception-driven automation.
+- Designed mechanical end effectors aligned with vision-based robotic manipulation requirements and supported kinematic modeling and motion analysis, ensuring compatibility between mechanical design and vision-guided control logic.
+- Contributed to concept development of an autonomous apple-harvesting robot integrating robotics and vision systems.
+- Interfaced with CV workflows by aligning CAD constraints with object detection, localization, and motion-planning needs.
+**Tools & skills:** Computer Vision (Applied Exposure), Robotics, Kinematics, CAD, SOLIDWORKS, Mechanical–AI Integration, Multidisciplinary Collaboration.
+</entry>
+
+<entry role="Coding Tutor (ML / DL / Math for AI)" company="Code Karo Yaaro" period="Sep 2021 – Nov 2021">
+### Coding Tutor (ML / DL / Math for AI) — Code Karo Yaaro (Sep 2021 – Nov 2021)
+Nikhilesh delivered beginner-friendly instruction on programming, mathematics, and foundational concepts required for machine learning and deep learning.
+- Taught Python programming, logic building, and object-oriented programming with AI-oriented examples.
+- Introduced core ML/DL concepts, including datasets, features, training vs. testing, loss functions, and model intuition.
+- Created recorded learning content explaining mathematical foundations such as vectors, matrices, gradients, and basic optimization concepts.
+**Tools & skills:** Python, Machine Learning Basics, Deep Learning Fundamentals, Mathematics for AI, OOP, Communication, Teaching.
+</entry>
+
+<entry role="Technical Member (AI)" company="Abhiyantrix Academy" period="May 2020 – May 2021">
+### Technical Member (AI) — Abhiyantrix Academy (May 2020 – May 2021)
+Nikhilesh collaborated on AI-focused problem statements, applying mathematical reasoning and algorithmic thinking to research-driven engineering challenges.
+- Explored foundational machine learning concepts, including supervised learning, regression, and classification, through guided research and experimentation.
+- Applied linear algebra, probability, and optimization basics to support early-stage AI model formulation and evaluation, working in cross-functional teams to analyze feasibility, validate assumptions, and document findings.
+**Tools & skills:** Machine Learning Fundamentals, Mathematics for AI, Linear Algebra, Probability, Problem Solving, Research, Python (Basics).
+</entry>
+</experience>
+
+<projects>
+## Projects
+
+<project name="Job Application Assistant" type="LLM / Generative AI" url="https://nikhileshnarkhede.github.io/portfolio/projects/job-application-assistant.html">
+### Job Application Assistant — LLM-Powered AI Application
+Nikhilesh designed and developed an end-to-end AI application that assists job seekers by automating resume customization, cover letter generation, and job-specific content creation using Large Language Models (LLMs).
+- Implemented NLP-driven pipelines to process job descriptions and user inputs, enabling context-aware and role-specific application outputs, with prompt engineering ensuring consistent, structured, and ATS-optimized responses across multiple job roles and industries.
+- Built modular and reusable application components, allowing scalable extension to additional job types, prompts, and AI workflows.
+- Focused on real-world AI application design, translating ambiguous user requirements into a functional, user-centric GenAI system, and integrating LLM APIs into a production-style workflow rather than standalone model experimentation.
+**Project page:** https://nikhileshnarkhede.github.io/portfolio/projects/job-application-assistant.html
+**Skills:** Python, Generative AI, Large Language Models (LLMs), NLP, Prompt Engineering, AI Application Development, Automation, API Integration.
+</project>
+
+<project name="Chat with YouTube Videos" type="RAG / Conversational AI" url="https://nikhileshnarkhede.github.io/portfolio/projects/chat-youtube-videos.html">
+### Chat with YouTube Videos — Retrieval-Augmented Conversational AI
+Nikhilesh designed and built an end-to-end conversational AI system enabling users to ask natural-language questions about long-form YouTube videos.
+- Extracted and processed video transcripts, performing text chunking and preprocessing to support efficient semantic retrieval.
+- Generated dense vector embeddings using Sentence Transformers and HuggingFace models to capture contextual meaning, and implemented semantic search pipelines using FAISS and ChromaDB to retrieve the most relevant transcript segments in real time.
+- Integrated Large Language Models (LLMs) via LangChain with OpenAI and Anthropic APIs to generate accurate, context-aware answers (RAG architecture).
+- Developed an interactive Streamlit application to deliver low-latency, user-friendly conversational experiences, demonstrating applied NLP and GenAI system design.
+**Project page:** https://nikhileshnarkhede.github.io/portfolio/projects/chat-youtube-videos.html
+**GitHub:** https://github.com/nikhileshnarkhede/Chat_with_YouTube_Video
+**Skills:** Python, NLP, Conversational AI, Retrieval-Augmented Generation (RAG), LLMs, LangChain, HuggingFace, FAISS, ChromaDB, Vector Databases, Streamlit, API Integration.
+</project>
+
+<project name="Real-Time Market Momentum & Sentiment Prediction" type="NLP + LSTM" url="https://nikhileshnarkhede.github.io/portfolio/projects/market-sentiment-prediction.html">
+### Real-Time Market Momentum & Sentiment Prediction — NLP + LSTM System
+Nikhilesh designed and implemented a real-time deep learning framework to predict S&P 500 market momentum by combining historical price data with financial-news sentiment.
+- Built NLP pipelines to preprocess and encode financial news text for sentiment extraction, and developed LSTM-based neural networks to model temporal dependencies in time-series market data.
+- Integrated multimodal features (numerical price signals + textual sentiment features) to improve predictive capability over single-source models.
+- Evaluated model performance under evolving data conditions, demonstrating adaptability to real-time market updates and applied AI system design combining NLP, deep learning, and time-series modeling.
+**Project page:** https://nikhileshnarkhede.github.io/portfolio/projects/market-sentiment-prediction.html
+**Skills:** Python, NLP, Deep Learning, LSTM, Time Series Analysis, Sentiment Analysis, Feature Engineering, Applied Machine Learning.
+</project>
+
+<project name="NLP Systems for Text Classification & Sentiment Analysis" type="NLP" url="https://nikhileshnarkhede.github.io/portfolio/projects/nlp-text-classification.html">
+### NLP Systems for Text Classification & Sentiment Analysis
+Nikhilesh built NLP pipelines for spam detection, sentiment classification, and complaint-resolution tasks.
+- Utilized word embeddings (GloVe, FastText) to capture semantic meaning and reduce dimensionality.
+- Trained LSTM-based sequence models followed by feedforward layers for binary classification, performing text preprocessing including tokenization, padding, and sequence modeling.
+**Project page:** https://nikhileshnarkhede.github.io/portfolio/projects/nlp-text-classification.html
+**Skills:** NLP, LSTM, Text Classification, Word Embeddings, GloVe, FastText, Deep Learning.
+</project>
+
+<project name="Applied Machine Learning for Credit Risk & Loan Default Prediction" type="Applied ML / Classification" url="https://nikhileshnarkhede.github.io/portfolio/projects/credit-risk-prediction.html">
+### Applied Machine Learning for Credit Risk & Loan Default Prediction
+Nikhilesh developed supervised machine learning models to predict payday loan default risk using structured financial and behavioral data.
+- Performed data preprocessing and feature engineering to improve signal quality and model generalization.
+- Evaluated multiple classification algorithms, identifying LightGBM and CatBoost as top-performing models compared to baseline approaches, and built a feedforward neural network (FFN) to benchmark deep learning performance against traditional ML models.
+- Assessed model performance using appropriate classification metrics to guide model selection and tuning, demonstrating real-world risk modeling skills applicable to finance, lending, and decision-support systems.
+**Project page:** https://nikhileshnarkhede.github.io/portfolio/projects/credit-risk-prediction.html
+**Skills:** Python, Machine Learning, Classification, LightGBM, CatBoost, Neural Networks, Feature Engineering, Model Evaluation, Applied Data Science.
+</project>
+
+<project name="High-Performance Deep Learning for Music Genre Classification" type="CNN / RNN / LSTM / HPC" url="https://nikhileshnarkhede.github.io/portfolio/projects/music-genre-classification.html">
+### High-Performance Deep Learning for Music Genre Classification
+Nikhilesh designed and implemented a high-performance deep learning pipeline to classify music genres from raw audio data.
+- Transformed audio signals into spectrogram representations, enabling convolutional and recurrent neural networks to learn spatial–temporal patterns.
+- Built and evaluated CNN, RNN, and LSTM architectures, comparing accuracy, training time, and computational efficiency, and applied parallel computing strategies to accelerate model training and improve scalability over sequential approaches.
+- Analyzed performance trade-offs between model complexity and inference efficiency for real-time and streaming use cases, demonstrating system-level ML thinking.
+**Project page:** https://nikhileshnarkhede.github.io/portfolio/projects/music-genre-classification.html
+**GitHub:** https://github.com/nikhileshnarkhede/High-Perform-Scientific-Compute
+**Skills:** Python, Deep Learning, CNN, RNN, LSTM, Signal Processing, Spectrograms, TensorFlow, Keras, Parallel Computing, Model Optimization.
+</project>
+
+<project name="Applied Machine Learning for Business & Industrial Forecasting" type="Applied ML / Forecasting" url="https://nikhileshnarkhede.github.io/portfolio/projects/ml-business-forecasting.html">
+### Applied Machine Learning for Business & Industrial Forecasting and Predictive Analytics
+Nikhilesh designed and implemented multiple supervised machine learning pipelines to solve real-world classification and regression problems across business, finance, industrial, and healthcare domains.
+- Built feedforward neural network (FFN) models to classify customer subscription likelihood using behavioral and demographic features.
+- Developed regression models to predict vehicle emission levels (PPM) and implemented machine learning models to forecast interest rates based on historical financial and macroeconomic indicators.
+- Modeled counterfeit medicine sales patterns to support demand forecasting and risk-aware decision-making in healthcare supply chains, executing complete ML workflows across all four use cases.
+**Project page:** https://nikhileshnarkhede.github.io/portfolio/projects/ml-business-forecasting.html
+**Skills:** Python, Machine Learning, Supervised Learning, Classification, Regression, Neural Networks (FFN), Feature Engineering, Model Evaluation, Applied Data Science.
+</project>
+
+<project name="End-to-End Computer Vision Systems for Image Classification & Recognition" type="Computer Vision" url="https://nikhileshnarkhede.github.io/portfolio/projects/computer-vision.html">
+### End-to-End Computer Vision Systems for Image Classification & Recognition
+Nikhilesh designed and implemented multiple CNN-based computer vision pipelines for image classification, object detection, and facial recognition tasks.
+- Built face detection and recognition systems using MTCNN and VGGFace embeddings to identify and verify human faces.
+- Applied transfer learning techniques by fine-tuning ImageNet-pretrained models to improve accuracy on limited datasets, and developed deep CNN models for handwritten digit classification (MNIST) and medical image diagnosis using chest X-ray images.
+- Preprocessed and augmented image datasets to enhance model robustness and generalization, demonstrating applied computer vision expertise across general vision and healthcare-focused use cases.
+**Project page:** https://nikhileshnarkhede.github.io/portfolio/projects/computer-vision.html
+**Skills:** Python, Computer Vision, Deep Learning, CNNs, Transfer Learning, ImageNet, MTCNN, VGGFace, Medical Imaging, Model Evaluation.
+</project>
+
+<project name="Supply Chain Tracker" type="Full-Stack Data Application" url="https://nikhileshnarkhede.github.io/portfolio/projects/supply-chain-tracker.html">
+### Supply Chain Tracker — Data-Driven Analytics & Web Application
+Nikhilesh designed and developed a full-stack, data-driven supply chain management application to track products, vendors, and orders in real time.
+- Built interactive dashboards and analytics views using Streamlit and Plotly to visualize operational metrics and trends.
+- Implemented role-based access control to support multiple user types with secure login workflows, and enabled structured data ingestion and export through CSV upload/download pipelines.
+- Applied data preprocessing and transformation using Pandas and NumPy, demonstrating end-to-end application thinking that integrates data engineering, analytics, and user-facing components in a single system.
+**Project page:** https://nikhileshnarkhede.github.io/portfolio/projects/supply-chain-tracker.html
+**Skills:** Python, Data Engineering, Applied Data Science, Streamlit, Plotly, Pandas, NumPy, Data Visualization, Application Development.
+</project>
+
+<project name="Data Engineering & Visualization Applications" type="Data Engineering / Visualization" url="https://nikhileshnarkhede.github.io/portfolio/projects/data-engineering-visualization.html">
+### Data Engineering & Visualization Applications
+Nikhilesh developed interactive, data-driven applications for supply chain tracking, multi-view visualizations, and force simulations using Streamlit, Plotly, and D3.js.
+- Built real-time dashboards and role-based access systems to provide operational insights and enhance decision-making.
+- Performed comprehensive data preprocessing and transformation using Pandas and NumPy to support analytics and visualization.
+- Implemented multi-modal and multi-view visualizations for complex datasets including CT scans, demonstrating advanced data visualization techniques.
+**Project page:** https://nikhileshnarkhede.github.io/portfolio/projects/data-engineering-visualization.html
+**Skills:** Python, Data Engineering, Data Visualization, Streamlit, Plotly, Pandas, NumPy.
+</project>
+
+<project name="Portfolio AI Chatbot" type="RAG-Powered Conversational Profile" url="https://nikhileshportfoliochatbot.streamlit.app/">
+### Portfolio AI Chatbot — RAG-Powered Conversational Profile
+Nikhilesh built and deployed an end-to-end Retrieval-Augmented Generation (RAG) chatbot (this very chatbot) that lets recruiters chat with his professional profile and get accurate, first-person answers about his background, projects, skills, and experience.
+- Engineered a FAISS vector search pipeline with sentence-transformers (all-MiniLM-L6-v2) embeddings and structure-aware, type-routed retrieval for accurate and complete context selection.
+- Integrated a Groq-hosted LLM via LangChain to deliver fast, low-latency streaming responses in a natural, conversational tone, with query expansion enriching user questions with domain keywords for better retrieval.
+- Built conversation memory with automatic summarization, enabling long, context-aware multi-turn conversations without exceeding token limits.
+- Designed a two-layer URL-safety system — strict prompt-level rules plus a Python sanitizer backed by an allowlist — guaranteeing the bot never shows hallucinated or broken links.
+- Deployed as a production Streamlit application with graceful error handling, rate-limit fallbacks, and a responsive, Apple-inspired user interface.
+**Live app:** https://nikhileshportfoliochatbot.streamlit.app/
+**Skills:** Python, Retrieval-Augmented Generation (RAG), LangChain, Groq, FAISS, Vector Databases, Sentence Transformers, HuggingFace, Streamlit, Prompt Engineering, Conversational AI, LLMs, Model Deployment.
+</project>
+</projects>
+
+<research>
+## Research
+
+<publication name="Hybrid ML Workflow for FFF Process-Property Optimization" venue="International Journal on Interactive Design and Manufacturing (IJIDeM), Springer" year="2026" doi="10.1007/s12008-026-02637-y">
+### Hybrid Machine Learning Workflow for Process-Property Optimization in Fused Filament Fabrication (IJIDeM, Springer, 2026)
+Nikhilesh co-authored this paper, which presents a hybrid, interpretable pipeline coupling symbolic regression (gplearn) with a deep neural network surrogate and NSGA-II multi-objective optimization to map four FFF process parameters (layer thickness, printing speed, bed temperature, nozzle temperature) to six mechanical properties of ABS.
+- Symbolic regression alone reached test R² of 0.897–0.992; the DNN surrogate refined these to R² of 0.96–0.997.
+- NSGA-II then recovered Pareto-optimal print settings validated against experiment.
+**DOI:** https://doi.org/10.1007/s12008-026-02637-y
+**Code:** https://github.com/nikhileshnarkhede/SymbOptAI
+**Focus areas:** Physics-Informed ML, Interpretable ML, Multi-objective Optimization, Scientific Machine Learning.
+</publication>
+
+<publication name="Prediction of Mechanical and Fracture Properties of Lightweight Polyurethane Composites" venue="Journal of Composite Science" year="2025" doi="10.3390/jcs9060271">
+### Prediction of Mechanical and Fracture Properties of Lightweight Polyurethane Composites Using Machine Learning Methods (Journal of Composite Science, 2025)
+Nikhilesh co-authored this paper on physics-aware, data-driven ML frameworks for materials science applications under low-data constraints.
+- Applied symbolic regression to extract interpretable equations linking manufacturing parameters to material behavior.
+- Demonstrated ML-based surrogate models as scalable alternatives to empirical and physics-based formulations, achieving R² > 0.99.
+**DOI:** https://doi.org/10.3390/jcs9060271
+**Focus areas:** Physics-Informed ML, Interpretable ML, Surrogate Modeling, Scientific Machine Learning.
+</publication>
+
+<research_project name="SymbOptAI" type="Symbolic Regression + DNN + Multi-Objective Optimization Framework" url="https://github.com/nikhileshnarkhede/SymbOptAI">
+### SymbOptAI — Symbolic Regression + DNN + Multi-Objective Optimization Framework (Additive Manufacturing)
+Nikhilesh built an end-to-end computational framework integrating Symbolic Regression Analysis (SRA), Deep Neural Networks, and NSGA-II multi-objective optimization to predict and optimize the mechanical properties of 3D-printed (FDM) materials.
+- Used genetic-programming-based symbolic regression (gplearn) to discover interpretable closed-form equations linking four FDM printing parameters (layer thickness, printing speed, bed temperature, nozzle temperature) to six mechanical properties (tensile strength, elongation at break, toughness, fracture toughness, flexure modulus, flexure strength).
+- Designed a Taguchi L9 Design of Experiments and augmented scarce experimental data with bootstrap resampling; ran an exhaustive 432-configuration symbolic-regression hyperparameter sweep on an HPC cluster (Unity, UMass).
+- Extracted symbolic equation terms as engineered features to boost DNN accuracy, then applied NSGA-II for inverse design to find Pareto-optimal printing parameters across six simultaneous objectives.
+- Achieved test R² of 0.897–0.992 with symbolic regression alone, improved to R² of 0.96–0.997 with the DNN surrogate, while preserving physical interpretability. Published as "Hybrid Machine Learning Workflow for Process-Property Optimization in Fused Filament Fabrication" in IJIDeM (Springer, 2026).
+**DOI:** https://doi.org/10.1007/s12008-026-02637-y
+**GitHub:** https://github.com/nikhileshnarkhede/SymbOptAI
+**Skills:** Python, Symbolic Regression, gplearn, Genetic Programming, Deep Neural Networks, TensorFlow, NSGA-II, pymoo, Multi-Objective Optimization, Design of Experiments, Bootstrap Resampling, Feature Engineering, HPC / SLURM, Interpretable ML.
+</research_project>
+
+<research_project name="PINN for Mixed-Mode Fracture" type="Physics-Informed Neural Network">
+### Physics-Informed Neural Network (PINN) for Mixed-Mode Fracture
+Nikhilesh developed a Physics-Informed Neural Network in PyTorch to predict Mode I and Mode II stress intensity factors (KI, KII) for PLA material under static mixed-mode loading.
+- Embedded fracture-mechanics equations and physical boundary conditions directly into the loss function (pure Mode I at a 0° loading angle, pure Mode II at 90°), keeping predictions physically consistent even with limited experimental data.
+- Took load, crack length, and loading angle as inputs and learned the stress-intensity response constrained by closed-form physics relationships rather than data alone.
+**Skills:** Python, PyTorch, Physics-Informed Neural Networks (PINNs), Fracture Mechanics, Scientific Machine Learning, Constrained Optimization, Low-Data Modeling.
+</research_project>
+
+<research_project name="PINN for IGBT Remaining Useful Life" type="Physics-Informed Neural Network">
+### Physics-Informed Neural Network (PINN) for IGBT Remaining Useful Life (NASA Aging Dataset)
+Nikhilesh built a production-quality, config-driven PINN to estimate the Remaining Useful Lifetime (RUL) of IGBT power-electronic devices from the NASA Ageing dataset, reproducing and extending Lu et al. (Scientific Reports, 2023).
+- Implemented an RNN/LSTM backbone with a physics-augmented loss that combines data fit with two physical constraints — a Monotonic Decreasing Constraint (RUL never increases over time) and a Boundary Condition Constraint (RUL stays within [0, 1]).
+- Used a leak-free leave-one-device-out evaluation protocol so the held-out device never influences training or standardization, producing honest out-of-sample estimates.
+- Engineered a fully modular, single-config-source codebase (data, physics, loss, model, training, evaluation) with MLflow experiment tracking, a per-run registry, and a seven-command CLI; the model architecture is declared entirely as configuration data.
+- Achieved a test R² of 0.784. Built independently as a companion project alongside his Machine Learning Researcher role at Choir Corp (SENTRIX / UptimePowr platform), where he also reproduced a separate published PINN-LSTM benchmark (Kong et al., APEC 2025) for the same IGBT RUL problem.
+**Skills:** Python, PyTorch, Physics-Informed Neural Networks (PINNs), LSTM, RNN, Time-Series Forecasting, Remaining Useful Life (RUL), MLflow, Reproducible ML, Production ML Engineering, Predictive Maintenance.
+</research_project>
+</research>
+
+<skills>
+## Skills — Detailed by Category
+
+<skill_category name="Machine Learning">
+### Machine Learning
+Linear Models, Decision Trees, Random Forest, Extra Trees, SVM, KNN, K-Means, PCA, XGBoost, LightGBM, CatBoost, Feature Engineering, Hyperparameter Tuning, Pipelines, Classification, Regression, Clustering, Anomaly Detection, Model Evaluation, Applied Machine Learning.
+</skill_category>
+
+<skill_category name="Deep Learning">
+### Deep Learning
+PyTorch, TensorFlow, Keras, Neural Networks (FFN, CNN, RNN, LSTM), Transformers, BERT, VAEs, GANs, Style Transfer, Transfer Learning, ImageNet, Signal Processing.
+</skill_category>
+
+<skill_category name="Generative AI & Conversational AI">
+### Generative AI & Conversational AI
+LLMs, LangChain, LangGraph, RAG (Retrieval-Augmented Generation), Prompt Engineering, OpenAI API, Anthropic API, HuggingFace, FAISS, ChromaDB, Vector Databases, Agentic AI, MCP (Model Context Protocol), Subagents, Agent Skills, AI Application Development, API Integration, Automation.
+</skill_category>
+
+<skill_category name="Computer Vision">
+### Computer Vision
+MTCNN, VGGFace, OpenCV, Object Detection, Transfer Learning, Image Classification, Medical Imaging, Autonomous Vehicles.
+</skill_category>
+
+<skill_category name="NLP">
+### NLP
+Text Classification, Sentiment Analysis, Word Embeddings (GloVe, FastText), Tokenization, Sequence Modeling, Spam Detection, Complaint Resolution.
+</skill_category>
+
+<skill_category name="Data Analysis & Visualization">
+### Data Analysis & Visualization
+Pandas, NumPy, Plotly, D3.js, Tableau, Power BI, Excel, Jupyter, Exploratory Data Analysis (EDA), Hypothesis Testing, Statistical Modeling, Time Series Analysis, Predictive Modeling, Regression Analysis, Scientific Visualization, Data Handling, Data Modeling, Data Integration.
+</skill_category>
+
+<skill_category name="Programming & Databases">
+### Programming & Databases
+Python, MATLAB, SQL, MySQL, PostgreSQL, SQL Server, MongoDB, Git, GitHub, Math for ML.
+</skill_category>
+
+<skill_category name="MLOps, Deployment & AI Tooling">
+### MLOps, Deployment & AI Tooling
+Docker, FastAPI, Streamlit, Model Deployment, Model Interpretation, GPU & Parallel Computing, Pipelines, Cursor, GitHub Copilot, Windsurf, Vibe Coding, MCP tooling, Business Intelligence.
+</skill_category>
+
+<skill_category name="Optimization & Scientific Computing">
+### Optimization & Scientific Computing
+NSGA-II, Multi-objective Optimization, Optimization Algorithms, Data Normalization, Mathematical Modeling, Simulation, CFD, Ansys.
+</skill_category>
+
+<skill_category name="Physics-Informed & Scientific ML">
+### Physics-Informed & Scientific ML
+Physics-Informed Neural Networks (PINNs), Symbolic Regression, gplearn, Genetic Programming, Scientific Machine Learning, Surrogate Modeling, Design of Experiments (Taguchi L9), Bootstrap Resampling, pymoo, Remaining Useful Life (RUL) Estimation, Power Electronics Reliability, IGBT Reliability, Fracture Mechanics, MLflow, Reproducible ML, HPC / SLURM.
+</skill_category>
+
+<skill_category name="Engineering (Mechanical Background)">
+### Engineering (from Mechanical Engineering background)
+Engineering Analysis, Robotics, Kinematics, CAD, SOLIDWORKS, Mechanical–AI Integration, Predictive Maintenance, Industrial Analytics, Operations Engineering.
+</skill_category>
+
+<skill_category name="Soft Skills">
+### Soft Skills
+Problem Solving, Communication, Teamwork, Attention to Detail, Research, Teaching.
+</skill_category>
+</skills>
+
+<certifications>
+## Certifications
+
+Nikhilesh holds 23 professional certifications in total. The groups below are curated for their relevance to Data Science and AI.
+
+<certification_group name="Featured Certification" provider="IIT Kanpur">
+### Featured Certification
+- Advanced Certification in AI & Machine Learning — E&ICT Academy, IIT Kanpur (Government of India Endorsed). Verify: https://verify.eicta.digitalcredentials.in/65e424b5-68ff-44eb-b974-fc73e27add6c
+</certification_group>
+
+<certification_group name="Core Data Science & ML" provider="Edvancer">
+### Core Data Science & ML (Edvancer)
+- Certified Deep Learning Expert — Edvancer, May 2024. Credential ID 1401-0008. Skills: Gradient Descent, CNNs, RNN/LSTM/GRU, Autoencoders, GANs, Computer Vision (Object Detection, Face Recognition), NLP, Chatbots with Rasa, Audio Processing, Image Captioning.
+- Certified Machine Learning Expert — Edvancer, Feb 2024. Credential ID 0401-0007. Skills: Python fundamentals, Pandas, NumPy, Statistics, GLMs, Decision Trees, Bagging & Boosting, SVM, kNN, Neural Networks, Text Mining, Ensemble Methods, Pipelines, Git, Feature Engineering.
+- Certified Data Analyst using SQL — Edvancer, Feb 2024. Credential ID 0601-0007. Skills: SQL fundamentals, Data Types, Aggregations, Functions, Sub-queries, DML/DDL, Joins, Views.
+</certification_group>
+
+<certification_group name="Generative AI, Agents & MCP" provider="Anthropic" year="2026">
+### Generative AI, Agents & MCP (Anthropic — 2026)
+- Claude 101 — Anthropic, May 2026. Prompt optimization, context window utilization, and leveraging LLM capabilities for advanced technical workflows. Verify: https://verify.skilljar.com/c/549584kt98m9
+- Building with the Claude API — Anthropic, Jun 2026. Hands-on Claude API development — messages, multimodal inputs, tool use, streaming, and production integration patterns. Verify: https://verify.skilljar.com/c/pcis3ygdauaw
+- Claude Code 101 — Anthropic, May 2026. From installation to advanced customization — using Claude Code effectively in a daily engineering workflow. Verify: https://verify.skilljar.com/c/fvon5s9cdv7b
+- Claude Code in Action — Anthropic, May 2026. AI coding assistant architecture, context management, MCP server extensions, and GitHub integration. Verify: https://verify.skilljar.com/c/ste8f6xptntw
+- Claude Code in Action (LinkedIn Learning) — Anthropic · LinkedIn, May 2026. Tool-use system, visual communication workflows, and extending Claude Code via MCP and GitHub. Verify: https://www.linkedin.com/learning/certificates/0a8d3abcc8338a4f3f9a21e604bebb32520811dda39a7ee696f921067ba8df11/
+- Introduction to Model Context Protocol — Anthropic, May 2026. Building MCP servers and clients with the Python SDK — tools, resources, and prompts integrated with Claude. Verify: https://verify.skilljar.com/c/exdsh88k8m5q
+- Model Context Protocol: Advanced Topics — Anthropic, May 2026. Server-client communication, transport mechanisms, sampling, notifications, and production deployment. Verify: https://verify.skilljar.com/c/qvr5g76rd8kq
+- Introduction to Subagents — Anthropic, May 2026. Delegating tasks to isolated sub-agents — context management, focused execution, and agentic workflows. Verify: https://verify.skilljar.com/c/yiy2bcayhcgk
+- Introduction to Agent Skills — Anthropic, May 2026. Building reusable Skills with SKILL.md, progressive disclosure, and scalable context-efficient AI workflows. Verify: https://verify.skilljar.com/c/f5u5x52ubngk
+- Introduction to Claude Cowork — Anthropic, May 2026. Working sessions where Claude plans and executes tasks across files, folders, and apps with steering. Verify: https://verify.skilljar.com/c/hdsginsdk2kh
+</certification_group>
+</certifications>
+
+<newsletter>
+## Newsletter & Writing
+
+<publication_item name="Weights & Real Life" type="LinkedIn Newsletter" url="https://www.linkedin.com/newsletters/weights-real-life-7447323018998988800/">
+### Weights & Real Life — LinkedIn Newsletter (Founder & Author)
+Nikhilesh is the founder and author of "Weights & Real Life," a weekly LinkedIn newsletter with 1,367+ subscribers (and 5,900+ LinkedIn followers overall). Tagline: "ML & AI concepts explained with code, analogies & real-world examples — for engineers who build and recruiters."
+- Writes accessible, applied deep-dives. Recent issues include: "Agentic AI: What It Can Do, What It Can't, and What Belongs on Your Roadmap"; "Building Your First GNN with PyTorch Geometric"; "Everyone Knows CNN. It's Time to Meet GNN."; "Your Model Is Ready. Now What? The Complete MLOps Guide Nobody Talks About"; and "Your Laptop Has a Supercomputer Inside" (GPU / PyTorch CUDA optimization).
+- Also posts regularly on Agentic AI, the Model Context Protocol (MCP), Claude Code production workflows, and AI-engineering best practices.
+**Read / subscribe:** https://www.linkedin.com/newsletters/weights-real-life-7447323018998988800/
+</publication_item>
+</newsletter>
+
+<conference_presentations>
+## Conference Presentations & Research Activities
+
+<presentation name="Northeastern Student Symposium — SEM" venue="Society for Experimental Mechanics (SEM), hosted at UMass Dartmouth" date="April 11, 2026">
+### Northeastern Student Symposium — Society for Experimental Mechanics (SEM), UMass Dartmouth (April 11, 2026)
+Nikhilesh presented in Session 6 (Multi-scale Mechanics, Modeling, and AI Approaches): "AI-Assisted Prediction and Optimization of Fused Filament Fabrication Parameters for Optimizing Mechanical and Fracture Properties of ABS" — on leveraging AI to predict and optimize 3D-printing (FFF) parameters for improved mechanical and fracture performance of ABS polymers.
+</presentation>
+
+<presentation name="Three Minute Thesis (3MT) 2026" venue="UMass Dartmouth" date="2026">
+### Three Minute Thesis (3MT) 2026 — UMass Dartmouth
+Nikhilesh was selected to compete by special approval of the Associate Provost and presented his graduate research in the three-minute, single-slide format; judges noted "very interesting research outcomes." The experience strengthened his skill of communicating complex research clearly and concisely.
+</presentation>
+</conference_presentations>
+
+<leadership_volunteering>
+## Leadership & Volunteering
+
+<role title="Technical Advisor" org="Courage Builder Blue Tech Externship 2026, UMass Dartmouth" period="2026">
+### Technical Advisor — Courage Builder Blue Tech Externship 2026, UMass Dartmouth
+Nikhilesh served as a Technical Advisor (TA), mentoring a student team that built an Underwater Maritime Security System using MATLAB and Simulink, in collaboration with the Woods Hole Oceanographic Institution (WHOI), SMAST, and MathWorks.
+</role>
+
+<role title="Event Assistant (Volunteer)" org="New Bedford Ocean Cluster" period="Mar 2026">
+### Event Assistant (Volunteer) — New Bedford Ocean Cluster (Mar 2026)
+Nikhilesh supported planning and execution of regional maritime and offshore-wind ("blue economy") industry events — managing event flow, registration, and on-site operations, and serving as a point of contact for stakeholders.
+</role>
+</leadership_volunteering>
+
+<recommendations>
+## Recommendations (LinkedIn — 3 received)
+
+<recommendation name="Madhavi Kamble" title="Practice Lead / AVP; IIT Kanpur AI/ML batchmate">
+### Recommendation from Madhavi Kamble (Practice Lead / AVP; IIT Kanpur AI/ML batchmate)
+Madhavi Kamble highlights Nikhilesh's solid grasp of ML and deep learning, hands-on Python and TensorFlow skills, and ability to communicate complex ideas clearly — recommending him for data-driven AI/ML roles.
+</recommendation>
+
+<recommendation name="Ajay Rajpurohit" title="Software Engineer at Netradyne; IIT Guwahati M.Tech CSE">
+### Recommendation from Ajay Rajpurohit (Software Engineer at Netradyne; IIT Guwahati M.Tech CSE)
+Ajay Rajpurohit notes Nikhilesh's strong foundation in mathematics, statistics, and optimization, and his ability to bridge theory with hands-on model building and end-to-end data pipelines.
+</recommendation>
+</recommendations>

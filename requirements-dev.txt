@@ -1,0 +1,42 @@
+# =====================================================================
+# portfolio_Chatbot - development & evaluation dependencies
+#
+#   pip install -r requirements.txt -r requirements-dev.txt
+#
+# Kept separate so the Streamlit Cloud deployment never installs the
+# eval stack. requirements.txt is what the deployed app needs; this file
+# is what YOU need to measure it.
+#
+# Resolved 2026-08-25.
+# =====================================================================
+
+# ---- testing --------------------------------------------------------
+pytest==9.1.1
+pytest-cov==7.1.0
+torchvision
+# ---- lint / format --------------------------------------------------
+ruff==0.16.4
+
+# ---- eval reporting -------------------------------------------------
+# pandas + tabulate back eval/compare.py's side-by-side run diff and the
+# report tables written into eval/reports/.
+pandas==3.0.5
+tabulate==0.10.0
+
+# ---- eval metrics: DELIBERATELY COMMENTED OUT -----------------------
+# The metric library is still an open decision (see STRUCTURE.md).
+# eval/metrics/*.py define the interface; uncomment ONE of these once you
+# have chosen, then verify the pin still resolves.
+#
+# Option A - RAGAS: faithfulness, answer_relevancy, context_precision,
+#   context_recall. Needs an LLM judge; Groq works via langchain-groq.
+# ragas==0.4.3
+#
+# Option B - DeepEval: similar metrics plus a pytest integration, so
+#   eval cases can run as normal tests in CI.
+# deepeval==4.2.0
+#
+# Option C - LangSmith: trace UI for LangGraph runs plus hosted datasets.
+#   Requires LANGSMITH_API_KEY and sends traces off-machine. Pairs with
+#   observability.langsmith.enabled in configs/default.json.
+# langsmith==0.11.1

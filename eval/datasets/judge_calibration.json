@@ -1,0 +1,250 @@
+{
+  "_meta": {
+    "description": "Judge calibration set. 30 (context, claim) pairs, deliberately balanced 15 supported / 15 unsupported so Cohen's kappa is meaningful - a set skewed to one class lets a judge that always answers the same way score high agreement while carrying no information.",
+    "how_to_use": "The judge scores every case; kappa compares its verdicts against the labels. expected_label is the authored intent and is objective for the unsupported half, since those claims simply do not appear in the context. human_label is null until YOU grade them in the dashboard; your labels take precedence and are stronger evidence.",
+    "balance": "15 supported / 15 unsupported",
+    "note": "Contexts are short excerpts in resume style, NOT verbatim resume text. The judge is being measured on its ability to check support, which does not require the real document."
+  },
+  "cases": [
+    {
+      "id": "cal_01",
+      "context": "Machine Learning Researcher at Choir Corp, 2026 - Present. Built predictive maintenance models for industrial equipment using physics-informed neural networks.",
+      "claim": "He works at Choir Corp as a Machine Learning Researcher.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Direct restatement."
+    },
+    {
+      "id": "cal_02",
+      "context": "Machine Learning Researcher at Choir Corp, 2026 - Present. Built predictive maintenance models for industrial equipment using physics-informed neural networks.",
+      "claim": "His work at Choir Corp involves predictive maintenance.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Direct."
+    },
+    {
+      "id": "cal_03",
+      "context": "University of Massachusetts Dartmouth. M.S. Data Science, Sep 2024 - May 2026. Savitribai Phule Pune University, B.E. Mechanical Engineering, graduated June 2023.",
+      "claim": "He is studying an M.S. in Data Science.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Direct."
+    },
+    {
+      "id": "cal_04",
+      "context": "University of Massachusetts Dartmouth. M.S. Data Science, Sep 2024 - May 2026. Savitribai Phule Pune University, B.E. Mechanical Engineering, graduated June 2023.",
+      "claim": "His bachelor's degree was in Mechanical Engineering.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Direct."
+    },
+    {
+      "id": "cal_05",
+      "context": "Chat with YouTube Videos. RAG / Conversational AI. A system that lets users ask questions about video content and get grounded answers. Built with LangChain and FAISS.",
+      "claim": "The YouTube project uses FAISS.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Stated explicitly."
+    },
+    {
+      "id": "cal_06",
+      "context": "PINN for IGBT Remaining Useful Life. Physics-Informed Neural Network combining Arrhenius and Coffin-Manson degradation physics with a deep network for remaining useful life prediction.",
+      "claim": "The IGBT work is a physics-informed neural network.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Direct."
+    },
+    {
+      "id": "cal_07",
+      "context": "Machine Learning: regression, classification, ensemble methods, model evaluation. Deep Learning: CNNs, RNNs, LSTMs, transformers. Programming & Databases: Python, SQL, PostgreSQL.",
+      "claim": "He knows Python and SQL.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Both listed."
+    },
+    {
+      "id": "cal_08",
+      "context": "Prediction of Mechanical and Fracture Properties of composites. Journal of Composite Science, 2025. Hybrid ML Workflow for FFF Process-Property Optimization, International Journal on Interactive Design, 2026.",
+      "claim": "He published in the Journal of Composite Science.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Direct."
+    },
+    {
+      "id": "cal_09",
+      "context": "Featured Certification: Advanced Certification in AI and Machine Learning, IIT Kanpur, Oct 2023 - Jul 2024. Generative AI, Agents & MCP, Anthropic, 2026.",
+      "claim": "He holds a certification from IIT Kanpur.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Direct."
+    },
+    {
+      "id": "cal_10",
+      "context": "Project Trainee (Predictive Maintenance), Bajaj Auto Ltd, Mar 2022 - Jun 2022. Worked on vibration analysis for early fault detection on production line equipment.",
+      "claim": "He worked at Bajaj Auto on predictive maintenance.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Direct."
+    },
+    {
+      "id": "cal_11",
+      "context": "University of Massachusetts Dartmouth. M.S. Data Science, Sep 2024 - May 2026. Savitribai Phule Pune University, B.E. Mechanical Engineering, graduated June 2023.",
+      "claim": "He attended two universities.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Both named; simple aggregation is supported."
+    },
+    {
+      "id": "cal_12",
+      "context": "PINN for IGBT Remaining Useful Life. Physics-Informed Neural Network combining Arrhenius and Coffin-Manson degradation physics with a deep network for remaining useful life prediction.",
+      "claim": "His PINN research incorporates Coffin-Manson physics.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Named explicitly."
+    },
+    {
+      "id": "cal_13",
+      "context": "Machine Learning: regression, classification, ensemble methods, model evaluation. Deep Learning: CNNs, RNNs, LSTMs, transformers. Programming & Databases: Python, SQL, PostgreSQL.",
+      "claim": "He has experience with transformers.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Listed under Deep Learning."
+    },
+    {
+      "id": "cal_14",
+      "context": "Chat with YouTube Videos. RAG / Conversational AI. A system that lets users ask questions about video content and get grounded answers. Built with LangChain and FAISS.",
+      "claim": "The project answers questions about video content.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "Paraphrase, still supported."
+    },
+    {
+      "id": "cal_15",
+      "context": "Project Trainee (Predictive Maintenance), Bajaj Auto Ltd, Mar 2022 - Jun 2022. Worked on vibration analysis for early fault detection on production line equipment.",
+      "claim": "His Bajaj Auto role was an internship-level position.",
+      "expected_label": true,
+      "human_label": null,
+      "notes": "'Project Trainee' supports this."
+    },
+    {
+      "id": "cal_16",
+      "context": "Machine Learning Researcher at Choir Corp, 2026 - Present. Built predictive maintenance models for industrial equipment using physics-informed neural networks.",
+      "claim": "He has worked at Choir Corp for three years.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "No duration is stated. A number invented from a date range."
+    },
+    {
+      "id": "cal_17",
+      "context": "Machine Learning Researcher at Choir Corp, 2026 - Present. Built predictive maintenance models for industrial equipment using physics-informed neural networks.",
+      "claim": "He leads a team of five engineers at Choir Corp.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "Team size is nowhere in the context."
+    },
+    {
+      "id": "cal_18",
+      "context": "University of Massachusetts Dartmouth. M.S. Data Science, Sep 2024 - May 2026. Savitribai Phule Pune University, B.E. Mechanical Engineering, graduated June 2023.",
+      "claim": "He graduated with a 3.9 GPA.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "No GPA anywhere."
+    },
+    {
+      "id": "cal_19",
+      "context": "Chat with YouTube Videos. RAG / Conversational AI. A system that lets users ask questions about video content and get grounded answers. Built with LangChain and FAISS.",
+      "claim": "The YouTube project is deployed on AWS.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "No deployment target mentioned."
+    },
+    {
+      "id": "cal_20",
+      "context": "PINN for IGBT Remaining Useful Life. Physics-Informed Neural Network combining Arrhenius and Coffin-Manson degradation physics with a deep network for remaining useful life prediction.",
+      "claim": "The IGBT model achieves 95% accuracy.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "No metric stated. The classic invented figure."
+    },
+    {
+      "id": "cal_21",
+      "context": "Machine Learning: regression, classification, ensemble methods, model evaluation. Deep Learning: CNNs, RNNs, LSTMs, transformers. Programming & Databases: Python, SQL, PostgreSQL.",
+      "claim": "He is an expert in Kubernetes.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "Not in the skills list at all."
+    },
+    {
+      "id": "cal_22",
+      "context": "Prediction of Mechanical and Fracture Properties of composites. Journal of Composite Science, 2025. Hybrid ML Workflow for FFF Process-Property Optimization, International Journal on Interactive Design, 2026.",
+      "claim": "He has published five peer-reviewed papers.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "Two are listed; five is fabricated."
+    },
+    {
+      "id": "cal_23",
+      "context": "Featured Certification: Advanced Certification in AI and Machine Learning, IIT Kanpur, Oct 2023 - Jul 2024. Generative AI, Agents & MCP, Anthropic, 2026.",
+      "claim": "He completed the IIT Kanpur programme with distinction.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "No grade or distinction mentioned."
+    },
+    {
+      "id": "cal_24",
+      "context": "Project Trainee (Predictive Maintenance), Bajaj Auto Ltd, Mar 2022 - Jun 2022. Worked on vibration analysis for early fault detection on production line equipment.",
+      "claim": "At Bajaj Auto he reduced downtime by 30%.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "Plausible impact claim with no support."
+    },
+    {
+      "id": "cal_25",
+      "context": "Machine Learning Researcher at Choir Corp, 2026 - Present. Built predictive maintenance models for industrial equipment using physics-informed neural networks.",
+      "claim": "He reports directly to the CTO.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "Reporting line is not in the context."
+    },
+    {
+      "id": "cal_26",
+      "context": "Chat with YouTube Videos. RAG / Conversational AI. A system that lets users ask questions about video content and get grounded answers. Built with LangChain and FAISS.",
+      "claim": "The project has over 1,000 users.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "No usage figures."
+    },
+    {
+      "id": "cal_27",
+      "context": "Machine Learning: regression, classification, ensemble methods, model evaluation. Deep Learning: CNNs, RNNs, LSTMs, transformers. Programming & Databases: Python, SQL, PostgreSQL.",
+      "claim": "He primarily works in Java.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "Contradicted - Python and SQL are listed."
+    },
+    {
+      "id": "cal_28",
+      "context": "University of Massachusetts Dartmouth. M.S. Data Science, Sep 2024 - May 2026. Savitribai Phule Pune University, B.E. Mechanical Engineering, graduated June 2023.",
+      "claim": "He is expected to graduate in 2027.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "Contradicted - May 2026 is stated."
+    },
+    {
+      "id": "cal_29",
+      "context": "PINN for IGBT Remaining Useful Life. Physics-Informed Neural Network combining Arrhenius and Coffin-Manson degradation physics with a deep network for remaining useful life prediction.",
+      "claim": "The IGBT work was funded by a national research grant.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "No funding information."
+    },
+    {
+      "id": "cal_30",
+      "context": "Prediction of Mechanical and Fracture Properties of composites. Journal of Composite Science, 2025. Hybrid ML Workflow for FFF Process-Property Optimization, International Journal on Interactive Design, 2026.",
+      "claim": "Both of his papers appeared in the same journal.",
+      "expected_label": false,
+      "human_label": null,
+      "notes": "Contradicted - two different venues."
+    }
+  ]
+}
