@@ -70,14 +70,16 @@ Nikhilesh completed a full-stack AI certification (Government of India endorsed)
 <experience>
 ## Work Experience
 
-<entry role="Machine Learning Researcher" company="Choir Corp" period="2026 – Present" location="Remote">
-### Machine Learning Researcher — Choir Corp (2026 – Present)
+<entry role="Machine Learning Researcher" company="Choir Corp" period="Jul 2026 – Present" location="Remote">
+### Machine Learning Researcher — Choir Corp (Jul 2026 – Present)
 Nikhilesh is currently a Machine Learning Researcher at Choir Corp, working on the SENTRIX / UptimePowr platform (remote), focused on physics-informed deep learning for power-electronics reliability prediction.
 - Reproduced a published PINN-LSTM benchmark (Kong et al., APEC 2025) for IGBT power-module remaining-useful-life (RUL) prediction, translating the published method into a working, evaluated prototype using a leave-one-device-out four-fold cross-validation framework.
 - Conducted systematic root-cause failure analysis when the reproduced model underperformed a baseline rather than accepting the metric at face value: diagnosed a physics/failure-mode mismatch between the benchmark's assumptions and the target degradation behavior, and reported the honest negative result to engineering leadership rather than overstating performance.
 - Built MLflow-tracked, reproducible experiment pipelines integrated into the team's development workflow, enabling systematic comparison across model variants and cross-validation folds.
+- Delivered a follow-on engagement building the UptimePowr decision layer: an expected-cost intervention scheduler, a five-category cost model, automated justification-record generation, and a three-policy backtest harness, integrated into a Grafana-based demo dashboard.
+- Named as an inventor on Choir Corp's provisional patent filing covering the decision-layer architecture.
 - Independently designed and built a companion physics-informed neural network reproducing Lu et al. (2023) for the same RUL problem, including a 7-command CLI, an MLflow run registry, and physics-informed loss gating; reached a test R² of 0.784 (see the PINN for IGBT Remaining Useful Life entry under Research & Physics-Informed ML Projects).
-**Tools & skills:** Physics-Informed Neural Networks (PINN), LSTM, RNN, PyTorch, MLflow, Remaining-Useful-Life (RUL) Prediction, Cross-Validation, Root-Cause Analysis, Reproducible ML Pipelines, Power Electronics Reliability.
+**Tools & skills:** Physics-Informed Neural Networks (PINN), LSTM, RNN, PyTorch, MLflow, Remaining-Useful-Life (RUL) Prediction, Cross-Validation, Root-Cause Analysis, Reproducible ML Pipelines, Power Electronics Reliability, Grafana, Decision-Support Systems, Multi-Objective Cost Modeling.
 </entry>
 
 <entry role="Research Assistant (Part-Time)" company="University of Massachusetts Dartmouth" period="Jun 2025 – Dec 2025" location="Greater Boston, MA">
