@@ -1,15 +1,17 @@
 # ---------------------------------------------------------------------------
-# Push to main -> test -> build -> smoke test -> publish to Docker Hub.
+# Push to master -> test -> build -> smoke test -> publish to GitHub Packages
+# (ghcr.io). A v* tag also publishes an image tagged with that version.
 #
 # Two jobs, and the split matters: `publish` declares `needs: test`, so a
 # failing suite means no image is pushed. A registry that always has an image
 # is not the goal; a registry whose `latest` is always one that passed is.
 #
-# Required repository secrets (Settings -> Secrets and variables -> Actions):
+# No secrets to set up: the push uses the workflow's own GITHUB_TOKEN, which
+# the `packages: write` permission below lets it publish to ghcr.io under
+# this repository's owner. A fork publishes to its own owner's namespace.
 #
-#   DOCKERHUB_USERNAME   your Docker Hub username
-#   DOCKERHUB_TOKEN      an access token, NOT your password
-#                        https://hub.docker.com/settings/security
+# The first published package is PRIVATE by default. To let anyone pull it:
+# the package page -> Package settings -> Change visibility -> Public.
 #
 # No Groq key is needed. Every test is offline, and the image never contains
 # a key - it arrives at run time via --env-file.
@@ -19,7 +21,7 @@ name: Publish image
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     tags: ["v*"]
     # Documentation-only commits do not change the image.
     paths-ignore:
@@ -27,11 +29,11 @@ on:
       - "docs/**"
       - ".gitignore"
   pull_request:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
-env:
-  IMAGE: nnarkhede/portfolio-chatbot
+permissions:
+  contents: read
 
 # A newer push makes an in-flight build irrelevant. Cancel it rather than
 # paying for a run whose result is already superseded.
@@ -82,8 +84,18 @@ jobs:
     # would fail, and a PR should not be able to overwrite `latest` anyway.
     if: github.event_name != 'pull_request'
 
+    permissions:
+      contents: read
+      packages: write
+
     steps:
       - uses: actions/checkout@v5
+
+      - name: Image name
+        # ghcr.io/<owner>/<repo>. Registry names must be lowercase, and an
+        # owner name on GitHub need not be, so lowercase it rather than
+        # hardcoding one account - a fork then publishes under its own owner.
+        run: echo "IMAGE=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
 
       - name: Free disk space
         # The runner ships ~14 GB free. This image installs torch, which is
@@ -131,10 +143,14 @@ jobs:
           context: .
           # Built and LOADED, not pushed. The smoke test below runs against
           # this exact image, and only then is it published - so a container
-          # that cannot start never reaches Docker Hub.
+          # that cannot start never reaches the registry.
           load: true
           push: false
           tags: ${{ steps.meta.outputs.tags }}
+          # Links the package to this repository, so it is listed under
+          # "Packages" on the repo page and inherits its README.
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
           build-args: |
             RUN_FINGERPRINT=${{ steps.fingerprint.outputs.value }}
             BUILT_AT=${{ github.event.head_commit.timestamp || github.run_id }}
@@ -172,11 +188,12 @@ jobs:
           docker logs smoke
           exit 1
 
-      - name: Log in to Docker Hub
+      - name: Log in to GitHub Packages
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push
         run: |

@@ -389,6 +389,24 @@ docker run -p 8501:8501 `
 
 Then <http://localhost:8501>.
 
+### Run with Docker, no build
+
+Each release publishes a ready-made image to GitHub Packages, so you can skip
+the build entirely. Put your key in `.env` (`GROQ_API_KEY=gsk_...` and
+`EXPERIMENT=my_profile`), then:
+
+```bash
+docker run -p 8501:8501 --env-file .env \
+  -v "$PWD/data/raw/resume.txt:/app/data/raw/resume.txt:ro" \
+  -v "$PWD/configs/experiments/my_profile.json:/app/configs/experiments/my_profile.json:ro" \
+  -v chatbot-index:/app/data/index \
+  ghcr.io/nikhileshnarkhede/portfolio-chatbot:latest
+```
+
+The two `-v` mounts are your resume and your profile; the image's own copies
+are ignored. The first start builds the index for your resume (about a
+minute), and the named volume keeps it for later starts.
+
 ### What is baked, and what is not
 
 | | Where it comes from | Why |
@@ -432,12 +450,12 @@ than an abort before anything can tell you what is missing.
 
 ## CI
 
-`.github/workflows/docker-publish.yml` — push to `main`, and Docker Hub gets a
-new image.
+`.github/workflows/docker-publish.yml` — push to `master` (or a `v*` tag),
+and GitHub Packages (`ghcr.io`) gets a new image.
 
 ```
-push to main
-  └─ test      ruff + 379 pytest, all offline
+push to master
+  └─ test      ruff + 380 pytest, all offline
       └─ publish   build → smoke test → push
 ```
 
@@ -445,19 +463,18 @@ push to main
 goal is not a registry that always has an image; it is a registry whose
 `latest` is always one that passed.
 
-Two repository secrets, under **Settings → Secrets and variables → Actions**:
-
-| Secret | Value |
-|---|---|
-| `DOCKERHUB_USERNAME` | your Docker Hub username |
-| `DOCKERHUB_TOKEN` | an access token from [hub.docker.com/settings/security](https://hub.docker.com/settings/security) — not your password |
+No secrets to configure: the push authenticates with the workflow's own
+`GITHUB_TOKEN` (`packages: write`), and the image is published as
+`ghcr.io/<owner>/<repo>`, so a fork publishes under its own account. A new
+package starts **private**; make it public once under the package's
+**Package settings → Change visibility**.
 
 No Groq key is needed: every test is offline, and the image never contains a
 key.
 
 **The smoke test is the step worth having.** The image is built and *loaded*,
 started, and polled on `/_stcore/health` before any push happens — so a
-container that cannot start never reaches Docker Hub. A green build only says
+container that cannot start never reaches the registry. A green build only says
 the layers assembled, which is a different claim, and every container problem
 this project has hit passed that weaker test.
 
@@ -469,7 +486,7 @@ being answerable without it. Each image is also labelled with the
 
 ```bash
 docker inspect -f '{{ index .Config.Labels "chatbot.run_fingerprint" }}' \
-  nnarkhede/portfolio-chatbot:latest
+  ghcr.io/nikhileshnarkhede/portfolio-chatbot:latest
 ```
 
 Docs-only commits are skipped via `paths-ignore`, pull requests run the tests

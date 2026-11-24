@@ -135,6 +135,10 @@ Open <http://localhost:8501>. Your resume is mounted from
 `data/raw/resume.txt`, and the key comes from `.env` at run time. Neither is
 baked into the image. More detail is in the [README's Docker section](../README.md#docker).
 
+Don't want to build at all? Use the ready-made image from GitHub Packages.
+The README's [Run with Docker, no build](../README.md#run-with-docker-no-build)
+section has the one `docker run` command.
+
 ---
 
 ## Put it on your portfolio site
