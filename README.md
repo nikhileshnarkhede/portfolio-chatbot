@@ -14,6 +14,19 @@ This version exists so that changing a parameter produces a number.
 **Portfolio:** https://nikhileshnarkhede.github.io/portfolio/
 **Evaluation pipeline:** [`docs/EVALUATION.md`](docs/EVALUATION.md)
 
+## Make your own in 3 steps
+
+Want this chatbot for **your** resume? No Python needed.
+
+1. **Fork** this repo (and ⭐ star it if it helps).
+2. Put your resume in `data/raw/resume.txt` (start from
+   [`resume.example.txt`](data/raw/resume.example.txt)) and your name and links
+   in [`configs/experiments/my_profile.json`](configs/experiments/my_profile.json).
+3. Run it: deploy free on **Streamlit Cloud** with your Groq key, or
+   double-click **`setup.bat`** (Windows) / run **`./setup.sh`** (macOS, Linux).
+
+Full beginner guide: **[`docs/MAKE_YOUR_OWN.md`](docs/MAKE_YOUR_OWN.md)**.
+
 ---
 
 ## The organizing rule
@@ -474,3 +487,9 @@ Dependencies are pinned exactly. This project measures the effect of parameter
 changes, so the dependency set has to be a constant — an unpinned minor bump
 can shift retrieval or prompt formatting and silently invalidate every stored
 result.
+
+---
+
+## License
+
+[MIT](LICENSE). If you build your own bot from this, a ⭐ on the repo is appreciated.

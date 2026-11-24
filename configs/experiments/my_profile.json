@@ -1,0 +1,51 @@
+{
+  "_meta": {
+    "description": "YOUR PROFILE. The only config file you need to edit to run this chatbot on your own resume. Everything not listed here comes from configs/default.json unchanged. Turn it on with EXPERIMENT = \"my_profile\" in .streamlit/secrets.toml (or in Streamlit Cloud -> App settings -> Secrets). The setup scripts do that for you.",
+    "how_to_edit": "Replace every value that says YOUR... Keep the quotes and commas. Lists (urls, meta, links, quick_actions) replace the defaults completely, so list everything you want.",
+    "guide": "docs/MAKE_YOUR_OWN.md"
+  },
+
+  "prompts": {
+    "system": "system.generic_persona",
+    "summarizer": "summarizer.generic"
+  },
+
+  "memory": {
+    "assistant_label": "YOUR FIRST NAME"
+  },
+
+  "safety": {
+    "url_allowlist": {
+      "_note": "The ONLY links the bot may ever show. Any other URL it writes is removed before the answer is displayed. Copy each link exactly as it appears in your resume.txt. An empty list is safe: the bot just shows no links.",
+      "urls": [
+        "https://www.linkedin.com/in/YOUR-LINKEDIN",
+        "https://github.com/YOUR_GITHUB_USERNAME"
+      ]
+    }
+  },
+
+  "ui": {
+    "page_title": "Chat with YOUR NAME",
+    "page_icon": "💬",
+    "heading": "Chat with YOUR NAME",
+    "tagline": "YOUR HEADLINE, e.g. Data Scientist & ML Engineer",
+    "caption": "Ask me about my skills, projects, and experience.",
+    "_avatar_note": "Any image URL. Your GitHub profile picture works: https://github.com/YOUR_GITHUB_USERNAME.png",
+    "assistant_avatar": "https://github.com/YOUR_GITHUB_USERNAME.png",
+    "portfolio_url": "https://github.com/YOUR_GITHUB_USERNAME",
+    "contact": {
+      "name": "YOUR FULL NAME",
+      "_meta_note": "Lines shown under your name on the contact card. Keep your email LAST: the footer shows the last line as the contact email.",
+      "meta": ["YOUR CITY, COUNTRY", "you@example.com"],
+      "links": [
+        {"label": "LinkedIn", "url": "https://www.linkedin.com/in/YOUR-LINKEDIN"},
+        {"label": "GitHub", "url": "https://github.com/YOUR_GITHUB_USERNAME"}
+      ]
+    }
+  },
+
+  "run": {
+    "experiment_name": "my_profile",
+    "notes": "Personal profile for a fork of this project."
+  }
+}

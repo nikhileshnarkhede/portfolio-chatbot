@@ -42,6 +42,26 @@
       "status": "baseline",
       "description": "Condenses older turns so history stays inside the token budget. Ported from app.py's inline summary_prompt, with one deliberate change: the hardcoded '2-3 sentences' became {max_sentences}, wired to memory.summary_max_sentences so it is tunable like every other parameter.",
       "evaluated": false
+    },
+    "system.generic_persona": {
+      "path": "prompts/system/generic_persona.md",
+      "family": "system",
+      "version": 2,
+      "input_variables": ["context", "question", "chat_history"],
+      "status": "template",
+      "description": "Name-free copy of system.v2_persona for people running this project on their own resume. Identical except the opening paragraph: the bot takes its name from the Resume Context instead of a hardcoded one. Selected by configs/experiments/my_profile.json.",
+      "evaluated": false,
+      "derived_from": "system.v2_persona"
+    },
+    "summarizer.generic": {
+      "path": "prompts/summarizer/generic.md",
+      "family": "summarizer",
+      "version": 1,
+      "input_variables": ["conversation", "max_sentences"],
+      "status": "template",
+      "description": "Name-free copy of summarizer.v1 for people running this project on their own resume. Selected by configs/experiments/my_profile.json.",
+      "evaluated": false,
+      "derived_from": "summarizer.v1"
     }
   }
 }

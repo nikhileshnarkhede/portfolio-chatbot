@@ -1,0 +1,3 @@
+# Line endings for the setup scripts: cmd.exe needs CRLF, bash needs LF.
+*.bat text eol=crlf
+*.sh  text eol=lf

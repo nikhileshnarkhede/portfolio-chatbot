@@ -1,0 +1,139 @@
+<!--
+  RESUME TEMPLATE — replace everything with your own details, then save it as
+  data/raw/resume.txt (overwrite the one that is there).
+
+  The person below, "Alex Rivera", is made up. Delete them completely.
+
+  Five rules that make the chatbot answer well:
+    1. Keep the tags (<experience>, <entry ...>, </entry>, ...). Each tagged
+       block becomes one searchable chunk. Text outside a tag is ignored.
+    2. Start every block with a Markdown heading: ## for a section, ### for an
+       entry inside it.
+    3. Write about yourself by NAME in the third person ("Alex built ...").
+       Each chunk is read on its own, so it must say who it is about.
+    4. Put the facts in the attributes too (role, company, period, name, url).
+       They become searchable metadata.
+    5. Write every link out in full (https://...). The bot only shows links
+       that are printed here AND listed in configs/experiments/my_profile.json.
+
+  You may delete whole sections you don't need (for example <research>), and
+  you may add as many <entry>, <project> or <skill_category> blocks as you like.
+  Lines inside these comment markers are removed before indexing.
+-->
+
+<profile_summary type="overview" name="Alex Rivera" role="Data Scientist">
+## Profile Summary
+
+### Alex Rivera — Overview
+Alex Rivera is a Data Scientist at Example Analytics with three years of experience building machine learning models for retail demand forecasting. Alex holds an M.S. in Computer Science from Example State University and works mainly in Python, SQL and PyTorch. Alex is based in Austin, TX and is open to remote roles.
+
+**Professional headline:** Data Scientist | Forecasting | Python, SQL, PyTorch
+
+<contact>
+**Contact** — Email: alex.rivera@example.com
+</contact>
+
+<links>
+**Links**
+- LinkedIn: https://www.linkedin.com/in/YOUR-LINKEDIN
+- GitHub: https://github.com/YOUR_GITHUB_USERNAME
+</links>
+</profile_summary>
+
+<career_objective type="availability">
+## Career Objective & Availability
+
+### What Alex Is Looking For
+Alex is looking for Machine Learning Engineer or Senior Data Scientist roles, remote or in Austin, TX, ideally on teams that ship models to production.
+</career_objective>
+
+<about type="personal_statement">
+## About
+
+### About Alex
+Alex enjoys turning messy business data into models people actually use. Outside work, Alex mentors students at a local coding bootcamp.
+</about>
+
+<education>
+## Education
+
+<institution name="Example State University" degree="M.S. Computer Science" period="2020 – 2022" gpa="3.8/4.0">
+### M.S. Computer Science — Example State University (2020 – 2022)
+Alex completed an M.S. in Computer Science at Example State University with a GPA of 3.8/4.0, focusing on machine learning and databases.
+**Relevant coursework:** Machine Learning, Deep Learning, Database Systems, Statistics.
+</institution>
+
+<institution name="Example College" degree="B.S. Mathematics" period="2016 – 2020">
+### B.S. Mathematics — Example College (2016 – 2020)
+Alex earned a B.S. in Mathematics from Example College.
+</institution>
+</education>
+
+<experience>
+## Work Experience
+
+<entry role="Data Scientist" company="Example Analytics" period="2022 – Present" location="Austin, TX">
+### Data Scientist — Example Analytics (2022 – Present)
+Alex is a Data Scientist at Example Analytics, building demand-forecasting models for retail clients.
+- Built a gradient-boosting forecast that cut stock-outs by 18% across 40 stores.
+- Moved model training to a scheduled pipeline, reducing retraining time from two days to three hours.
+**Tools & skills:** Python, LightGBM, SQL, Airflow, AWS.
+</entry>
+
+<entry role="Machine Learning Intern" company="Example Startup" period="Jun 2021 – Aug 2021" location="Remote">
+### Machine Learning Intern — Example Startup (Jun 2021 – Aug 2021)
+Alex interned at Example Startup, where Alex trained a text classifier to route customer support tickets.
+- Reached 91% accuracy on a held-out set and deployed the model behind an internal API.
+**Tools & skills:** Python, scikit-learn, FastAPI.
+</entry>
+</experience>
+
+<projects>
+## Projects
+
+<project name="Retail Demand Forecaster" type="Time Series / ML" url="https://github.com/YOUR_GITHUB_USERNAME/your-project">
+### Retail Demand Forecaster
+Alex built an open-source demand-forecasting toolkit that compares classical and deep-learning forecasters on public retail data.
+- Includes a Streamlit dashboard and a reproducible benchmark.
+**Tech:** Python, Prophet, PyTorch, Streamlit.
+**Link:** https://github.com/YOUR_GITHUB_USERNAME/your-project
+</project>
+
+<project name="Resume Chatbot" type="RAG / Conversational AI">
+### Resume Chatbot
+Alex runs a retrieval-augmented chatbot that answers recruiter questions about Alex's background, grounded in this resume.
+**Tech:** LangGraph, FAISS, Groq, Streamlit.
+</project>
+</projects>
+
+<research>
+## Research & Publications
+
+<publication name="An Example Paper Title" venue="Example Journal" year="2022" doi="10.0000/example">
+### An Example Paper Title (Example Journal, 2022)
+Alex co-authored a paper on probabilistic forecasting for intermittent demand, published in Example Journal in 2022.
+</publication>
+</research>
+
+<skills>
+## Skills — Detailed by Category
+
+<skill_category name="Machine Learning">
+### Machine Learning
+Regression, Classification, Gradient Boosting (XGBoost, LightGBM), Time-Series Forecasting, Feature Engineering, Model Evaluation.
+</skill_category>
+
+<skill_category name="Programming & Tools">
+### Programming & Tools
+Python, SQL, PyTorch, scikit-learn, Pandas, Git, Docker, AWS.
+</skill_category>
+</skills>
+
+<certifications>
+## Certifications
+
+<certification_group name="Cloud" provider="Example Provider" year="2023">
+### Cloud
+- Example Cloud Machine Learning Certificate — Example Provider, 2023.
+</certification_group>
+</certifications>
