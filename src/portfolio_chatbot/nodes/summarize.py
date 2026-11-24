@@ -32,11 +32,6 @@ from ..prompts.loader import summarizer_prompt
 from ..state import GraphState
 from . import app_config
 
-FALLBACK_SUMMARY = (
-    "Earlier conversation covered various topics about Nikhilesh's background."
-)
-
-
 def summarize(state: GraphState, config: RunnableConfig) -> dict:
     cfg = app_config(config)
     started = time.perf_counter()
@@ -65,12 +60,12 @@ def summarize(state: GraphState, config: RunnableConfig) -> dict:
         return build_llm(cfg, model).invoke(rendered).content
 
     try:
-        summary = run_with_fallback(cfg, call).text.strip() or FALLBACK_SUMMARY
+        summary = run_with_fallback(cfg, call).text.strip() or mem.fallback_summary
         note = f"summarized {len(to_drop)} msgs"
     except Exception:
         # Trimming must still happen: the reason we are here is that history is
         # too long, and leaving it intact would make the next turn worse.
-        summary = previous or FALLBACK_SUMMARY
+        summary = previous or mem.fallback_summary
         note = f"summarizer failed, trimmed {len(to_drop)} msgs anyway"
 
     return {
@@ -82,4 +77,4 @@ def summarize(state: GraphState, config: RunnableConfig) -> dict:
     }
 
 
-__all__ = ["summarize", "FALLBACK_SUMMARY"]
+__all__ = ["summarize"]

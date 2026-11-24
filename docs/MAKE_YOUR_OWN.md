@@ -63,6 +63,7 @@ and replace every value that says `YOUR...`:
 | `ui.tagline` | Your headline |
 | `ui.assistant_avatar` | Any image URL. `https://github.com/<your-username>.png` is your GitHub photo. |
 | `ui.contact` | The name, lines and links shown on the contact card. Keep your email as the last line. |
+| `ui.rate_limited_reply`, `ui.failure_reply` | What the bot says if the API is busy or fails. Put your own email in both. |
 
 This is the only settings file you need. Everything else uses the defaults in
 `configs/default.json`, which you can leave alone.

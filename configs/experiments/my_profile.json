@@ -11,7 +11,8 @@
   },
 
   "memory": {
-    "assistant_label": "YOUR FIRST NAME"
+    "assistant_label": "YOUR FIRST NAME",
+    "fallback_summary": "Earlier conversation covered various topics about my background."
   },
 
   "safety": {
@@ -33,6 +34,9 @@
     "_avatar_note": "Any image URL. Your GitHub profile picture works: https://github.com/YOUR_GITHUB_USERNAME.png",
     "assistant_avatar": "https://github.com/YOUR_GITHUB_USERNAME.png",
     "portfolio_url": "https://github.com/YOUR_GITHUB_USERNAME",
+    "_replies_note": "Shown instead of an answer when the API is busy or fails. Put your own email in both.",
+    "rate_limited_reply": "I've hit rate limits across all my backup models right now. Please try again in a few minutes, or contact me directly at you@example.com.",
+    "failure_reply": "I ran into a problem answering that one. Please try again, or reach me directly at you@example.com.",
     "contact": {
       "name": "YOUR FULL NAME",
       "_meta_note": "Lines shown under your name on the contact card. Keep your email LAST: the footer shows the last line as the contact email.",

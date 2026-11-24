@@ -20,7 +20,7 @@ from portfolio_chatbot.llm.fallback import (
 )
 from portfolio_chatbot.memory import history
 from portfolio_chatbot.nodes.expand_query import expand_query
-from portfolio_chatbot.nodes.generate import RATE_LIMITED_REPLY, generate
+from portfolio_chatbot.nodes.generate import generate
 from portfolio_chatbot.nodes.retrieve import retrieve
 from portfolio_chatbot.nodes.route import route
 from portfolio_chatbot.nodes.summarize import summarize
@@ -241,7 +241,7 @@ def test_generate_survives_total_failure(scripted_llm, runnable_config, rate_lim
     """An eval run of 100 questions must not abort because the free tier ran dry."""
     scripted_llm({"*": rate_limit_error()})
     out = generate(state_for("hi", context="CTX"), runnable_config)
-    assert out["draft_answer"] == RATE_LIMITED_REPLY
+    assert out["draft_answer"] == runnable_config["configurable"]["app_config"].ui.rate_limited_reply
     assert out["error"]
     assert len(out["model_attempts"]) == 4
 

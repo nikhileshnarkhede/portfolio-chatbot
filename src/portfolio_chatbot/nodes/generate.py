@@ -26,17 +26,9 @@ from ..prompts.loader import system_prompt
 from ..state import GraphState
 from . import app_config
 
-#: Shown to the user when the whole chain is exhausted. Deliberately in
-#: Nikhilesh's voice - it is still his chatbot speaking.
-RATE_LIMITED_REPLY = (
-    "I've hit rate limits across all my backup models right now. "
-    "Please try again in a few minutes, or contact me directly at "
-    "narkhede.nikhilesh@gmail.com."
-)
-GENERIC_FAILURE_REPLY = (
-    "I ran into a problem answering that one. Please try again, or reach me "
-    "directly at narkhede.nikhilesh@gmail.com."
-)
+# The replies shown when the whole chain is exhausted live in config
+# (`ui.rate_limited_reply`, `ui.failure_reply`), in the owner's voice - it is
+# still their chatbot speaking, and a fork must not show someone else's email.
 
 
 def generate(state: GraphState, config: RunnableConfig, *,
@@ -76,7 +68,7 @@ def generate(state: GraphState, config: RunnableConfig, *,
     try:
         result = run_with_fallback(cfg, call, start_index=start_index, on_chunk=on_chunk)
     except AllModelsFailed as exc:
-        reply = RATE_LIMITED_REPLY if exc.rate_limited else GENERIC_FAILURE_REPLY
+        reply = cfg.ui.rate_limited_reply if exc.rate_limited else cfg.ui.failure_reply
         return {
             "draft_answer": reply,
             "model_used": "",
@@ -106,4 +98,4 @@ def generate(state: GraphState, config: RunnableConfig, *,
     }
 
 
-__all__ = ["generate", "RATE_LIMITED_REPLY", "GENERIC_FAILURE_REPLY"]
+__all__ = ["generate"]

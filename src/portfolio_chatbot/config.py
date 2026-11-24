@@ -296,6 +296,8 @@ class MemoryConfig(_Base):
     summary_max_sentences: int = Field(gt=0)
     user_label: str
     assistant_label: str
+    #: Stands in for the summary when the summarizer returns nothing or fails.
+    fallback_summary: str
 
     @model_validator(mode="after")
     def _keep_fewer_than_trigger(self) -> "MemoryConfig":
@@ -368,6 +370,10 @@ class UIConfig(_Base):
     stream_delay: float = Field(ge=0.0)
     show_debug: bool
     show_experiment_switcher: bool
+    #: Shown in place of an answer when every model in the chain is rate limited.
+    rate_limited_reply: str
+    #: Shown in place of an answer when generation fails for any other reason.
+    failure_reply: str
     contact: ContactConfig
     quick_actions: list[QuickAction]
 

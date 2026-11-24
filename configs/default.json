@@ -226,7 +226,8 @@
     "keep_last_n": 6,
     "summary_max_sentences": 3,
     "user_label": "Recruiter",
-    "assistant_label": "Nikhilesh"
+    "assistant_label": "Nikhilesh",
+    "fallback_summary": "Earlier conversation covered various topics about Nikhilesh's background."
   },
 
   "safety": {
@@ -296,6 +297,8 @@
     "stream_delay": 0.012,
     "show_debug": false,
     "show_experiment_switcher": false,
+    "rate_limited_reply": "I've hit rate limits across all my backup models right now. Please try again in a few minutes, or contact me directly at narkhede.nikhilesh@gmail.com.",
+    "failure_reply": "I ran into a problem answering that one. Please try again, or reach me directly at narkhede.nikhilesh@gmail.com.",
     "contact": {
       "name": "Nikhilesh Narkhede",
       "meta": ["US Work Authorized | +1 508-509-3697", "narkhede.nikhilesh@gmail.com"],
